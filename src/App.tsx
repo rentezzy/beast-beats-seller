@@ -1,27 +1,17 @@
-import React from "react";
+import { useState } from "react";
+import Router from "./Router";
 import Header from "./components/header/Header";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
-import Store from "./components/store/Store";
-import Home from "./components/home/Home";
+import { useAppInitialize } from "./store/hooks";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Home />}>
-      <Route path="home" element={<Home />} />
-      <Route path="store" element={<Store />} />
-    </Route>
-  )
-);
 function App() {
-  return (
+  let [isInitialized, setInitialize] = useState(false);
+  useAppInitialize().then((data) => setInitialize(true));
+  return !isInitialized ? (
+    <div>LOADER</div>
+  ) : (
     <div>
       <Header />
-      <RouterProvider router={router} />
+      <Router />
     </div>
   );
 }
