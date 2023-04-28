@@ -11,7 +11,7 @@ import Home from "./components/home/Home";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/">
+    <Route path="/" element={<Home />}>
       <Route path="home" element={<Home />} />
       <Route path="store" element={<Store />} />
     </Route>

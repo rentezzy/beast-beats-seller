@@ -1,21 +1,12 @@
-import React from "react";
-// import { useActions, useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "../../store/hooks";
+import { useGetMeQuery } from "../../store/slices/authApi";
 
 const Header = () => {
-  // const state = useAppSelector((state) => state.productStore.products);
-  // const { addProduct } = useActions();
-  // addProduct({
-  //   beatAuthor: "Me",
-  //   beatName: "breath",
-  //   duration: 123,
-  //   id: 1,
-  //   images: {
-  //     big: "./../",
-  //     small: "sd",
-  //   },
-  // });
-  // console.log(state);
-  return <div>Header</div>;
+  const { isLoading } = useGetMeQuery(null);
+  const isLogined = useAppSelector((state) => state.appState.isLogined);
+  useGetMeQuery(null);
+  console.log(isLogined);
+  return <div>{}</div>;
 };
 
 export default Header;

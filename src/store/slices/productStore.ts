@@ -1,4 +1,4 @@
-import { IProduct, IProductStoreState } from "./../../types/product.types";
+import { IProduct, IProductStoreState } from "../../types/product.types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: IProductStoreState = {
