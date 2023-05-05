@@ -29,6 +29,12 @@ const appSlice = createSlice({
         state.isLogined = true;
       }
     ),
+    logout: builder.addMatcher(
+      authApi.endpoints.logOut.matchFulfilled,
+      (state, action) => {
+        state.isLogined = false;
+      }
+    ),
   }),
 });
 

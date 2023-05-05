@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Karnivore";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Karnivore"), url("KARNIVOR.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Karnivore Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Karnivore Bold"), url("KARNIVOB.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Karnivore Black";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Karnivore Black"),
+    url("./assests/fonts/Karnivore/KARNIVOL.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Karnivore Digit";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Karnivore Digit"), url("KARNIVOD.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Karnivore Tecca";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Karnivore Tecca"), url("KARNIVOT.woff") format("woff");
+}

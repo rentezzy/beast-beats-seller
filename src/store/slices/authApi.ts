@@ -1,17 +1,10 @@
-// import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ILoginBody, ILoginUser } from "../../types/auth.types";
-import { useActions } from "../hooks";
-
-// const initialState = {
-//   userId: "",
-//   isLogined: false,
-// };
 
 export const authApi = createApi({
   reducerPath: "auth",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8000/api/v1/",
+    baseUrl: process.env.REACT_APP_MAIN_API,
     headers: {
       withCredentials: "true",
       "Content-Type": "application/json",
@@ -19,12 +12,14 @@ export const authApi = createApi({
     },
     credentials: "include",
   }),
+  tagTypes: ["User"],
   endpoints: (builder) => ({
     getMe: builder.query<ILoginUser, any>({
       query: () => "user/me",
       transformResponse: (res: { data: { user: ILoginUser } }) => {
         return res.data.user;
       },
+      providesTags: ["User"],
     }),
     postLogin: builder.query<ILoginUser, ILoginBody>({
       query: (payload) => ({
@@ -32,8 +27,19 @@ export const authApi = createApi({
         method: "POST",
         body: payload,
       }),
+      transformResponse: (res: { data: { user: ILoginUser } }) => {
+        return res.data.user;
+      },
+      providesTags: ["User"],
+    }),
+    logOut: builder.mutation({
+      query: () => ({
+        url: "user/logout",
+        method: "DELETE",
+      }),
+      invalidatesTags: ["User"],
     }),
   }),
 });
 
-export const { useGetMeQuery, usePostLoginQuery } = authApi;
+export const { useGetMeQuery, usePostLoginQuery, useLogOutMutation } = authApi;

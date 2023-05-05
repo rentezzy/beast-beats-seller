@@ -1,22 +1,21 @@
-import {
-    createBrowserRouter,
-    createRoutesFromElements,
-    Route,
-    RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import App from "./App";
 import Home from "./components/home/Home";
 import Store from "./components/store/Store";
 
-const Router = () => {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<Home />}>
-        <Route path="home" element={<Home />} />
-        <Route path="store" element={<Store />} />
-      </Route>
-    )
-  );
-  return <RouterProvider router={router} />;
-};
-
-export default Router;
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "store",
+        element: <Store />,
+      },
+    ],
+  },
+]);

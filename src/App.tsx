@@ -1,17 +1,24 @@
 import { useState } from "react";
-import Router from "./Router";
 import Header from "./components/header/Header";
 import { useAppInitialize } from "./store/hooks";
+import LoadingPage from "./components/loadingPage/LoadingPage";
+import { Outlet } from "react-router-dom";
 
 function App() {
   let [isInitialized, setInitialize] = useState(false);
   useAppInitialize().then((data) => setInitialize(true));
-  return !isInitialized ? (
-    <div>LOADER</div>
-  ) : (
+
+  return (
     <div>
-      <Header />
-      <Router />
+      <LoadingPage isInitialized={isInitialized} />
+      {isInitialized ? (
+        <div>
+          <Header />
+          <Outlet />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

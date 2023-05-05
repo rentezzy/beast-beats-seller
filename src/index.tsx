@@ -1,10 +1,13 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import { store } from "./store/store";
-import App from "./App";
+import { RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+
 import "./index.css";
+import "./assests/fonts/Karnivore/KARNIVOL.woff";
+import { router } from "./Router";
+import { store } from "./store/store";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -12,7 +15,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

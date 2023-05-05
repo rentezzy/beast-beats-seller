@@ -1,0 +1,15 @@
+.page {
+  height: 100vh;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: all 0.75s;
+}
+.delete {
+  opacity: 0;
+  /* height: 0; */
+  margin-top: -100vh;
+  /* display: none; */
+}
