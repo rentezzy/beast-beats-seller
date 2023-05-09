@@ -1,0 +1,35 @@
+.signup {
+  background-color: #000;
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  width: 300px;
+  height: 200px;
+}
+.buttons {
+  display: flex;
+}
+.buttons div {
+  width: 150px;
+  height: 30px;
+}
+.form__controls {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  width: 100%;
+}
+.error_msg {
+  text-align: center;
+  color: red;
+}
+.action_btn {
+  justify-self: center;
+
+  height: 30px;
+  width: 150px;
+}

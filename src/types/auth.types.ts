@@ -11,3 +11,10 @@ export interface ILoginUser {
   username: string;
   _id: string;
 }
+
+export interface IError {
+  status: number;
+  data: {
+    message: string;
+  };
+}
