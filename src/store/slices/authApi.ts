@@ -4,7 +4,12 @@ import {
   createApi,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
-import { IError, ILoginBody, ILoginUser } from "../../types/auth.types";
+import {
+  IError,
+  ILoginBody,
+  ILoginUser,
+  ISignupBody,
+} from "../../types/auth.types";
 
 export const authApi = createApi({
   reducerPath: "auth",
@@ -38,6 +43,18 @@ export const authApi = createApi({
       transformErrorResponse: (res, meta, arg): string => res.data.message,
       invalidatesTags: ["User"],
     }),
+    postSignup: builder.mutation<ILoginUser, ISignupBody>({
+      query: (payload) => ({
+        url: "user/signup",
+        method: "POST",
+        body: payload,
+      }),
+      transformResponse: (res: { data: { user: ILoginUser } }) => {
+        return res.data.user;
+      },
+      transformErrorResponse: (res, meta, arg): string => res.data.message,
+      invalidatesTags: ["User"],
+    }),
     logOut: builder.mutation({
       query: () => ({
         url: "user/login",
@@ -48,5 +65,9 @@ export const authApi = createApi({
   }),
 });
 
-export const { useGetMeQuery, usePostLoginMutation, useLogOutMutation } =
-  authApi;
+export const {
+  useGetMeQuery,
+  usePostLoginMutation,
+  usePostSignupMutation,
+  useLogOutMutation,
+} = authApi;

@@ -25,7 +25,7 @@
   font-size: 18px;
 }
 .controls__input_error {
-  border: 1px solid #ff8585;
+  box-shadow: inset 3px 3px 35px -6px rgba(209, 31, 31, 0.438);
 }
 .controls__input:focus {
   outline: none;

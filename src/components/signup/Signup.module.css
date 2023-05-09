@@ -8,7 +8,7 @@
 }
 .form {
   width: 300px;
-  height: 200px;
+  height: 420px;
 }
 .buttons {
   display: flex;
@@ -17,9 +17,15 @@
   width: 150px;
   height: 30px;
 }
-.form__controls {
+.form__controls_signup {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  height: 100%;
+  width: 100%;
+}
+.form__controls_login {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr auto;
   height: 100%;
   width: 100%;
 }
