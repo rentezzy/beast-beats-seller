@@ -1,5 +1,15 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ILoginBody, ILoginUser } from "../../types/auth.types";
+import {
+  BaseQueryFn,
+  FetchArgs,
+  createApi,
+  fetchBaseQuery,
+} from "@reduxjs/toolkit/query/react";
+import {
+  IError,
+  ILoginBody,
+  ILoginUser,
+  ISignupBody,
+} from "../../types/auth.types";
 
 export const authApi = createApi({
   reducerPath: "auth",
@@ -11,7 +21,7 @@ export const authApi = createApi({
       charset: "UTF-8",
     },
     credentials: "include",
-  }),
+  }) as BaseQueryFn<string | FetchArgs, unknown, IError, {}>,
   tagTypes: ["User"],
   endpoints: (builder) => ({
     getMe: builder.query<ILoginUser, any>({
@@ -21,7 +31,7 @@ export const authApi = createApi({
       },
       providesTags: ["User"],
     }),
-    postLogin: builder.query<ILoginUser, ILoginBody>({
+    postLogin: builder.mutation<ILoginUser, ILoginBody>({
       query: (payload) => ({
         url: "user/login",
         method: "POST",
@@ -30,11 +40,24 @@ export const authApi = createApi({
       transformResponse: (res: { data: { user: ILoginUser } }) => {
         return res.data.user;
       },
-      providesTags: ["User"],
+      transformErrorResponse: (res, meta, arg): string => res.data.message,
+      invalidatesTags: ["User"],
+    }),
+    postSignup: builder.mutation<ILoginUser, ISignupBody>({
+      query: (payload) => ({
+        url: "user/signup",
+        method: "POST",
+        body: payload,
+      }),
+      transformResponse: (res: { data: { user: ILoginUser } }) => {
+        return res.data.user;
+      },
+      transformErrorResponse: (res, meta, arg): string => res.data.message,
+      invalidatesTags: ["User"],
     }),
     logOut: builder.mutation({
       query: () => ({
-        url: "user/logout",
+        url: "user/login",
         method: "DELETE",
       }),
       invalidatesTags: ["User"],
@@ -42,4 +65,9 @@ export const authApi = createApi({
   }),
 });
 
-export const { useGetMeQuery, usePostLoginQuery, useLogOutMutation } = authApi;
+export const {
+  useGetMeQuery,
+  usePostLoginMutation,
+  usePostSignupMutation,
+  useLogOutMutation,
+} = authApi;

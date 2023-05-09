@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "./components/header/Header";
 import { useAppInitialize } from "./store/hooks";
-import LoadingPage from "./components/loadingPage/LoadingPage";
+import LoadingPage from "./components/ui/LoadingPage";
 import { Outlet } from "react-router-dom";
 
 function App() {
