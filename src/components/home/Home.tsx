@@ -1,5 +1,11 @@
+import Ticker from "../ticker/Ticker";
+
 const Home = () => {
-  return <div>рщьу</div>;
+  return (
+    <div>
+      <Ticker text="asdasdasd"/>
+    </div>
+  );
 };
 
 export default Home;
