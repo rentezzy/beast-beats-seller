@@ -1,12 +1,8 @@
 import { useField } from "formik";
-import styles from "./ui.module.css";
+import styles from "./Ui.module.css";
 import { ReactNode } from "react";
-interface IControlProps {
-  name: string;
-  type: string;
-  label?: string;
-  placeholder?: string;
-}
+import { IControlProps } from "../../types/ui.types";
+
 export const MyTextInput = (props: IControlProps) => {
   const [field, meta] = useField(props);
   return (

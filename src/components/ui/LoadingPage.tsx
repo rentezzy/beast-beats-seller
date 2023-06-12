@@ -1,5 +1,5 @@
 import loader from "../../assests/loader.svg";
-import styles from "./ui.module.css";
+import styles from "./Ui.module.css";
 
 const LoadingPage = (props: { isInitialized: boolean }) => {
   return (

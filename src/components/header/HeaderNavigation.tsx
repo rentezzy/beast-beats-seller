@@ -7,6 +7,7 @@ const HeaderNavigation = () => {
       ? `${styles.linkNavActive} ${styles.linkNav}`
       : styles.linkNav;
   };
+  
   return (
     <nav>
       <ul className={styles.navList}>
