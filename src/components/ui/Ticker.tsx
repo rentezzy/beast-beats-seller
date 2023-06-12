@@ -1,4 +1,4 @@
-import styles from "./Ticker.module.css";
+import styles from "./Ui.module.css";
 
 const Ticker: React.FC<{ text: string }> = (props) => {
   return (
