@@ -17,6 +17,10 @@
   width: 150px;
   height: 30px;
 }
+.choosenButton {
+  border-bottom: 1px solid rgb(255, 255, 255);
+  padding-bottom: 3px;
+}
 .form__controls_signup {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -38,4 +42,13 @@
 
   height: 30px;
   width: 150px;
+}
+.homeBlock {
+  width: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.homeImage {
+  width: 30px;
 }

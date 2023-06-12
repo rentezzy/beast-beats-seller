@@ -23,13 +23,15 @@
   height: 25px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 18px;
+  box-sizing: border-box;
 }
 .controls__input_error {
   box-shadow: inset 3px 3px 35px -6px rgba(209, 31, 31, 0.438);
 }
 .controls__input:focus {
   outline: none;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
+  border-bottom: 4px double #fff;
 }
 .controls__error {
   align-self: center;
@@ -47,4 +49,5 @@
   margin: 0px;
   background-color: #000;
   border: 1px solid #fff;
+  cursor: pointer;
 }
