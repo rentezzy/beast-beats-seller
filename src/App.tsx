@@ -12,7 +12,7 @@ function App() {
     <div>
       <LoadingPage isInitialized={isInitialized} />
       {isInitialized ? (
-        <div>
+        <div className="main">
           <Header />
           <Outlet />
         </div>

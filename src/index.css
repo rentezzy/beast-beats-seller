@@ -19,3 +19,8 @@ body {
   max-width: 1440px;
   margin: 0px auto;
 }
+
+.main {
+  background-image: url("./assests/background.png");
+  min-height: 100vh;
+}

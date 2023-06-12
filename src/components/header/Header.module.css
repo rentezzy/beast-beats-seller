@@ -1,8 +1,8 @@
 .header {
-  background-color: #000;
   width: 100%;
   color: #fff;
   font-size: 18px;
+  border-bottom:1px solid white ;
 }
 .headerContent {
   display: flex;
