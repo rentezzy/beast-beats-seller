@@ -1,4 +1,4 @@
-import Ticker from "../ticker/Ticker";
+import Ticker from "../ui/Ticker";
 
 const Home = () => {
   return (
