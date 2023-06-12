@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import cartImage from "../../assests/cart.jpg";
 import { useAppSelector } from "../../store/hooks";
-import { useGetMeQuery, useLogOutMutation } from "../../store/slices/authApi";
+import {
+  useGetMeQuery,
+  useLogOutMutation,
+} from "../../store/slices/api/authApi";
 import styles from "./Header.module.css";
 
 const HeaderUser = () => {

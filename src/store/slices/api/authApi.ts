@@ -1,28 +1,7 @@
-import {
-  BaseQueryFn,
-  FetchArgs,
-  createApi,
-  fetchBaseQuery,
-} from "@reduxjs/toolkit/query/react";
-import {
-  IError,
-  ILoginBody,
-  ILoginUser,
-  ISignupBody,
-} from "../../types/auth.types";
+import { api } from "../api";
+import { ILoginBody, ILoginUser, ISignupBody } from "../../../types/auth.types";
 
-export const authApi = createApi({
-  reducerPath: "auth",
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_MAIN_API,
-    headers: {
-      withCredentials: "true",
-      "Content-Type": "application/json",
-      charset: "UTF-8",
-    },
-    credentials: "include",
-  }) as BaseQueryFn<string | FetchArgs, unknown, IError, {}>,
-  tagTypes: ["User"],
+export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getMe: builder.query<ILoginUser, any>({
       query: () => "user/me",

@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { actions as productActions } from "./slices/productStore";
 import { actions as appActions } from "./slices/appState";
-import { useGetMeQuery } from "./slices/authApi";
+import { useGetMeQuery } from "./slices/api/authApi";
 
 const rootActions = { ...productActions, ...appActions };
 
