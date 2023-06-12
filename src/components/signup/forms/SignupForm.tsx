@@ -2,7 +2,7 @@ import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { MyButton, MyTextInput } from "../../ui/Controls";
-import { usePostSignupMutation } from "../../../store/slices/authApi";
+import { usePostSignupMutation } from "../../../store/slices/api/authApi";
 import styles from "./../Signup.module.css";
 
 const SignInForm = () => {
