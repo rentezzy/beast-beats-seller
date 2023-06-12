@@ -43,12 +43,12 @@
   height: 30px;
   width: 150px;
 }
-.homeBlock {
+.home {
   width: 30px;
   position: absolute;
-  right: 10px;
+  left: 10px;
   top: 10px;
 }
-.homeImage {
+.home_img {
   width: 30px;
 }

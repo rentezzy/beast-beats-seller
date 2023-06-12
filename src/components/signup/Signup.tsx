@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 
 import styles from "./Signup.module.css";
-import homeImage from "./../../assests/home.png";
+import home from "./../../assests/home.png";
 
 import { MyButton } from "../ui/Controls";
 import LoginForm from "./forms/LoginForm";
@@ -23,9 +23,9 @@ const Signup = () => {
   return (
     <div className={styles.signup}>
       <div className="container">
-        <div className={styles.homeBlock}>
+        <div className={styles.home}>
           <Link to="/home">
-            <img src={homeImage} className={styles.homeImage} alt="HOME" />
+            <img src={home} className={styles.home_img} alt="HOME" />
           </Link>
         </div>
         <div>{choosenForm === "signup" ? <SignInForm /> : <LoginForm />}</div>
