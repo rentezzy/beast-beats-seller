@@ -5,6 +5,16 @@
   src: local("Karnivore Lite"),
     url("./assests/fonts/Karnivore/KARNIVOL.woff") format("woff");
 }
+@font-face {
+  font-family: "Falcon Punch";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Falcon Punch"),
+    url("./assests/fonts/Falconpunch/falconpunch.ttf") format("TrueType");
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
 body {
   margin: 0;
   font-family: "Karnivore Lite", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -23,4 +33,13 @@ body {
 .main {
   background-image: url("./assests/background.png");
   min-height: 100vh;
+}
+
+.noselectText {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

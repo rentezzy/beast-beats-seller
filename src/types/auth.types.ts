@@ -19,6 +19,10 @@ export interface ILoginUser {
   _id: string;
 }
 
+export interface IAppInfo {
+  ticker: string;
+}
+
 export interface IError {
   status: number;
   data: {

@@ -5,6 +5,7 @@ import { bindActionCreators } from "@reduxjs/toolkit";
 import { actions as productActions } from "./slices/productStore";
 import { actions as appActions } from "./slices/appState";
 import { useGetMeQuery } from "./slices/api/authApi";
+import { useGetAppInfoQuery } from "./slices/api/appApi";
 
 const rootActions = { ...productActions, ...appActions };
 
@@ -15,7 +16,10 @@ export const useActions = () => {
   return useMemo(() => bindActionCreators(rootActions, dispatch), [dispatch]);
 };
 export const useAppInitialize = () => {
-  const loads = [useGetMeQuery(null).isLoading];
+  const loads = [
+    useGetMeQuery(null).isLoading,
+    useGetAppInfoQuery(null).isLoading,
+  ];
   return new Promise((resolve, reject) => {
     if (loads.filter((value) => value === true).length === 0) {
       resolve(true);
