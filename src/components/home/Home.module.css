@@ -1,0 +1,11 @@
+.home {
+  min-height: 101vh;
+}
+.mainImage {
+  width: 100%;
+}
+.mainDiv {
+  padding: 20px 80px 0px;
+  position: absolute;
+  pointer-events: none;
+}
