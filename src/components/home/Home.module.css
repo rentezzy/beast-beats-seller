@@ -78,12 +78,59 @@
 .aboutUs {
   min-height: 100vh;
   background-color: black;
+  
+}
+.aboutUs p{
+text-align: justify;
 }
 .aboutUs__buner {
   width: 100%;
   height: 300px;
   object-fit: cover;
 }
+.aboutUs__block {
+  margin-top: 40px;
+  display: flex;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+}
 .aboutUs__image {
+  width: 30%;
+  margin: 5px;
+  border: 2px solid black;
+  padding: 10px 10px 5px 10px;
+  background-image: url("../../assests/homePagePhotosBG.png");
+  background-size: contain;
+}
+.aboutUs__image img {
+  width: 100%;
+}
+.aboutUs__block strong {
+  font-family: "Falcon Punch", sans-serif;
+}
 
+.aboutUs__buttonBlock {
+  display: flex;
+  justify-content: center;
+}
+.aboutUs__button {
+  background-color: black;
+  cursor: pointer;
+  border: 1px solid white;
+  color: white;
+  font-family: "Falcon Punch", sans-serif;
+  padding: 10px;
+}
+.aboutUs__bunerBlock {
+  background-image: url("../../assests/homePageBuner.jpg");
+  width: 100%;
+  height: 300px;
+  background-position: 0 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 32px;
 }
