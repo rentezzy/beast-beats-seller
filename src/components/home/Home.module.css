@@ -1,43 +1,89 @@
-.mainDiv {
-  margin-top: 10px;
-  /* padding: 20px 180px 0px; */
+.welcome {
   position: relative;
-  pointer-events: none;
-  max-width: inherit;
-  width: 100%;
-  height: calc(100vh - 122px);
-  max-height: calc(100vh - 122px);
   box-sizing: border-box;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: calc(100vh - 100px);
+
+  max-width: inherit;
+  max-height: calc(100vh - 122px);
+
   background-image: url("../../assests/homePageBG.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   background-position-y: top;
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.mainHeader {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 25%;
-}
-.mainHeader h1 {
-  margin: 0;
-}
-.mainHeader h1:first-child {
-  align-self: flex-start;
-}
-.mainHeader h1:last-child {
-  align-self: flex-end;
+@media (max-width: 1440px) {
+  .welcome {
+    background-image: none;
+  }
 }
 
-.mainInfo {
+.welcome h1 {
+  color: white;
+}
+.welcome__upperButtons {
+  display: flex;
+  align-items: center;
+  width: 78%;
+  margin-bottom: 10px;
+}
+.welcome__upperButtons div {
+  flex: 1 1 50%;
+}
+.welcome__upperButtons div:first-child {
+  padding-right: 10px;
+}
+.welcome__upperButtons div:last-child {
+  padding-left: 10px;
+}
+
+.welcome__bottomButtons {
+  width: 78%;
+}
+
+.welcome__button {
+  width: 100%;
+  height: 171px;
+  border: 1px solid white;
+
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
   color: white;
   font-family: "Quicksand", sans-serif;
-  text-align: justify;
-  max-width: 80%;
+  font-size: 40px;
+  cursor: pointer;
+}
+.welcome__button_news {
+  background-image: url("../../assests/ui/welcomeNewsButton.png");
+}
+.welcome__button_aboutUs {
+  background-image: url("../../assests/ui/welcomeAboutUsButton.png");
+}
+.welcome__button_faq {
+  background-image: url("../../assests/ui/welcomeFaqButton.png");
+}
+
+.aboutUs {
+  min-height: 100vh;
+  background-color: black;
+}
+.aboutUs__buner {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.aboutUs__image {
+
 }
