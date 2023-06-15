@@ -1,4 +1,5 @@
 import AboutUs from "./AboutUs";
+import Faq from "./Faq";
 import styles from "./Home.module.css";
 import Welcome from "./Welcome";
 
@@ -7,6 +8,7 @@ const Home = () => {
     <div>
       <Welcome />
       <AboutUs />
+      <Faq />
     </div>
   );
 };
