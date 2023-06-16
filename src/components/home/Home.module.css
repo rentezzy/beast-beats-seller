@@ -224,9 +224,32 @@
 
   color: white;
   font-size: 32px;
-  
+
   background-image: url("../../assests/homePageFaqBuner.jpg");
   background-position: 50% 60%;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.newsPost {
+  width: 100%;
+  height: auto;
+  color: white;
+
+  word-break: break-word;
+  border: 1px solid white;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.newsFeed {
+  display: flex;
+  /* margin: 0px -30px; */
+  padding: 0px 15px;
+  justify-content: center;
+}
+.newsWaterfall {
+  flex: 0 0 33.3%;
+  padding: 5px;
 }
