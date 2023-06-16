@@ -23,6 +23,14 @@ export interface IAppInfo {
   ticker: string;
 }
 
+export interface INewsPost {
+  authorUsername: string;
+  title: string;
+  text: string;
+  published: string;
+  liked: [String];
+}
+
 export interface IError {
   status: number;
   data: {

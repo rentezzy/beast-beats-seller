@@ -17,6 +17,6 @@ export const api = createApi({
     },
     credentials: "include",
   }) as BaseQueryFn<string | FetchArgs, unknown, IError, {}>,
-  tagTypes: ["User","App"],
+  tagTypes: ["User","App","Posts"],
   endpoints: () => ({}),
 });
