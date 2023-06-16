@@ -248,11 +248,41 @@
 
   width: 100%;
   height: auto;
-  padding: 20px;
+  padding: 5px 20px;
   margin-bottom: 10px;
 
   border: 1px solid white;
 
   color: white;
   word-break: break-word;
+}
+
+.newsPost__title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  
+  font-size: 22px;
+}
+
+.newsPost__text{
+  font-family: "Quicksand", sans-serif;
+}
+.newsPost__footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.newsPost__likeInfo {
+  display: flex;
+  align-items: center;
+  margin-top: -3px;
+}
+.newsPost__like{
+  padding-left: 5px;
+  font-size: 40px;
+  cursor: pointer;
+}
+.newsPost__like_liked{
+  color:rgb(255, 111, 154);
 }
