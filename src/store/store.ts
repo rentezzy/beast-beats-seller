@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { reducer as productReducer } from "./slices/productStore";
 import { reducer as appReducer } from "./slices/appState";
+import { reducer as newsPostReducer } from "./slices/newsPosts";
 import { api } from "./slices/api";
 
 export const store = configureStore({
@@ -8,6 +9,7 @@ export const store = configureStore({
     [api.reducerPath]: api.reducer,
     productStore: productReducer,
     appState: appReducer,
+    newsPosts: newsPostReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

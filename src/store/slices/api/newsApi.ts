@@ -1,15 +1,15 @@
-import { INewsPost } from "../../../types/auth.types";
+import { INewsPosts } from "../../../types/auth.types";
 import { api } from "../api";
 
 export const newsApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getnewsPosts: builder.query<Array<INewsPost>, any>({
-      query: (page: number) => `news/newsPosts?page=${page}&limit=12`,
-      transformResponse: (res: { data: { newsPosts: Array<INewsPost> } }) => {
-        return res.data.newsPosts;
+    getNewsPosts: builder.query<INewsPosts, number>({
+      query: (page) => `news/newsPosts?page=${page}&limit=12`,
+      transformResponse: (res: { data: INewsPosts }) => {
+        return res.data;
       },
       providesTags: ["Posts"],
     }),
   }),
 });
-export const { useGetnewsPostsQuery } = newsApi;
+export const { useGetNewsPostsQuery } = newsApi;

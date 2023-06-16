@@ -231,25 +231,28 @@
   background-repeat: no-repeat;
 }
 
-.newsPost {
-  width: 100%;
-  height: auto;
-  color: white;
-
-  word-break: break-word;
-  border: 1px solid white;
-  box-sizing: border-box;
-  padding: 20px;
-  margin-bottom: 10px;
-}
-
 .newsFeed {
   display: flex;
-  /* margin: 0px -30px; */
-  padding: 0px 15px;
   justify-content: center;
+
+  padding: 0px 15px;
 }
+
 .newsWaterfall {
   flex: 0 0 33.3%;
   padding: 5px;
+}
+
+.newsPost {
+  box-sizing: border-box;
+
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  margin-bottom: 10px;
+
+  border: 1px solid white;
+
+  color: white;
+  word-break: break-word;
 }

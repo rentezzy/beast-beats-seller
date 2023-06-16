@@ -11,12 +11,12 @@ export interface ISignupBody {
 }
 
 export interface ILoginUser {
+  _id: string;
+  username: string;
   avatar: string;
   email: string;
   name: string;
   role: string;
-  username: string;
-  _id: string;
 }
 
 export interface IAppInfo {
@@ -24,11 +24,17 @@ export interface IAppInfo {
 }
 
 export interface INewsPost {
+  _id: string;
   authorUsername: string;
   title: string;
   text: string;
   published: string;
   liked: [String];
+}
+
+export interface INewsPosts {
+  newsPosts: Array<INewsPost>;
+  totalCount: number;
 }
 
 export interface IError {
