@@ -1,27 +1,29 @@
 import { forwardRef } from "react";
 
 import { useGetMeQuery } from "../../store/slices/api/authApi";
-import { useAppSelector } from "../../store/hooks";
+import { useActions } from "../../store/hooks";
 
 import styles from "./Home.module.css";
 import { INewsPost } from "../../types/auth.types";
+import { useToggleLikeNewsPostMutation } from "../../store/slices/api/newsApi";
 
 const NewsPost = forwardRef<HTMLDivElement, { post: INewsPost }>(
   (props, ref) => {
-    const isLogined = useAppSelector((state) => state.appState.isLogined);
     const { data } = useGetMeQuery(null);
-
-    let isLiked = "";
-    if (isLogined && data) {
-      isLiked = props.post.liked.includes(data._id)
-        ? styles.newsPost__like_liked
-        : "";
-    }
+    const [toggleLikeQuery] = useToggleLikeNewsPostMutation();
+    const { toggleLike } = useActions();
 
     const date = new Date(props.post.published);
     const dateString = `${date.getFullYear()}/${
       date.getMonth() + 1
     }/${date.getDay()} - ${date.getHours()}:${date.getMinutes()}`;
+
+    const onLikeHandler = () => {
+      if (data) {
+        toggleLikeQuery(props.post._id);
+        toggleLike([props.post._id, data?._id]);
+      }
+    };
 
     return (
       <div ref={ref} className={styles.newsPost}>
@@ -38,7 +40,16 @@ const NewsPost = forwardRef<HTMLDivElement, { post: INewsPost }>(
             <div className={styles.newsPost__likes}>
               {props.post.liked.length}
             </div>
-            <div className={`${styles.newsPost__like} ${isLiked} noselectText`}>♡</div>
+            <div
+              className={`${styles.newsPost__like} ${
+                data && props.post.liked.includes(data._id)
+                  ? styles.newsPost__like_liked
+                  : ""
+              } noselectText`}
+              onClick={onLikeHandler}
+            >
+              ♡
+            </div>
           </div>
         </div>
       </div>

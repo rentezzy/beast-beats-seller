@@ -8,8 +8,13 @@ export const newsApi = api.injectEndpoints({
       transformResponse: (res: { data: INewsPosts }) => {
         return res.data;
       },
-      providesTags: ["Posts"],
+    }),
+    toggleLikeNewsPost: builder.mutation<null, string>({
+      query: (postId) => ({
+        url: `news/likePost?_id=${postId}`,
+        method: "POST",
+      }),
     }),
   }),
 });
-export const { useGetNewsPostsQuery } = newsApi;
+export const { useGetNewsPostsQuery, useToggleLikeNewsPostMutation } = newsApi;

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { INewsPost } from "../../types/auth.types";
 import { newsApi } from "./api/newsApi";
 
@@ -20,6 +20,18 @@ const newsPostsSlice = createSlice({
   reducers: {
     nextPage: (state) => {
       state.currentPage++;
+    },
+    toggleLike: (state, action: PayloadAction<[string, string]>) => {
+      const post = state.posts.reduce((acc, post) => {
+        if (action.payload[0] === post._id) return post;
+        return acc;
+      });
+
+      if (post.liked.includes(action.payload[1])) {
+        post.liked.splice(post.liked.indexOf(action.payload[1]), 1);
+      } else {
+        post.liked.push(action.payload[1]);
+      }
     },
   },
   extraReducers: (builder) => ({
