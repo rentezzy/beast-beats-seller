@@ -14,6 +14,15 @@
   margin-top: -100vh;
 }
 
+/* LOADELEMENT */
+
+.loadingElement {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+
 /* CONTROLS */
 
 .controls__block {
