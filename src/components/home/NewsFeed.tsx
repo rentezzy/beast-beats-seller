@@ -6,7 +6,10 @@ import NewsWaterfall from "./NewsWaterfall";
 import { INewsPost } from "../../types/auth.types";
 import LoadingElement from "../ui/LoadingElement";
 
-const NewsFeed = () => {
+interface IProps {
+  blockRef: React.RefObject<HTMLDivElement>;
+}
+const NewsFeed: React.FC<IProps> = (props) => {
   const newsPosts = useAppSelector((state) => state.newsPosts);
   const { isFetching } = useGetNewsPostsQuery(newsPosts.currentPage);
 
@@ -20,7 +23,7 @@ const NewsFeed = () => {
 
   return (
     <div className="container">
-      <div className={styles.newsFeed}>
+      <div className={styles.newsFeed} ref={props.blockRef}>
         {posts.map((post, index) => (
           <NewsWaterfall
             key={index}

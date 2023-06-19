@@ -1,22 +1,19 @@
 import React from "react";
 import styles from "./Home.module.css";
-import buner from "../../assests/homePageBuner.jpg";
 import infoHeadphones from "../../assests/homePageHeadpohes.jpg";
 import infoSynth from "../../assests/homePageSynth.jpg";
 import { useNavigate } from "react-router-dom";
 
-const AboutUs = () => {
+interface IProps {
+  blockRef: React.RefObject<HTMLDivElement>;
+}
+
+const AboutUs: React.FC<IProps> = (props) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.aboutUs}>
+    <div className={styles.aboutUs} ref={props.blockRef}>
       <div className={styles.aboutUs__bunerBlock}>
-        {/* <img
-          className={`${styles.aboutUs__buner} noselectText`}
-          src={buner}
-          alt=""
-          draggable="false"
-        /> */}
         <h1>ABOUT US</h1>
       </div>
       <div className="container">

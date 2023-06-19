@@ -1,7 +1,11 @@
 import styles from "./Home.module.css";
 import FaqElement from "./FaqElement";
 
-const Faq = () => {
+interface IProps {
+  blockRef: React.RefObject<HTMLDivElement>;
+}
+
+const Faq: React.FC<IProps> = (props) => {
   const elements: Array<{ question: string; answer: string }> = [
     {
       question: "How to start buying and selling music?",
@@ -37,7 +41,7 @@ const Faq = () => {
   ];
 
   return (
-    <div className={styles.faq}>
+    <div className={styles.faq} ref={props.blockRef}>
       <div className={styles.faq__buner}>
         <h1>FAQ</h1>
       </div>
