@@ -1,12 +1,11 @@
-import styles from "./Home.module.css";
-import FaqElement from "./FaqElement";
-
-interface IProps {
-  blockRef: React.RefObject<HTMLDivElement>;
+import { IFaqProps } from "../../types/home.types";
+import { createSlice } from "@reduxjs/toolkit";
+interface IState {
+  faqs: IFaqProps[];
 }
 
-const Faq: React.FC<IProps> = (props) => {
-  const elements: Array<{ question: string; answer: string }> = [
+const initialState: IState = {
+  faqs: [
     {
       question: "How to start buying and selling music?",
       answer: `To do this, you need to register or log into an existing account, then follow the store link to see the range of music or fill out the form in
@@ -38,20 +37,13 @@ const Faq: React.FC<IProps> = (props) => {
       answer:
         "Send us an email, tell us what you can do and what experience you have, we are always open for",
     },
-  ];
-
-  return (
-    <div className={styles.faq} ref={props.blockRef}>
-      <div className={styles.faq__buner}>
-        <h1>FAQ</h1>
-      </div>
-      <div className="container">
-        {elements.map((element) => (
-          <FaqElement {...element} key={element.question} />
-        ))}
-      </div>
-    </div>
-  );
+  ],
 };
 
-export default Faq;
+const faqSlice = createSlice({
+  name: "faq",
+  initialState,
+  reducers: {},
+});
+
+export const { actions, reducer } = faqSlice;

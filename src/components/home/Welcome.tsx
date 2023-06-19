@@ -1,4 +1,5 @@
 import { useGetAppInfoQuery } from "../../store/slices/api/appApi";
+
 import styles from "./Home.module.css";
 import Ticker from "../ui/Ticker";
 

@@ -1,10 +1,10 @@
 import { createRef, useCallback, useEffect, useRef } from "react";
 
-import { useActions } from "../../store/hooks";
+import { useActions } from "../../../store/hooks";
 
-import styles from "./Home.module.css";
-import NewsPost from "./NewsPost";
-import { INewsPost } from "../../types/auth.types";
+import styles from "../Home.module.css";
+import NewsPost from "./NewsPost"
+import { INewsPost } from "../../../types/auth.types";
 
 interface IProps {
   posts: Array<INewsPost>;

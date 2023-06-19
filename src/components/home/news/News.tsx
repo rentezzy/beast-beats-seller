@@ -1,5 +1,5 @@
+import styles from "../Home.module.css";
 import NewsFeed from "./NewsFeed";
-import styles from "./Home.module.css";
 
 interface IProps {
   blockRef: React.RefObject<HTMLDivElement>;

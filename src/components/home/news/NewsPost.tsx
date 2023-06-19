@@ -1,11 +1,11 @@
 import { forwardRef } from "react";
 
-import { useGetMeQuery } from "../../store/slices/api/authApi";
-import { useActions } from "../../store/hooks";
+import { useGetMeQuery } from "../../../store/slices/api/authApi";
+import { useActions } from "../../../store/hooks";
+import { useToggleLikeNewsPostMutation } from "../../../store/slices/api/newsApi";
 
-import styles from "./Home.module.css";
-import { INewsPost } from "../../types/auth.types";
-import { useToggleLikeNewsPostMutation } from "../../store/slices/api/newsApi";
+import styles from "../Home.module.css";
+import { INewsPost } from "../../../types/auth.types";
 
 const NewsPost = forwardRef<HTMLDivElement, { post: INewsPost }>(
   (props, ref) => {
@@ -25,6 +25,11 @@ const NewsPost = forwardRef<HTMLDivElement, { post: INewsPost }>(
       }
     };
 
+    const likeClassName =
+      data && props.post.liked.includes(data._id)
+        ? styles.newsPost__like_liked
+        : "";
+
     return (
       <div ref={ref} className={styles.newsPost}>
         <div className={styles.newsPost__title}>{props.post.title}</div>
@@ -41,11 +46,7 @@ const NewsPost = forwardRef<HTMLDivElement, { post: INewsPost }>(
               {props.post.liked.length}
             </div>
             <div
-              className={`${styles.newsPost__like} ${
-                data && props.post.liked.includes(data._id)
-                  ? styles.newsPost__like_liked
-                  : ""
-              } noselectText`}
+              className={`${styles.newsPost__like} ${likeClassName} noselectText`}
               onClick={onLikeHandler}
             >
               ♡

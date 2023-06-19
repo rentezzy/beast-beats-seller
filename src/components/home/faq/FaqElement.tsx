@@ -1,11 +1,9 @@
 import { useState } from "react";
-import styles from "./Home.module.css";
 
-interface IProps {
-  question: string;
-  answer: string;
-}
-const FaqElement: React.FC<IProps> = (props) => {
+import styles from "../Home.module.css";
+import { IFaqProps } from "../../../types/home.types";
+
+const FaqElement: React.FC<IFaqProps> = (props) => {
   const [isShowed, toggleShow] = useState<boolean>(false);
 
   return (
@@ -22,11 +20,7 @@ const FaqElement: React.FC<IProps> = (props) => {
         </p>
         <p className={`${styles.faqElement__question_arrow} ${isShowed ? styles.faqElement__question_arrow_showed : ""} noselectText`}>❮</p>
       </div>
-      <div
-        className={`${styles.faqElement__answer} ${
-          isShowed ? styles.faqElement__answer_showed : ""
-        }`}
-      >
+      <div className={`${styles.faqElement__answer} ${isShowed ? styles.faqElement__answer_showed : ""}`}>
         <p>{props.answer}</p>
       </div>
     </div>

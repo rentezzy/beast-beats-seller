@@ -1,25 +1,17 @@
-.buner {
+/* WELCOME PAGE */
+
+.welcome {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
-  width: 100%;
-  height: 300px;
-
-  color: white;
-  font-size: 32px;
-
-  background-position: 0 30%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.welcome {
   position: relative;
   box-sizing: border-box;
 
   margin-top: 10px;
   margin-bottom: 10px;
+
   width: 100%;
   height: calc(100vh - 100px);
 
@@ -31,11 +23,6 @@
   background-position: center;
   background-size: contain;
   background-position-y: top;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 @media (max-width: 1440px) {
   .welcome {
@@ -49,8 +36,10 @@
 .welcome__upperButtons {
   display: flex;
   align-items: center;
-  width: 78%;
+
   margin-bottom: 10px;
+
+  width: 78%;
 }
 .welcome__upperButtons div {
   flex: 1 1 50%;
@@ -67,9 +56,10 @@
 }
 
 .welcome__button {
+  border: 1px solid white;
+
   width: 100%;
   height: 171px;
-  border: 1px solid white;
 
   background-color: transparent;
   background-repeat: no-repeat;
@@ -91,23 +81,47 @@
   background-image: url("../../assests/ui/welcomeFaqButton.png");
 }
 
+.buner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 300px;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: white;
+  font-size: 32px;
+}
+
+/* ABOUT US PAGE */
+
 .aboutUs {
   min-height: 100vh;
+}
+.aboutUs__buner {
+  background-image: url("../../assests/homePageBuner.jpg");
+  background-position: 0 30%;
 }
 .aboutUs p {
   text-align: justify;
 }
 .aboutUs__block {
-  margin-top: 40px;
   display: flex;
+  margin-top: 40px;
+
   color: white;
   font-family: "Quicksand", sans-serif;
 }
 .aboutUs__image {
-  width: 30%;
   margin: 5px;
-  border: 2px solid black;
   padding: 10px 10px 5px 10px;
+  border: 2px solid black;
+
+  width: 30%;
+
   background-image: url("../../assests/homePagePhotosBG.png");
   background-size: contain;
 }
@@ -117,89 +131,79 @@
 .aboutUs__block strong {
   font-family: "Falcon Punch", sans-serif;
 }
-
 .aboutUs__buttonBlock {
   display: flex;
   justify-content: center;
 }
 .aboutUs__button {
-  background-color: black;
-  cursor: pointer;
-  border: 1px solid white;
-  color: white;
-  font-family: "Falcon Punch", sans-serif;
   padding: 10px;
-}
-.aboutUs__bunerBlock {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border: 1px solid white;
 
-  width: 100%;
-  height: 300px;
+  background-color: black;
 
+  font-family: "Falcon Punch", sans-serif;
   color: white;
-  font-size: 32px;
-
-  background-image: url("../../assests/homePageBuner.jpg");
-  background-position: 0 30%;
-  background-size: cover;
-  background-repeat: no-repeat;
+  cursor: pointer;
 }
+
+/* FAQ PAGE */
 
 .faq {
   min-height: 100vh;
 }
+.faq__buner {
+  background-image: url("../../assests/homePageFaqBuner.jpg");
+  background-position: 50% 60%;
+}
 .faqElement {
-  width: 70%;
   margin: 20px auto;
+  width: 70%;
 }
 .faqElement__question {
-  position: relative;
-  z-index: 1;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  position: relative;
+  z-index: 1;
+
   height: 40px;
+
   color: white;
   cursor: pointer;
 }
 .faqElement__question::before {
   position: absolute;
   z-index: -1;
-  content: "";
-
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
 
   border: 2px solid white;
+
+  content: "";
   transform: skew(-15deg);
 }
 .faqElement__question_mark {
+  display: block;
+
   position: relative;
   z-index: 1;
 
-  display: block;
-
   margin: 0px 20px;
   padding: 0px 10px 1px 10px;
+
   font-size: 32px;
 }
 .faqElement__question_mark::before {
   position: absolute;
   z-index: -1;
-  content: "";
 
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
 
   border: 2px solid white;
+
+  content: "";
   transform: skew(-15deg);
 }
 .faqElement__question_text {
@@ -216,36 +220,23 @@
   transform: rotate(-270deg);
 }
 .faqElement__answer {
-  max-width: 1000px;
   position: absolute;
+
   margin-bottom: 20px;
 
-  opacity: 0;
+  max-width: 1000px;
 
   color: white;
   font-family: "Quicksand", sans-serif;
   transition: all 0.25s;
+  opacity: 0;
 }
 .faqElement__answer_showed {
   position: unset;
   opacity: 1;
 }
-.faq__buner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  width: 100%;
-  height: 300px;
-
-  color: white;
-  font-size: 32px;
-
-  background-image: url("../../assests/homePageFaqBuner.jpg");
-  background-position: 50% 60%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+/* NEWS PAGE */
 
 .news__buner {
   background-image: url("../../assests/homePageMagazines.jpg");
@@ -255,8 +246,8 @@
   display: flex;
   justify-content: center;
 
-  padding: 0px 15px;
   margin-top: 50px;
+  padding: 0px 15px;
 }
 
 .newsWaterfall {
@@ -267,12 +258,12 @@
 .newsPost {
   box-sizing: border-box;
 
-  width: 100%;
-  height: auto;
   padding: 5px 20px;
   margin-bottom: 10px;
-
   border: 1px solid white;
+
+  width: 100%;
+  height: auto;
 
   color: white;
   word-break: break-word;
@@ -281,6 +272,7 @@
 .newsPost__title {
   display: flex;
   justify-content: center;
+
   margin-bottom: 5px;
 
   font-size: 22px;
@@ -297,10 +289,12 @@
 .newsPost__likeInfo {
   display: flex;
   align-items: center;
+
   margin-top: -3px;
 }
 .newsPost__like {
   padding-left: 5px;
+
   font-size: 40px;
   cursor: pointer;
 }

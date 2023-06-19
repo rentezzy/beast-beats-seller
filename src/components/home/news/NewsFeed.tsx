@@ -1,11 +1,10 @@
-import { useAppSelector } from "../../store/hooks";
-import { useGetNewsPostsQuery } from "../../store/slices/api/newsApi";
+import { useAppSelector } from "../../../store/hooks";
+import { useGetNewsPostsQuery } from "../../../store/slices/api/newsApi";
 
-import styles from "./Home.module.css";
+import styles from "../Home.module.css";
 import NewsWaterfall from "./NewsWaterfall";
-import { INewsPost } from "../../types/auth.types";
-import LoadingElement from "../ui/LoadingElement";
-
+import LoadingElement from "../../ui/LoadingElement";
+import { INewsPost } from "../../../types/auth.types";
 
 const NewsFeed = () => {
   const newsPosts = useAppSelector((state) => state.newsPosts);
