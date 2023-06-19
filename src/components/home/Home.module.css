@@ -1,3 +1,19 @@
+.buner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 300px;
+
+  color: white;
+  font-size: 32px;
+
+  background-position: 0 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .welcome {
   position: relative;
   box-sizing: border-box;
@@ -231,11 +247,16 @@
   background-repeat: no-repeat;
 }
 
+.news__buner {
+  background-image: url("../../assests/homePageMagazines.jpg");
+  background-position: 50% 60%;
+}
 .newsFeed {
   display: flex;
   justify-content: center;
 
   padding: 0px 15px;
+  margin-top: 50px;
 }
 
 .newsWaterfall {
@@ -261,14 +282,14 @@
   display: flex;
   justify-content: center;
   margin-bottom: 5px;
-  
+
   font-size: 22px;
 }
 
-.newsPost__text{
+.newsPost__text {
   font-family: "Quicksand", sans-serif;
 }
-.newsPost__footer{
+.newsPost__footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -278,11 +299,11 @@
   align-items: center;
   margin-top: -3px;
 }
-.newsPost__like{
+.newsPost__like {
   padding-left: 5px;
   font-size: 40px;
   cursor: pointer;
 }
-.newsPost__like_liked{
-  color:rgb(255, 111, 154);
+.newsPost__like_liked {
+  color: rgb(255, 111, 154);
 }
