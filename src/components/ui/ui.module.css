@@ -1,3 +1,5 @@
+/* LOADPAGE */
+
 .page {
   height: 100vh;
   background: #000;
@@ -11,6 +13,18 @@
   opacity: 0;
   margin-top: -100vh;
 }
+
+/* LOADELEMENT */
+
+.loadingElement {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+
+/* CONTROLS */
+
 .controls__block {
   display: flex;
   flex-direction: column;
@@ -51,10 +65,13 @@
   border: 1px solid #fff;
   cursor: pointer;
 }
+
+/* TICKER */
 .ticker-wrapper {
   overflow: hidden;
-  height: 35px;
+  height: 30px;
   position: relative;
+  border-bottom: 1px solid white;
 }
 .ticker-wrapper div {
   display: flex;
@@ -63,14 +80,27 @@
   align-items: center;
   overflow: hidden;
   width: 100%;
-  height: 35px;
+  height: 30px;
   transform: translate(100%, 0);
 }
 .ticker-wrapper div p {
-  color: #fff339;
+  background: radial-gradient(
+    circle,
+    rgba(63, 247, 251, 1) 0%,
+    rgba(89, 239, 251, 1) 17%,
+    rgba(152, 91, 251, 1) 38%,
+    rgb(235, 109, 241) 50%,
+    rgba(152, 91, 251, 1) 62%,
+    rgba(251, 117, 171, 1) 78%,
+    rgba(70, 248, 252, 1) 100%
+  );
+  white-space: nowrap;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-transform: uppercase;
 }
-.ticker-wrapper .ticker-wrapper__first-half, .ticker-wrapper .ticker-wrapper__second-half {
+.ticker-wrapper .ticker-wrapper__first-half,
+.ticker-wrapper .ticker-wrapper__second-half {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -78,6 +108,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  font-family: "Falcon Punch", sans-serif;
   animation: ticker 30s infinite linear forwards;
 }
 .ticker-wrapper .ticker-wrapper__second-half {
@@ -85,12 +116,34 @@
 }
 @keyframes ticker {
   0% {
-      transform: translate(100%, 0);
- }
+    transform: translate(100%, 0);
+  }
   50% {
-      transform: translate(0, 0);
- }
+    transform: translate(0, 0);
+  }
   100% {
-      transform: translate(-100%, 0);
- }
+    transform: translate(-100%, 0);
+  }
+}
+
+/* ScrollTopBtn */
+.scrollTop {
+  border: 1px solid white;
+  color: white;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+  padding: 0px 10px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.scrollTop_noDisplay {
+  display: none;
 }
