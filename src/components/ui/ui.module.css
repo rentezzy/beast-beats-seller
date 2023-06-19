@@ -125,3 +125,25 @@
     transform: translate(-100%, 0);
   }
 }
+
+/* ScrollTopBtn */
+.scrollTop {
+  border: 1px solid white;
+  color: white;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+  padding: 0px 10px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.scrollTop_noDisplay {
+  display: none;
+}
