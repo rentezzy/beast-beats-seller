@@ -1,7 +1,11 @@
-import React from "react";
+import FilterForm from "./FilterForm";
 
 const Store = () => {
-  return <div>Store</div>;
+  return (
+    <div>
+      <FilterForm />
+    </div>
+  );
 };
 
 export default Store;

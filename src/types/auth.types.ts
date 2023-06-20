@@ -21,6 +21,8 @@ export interface ILoginUser {
 
 export interface IAppInfo {
   ticker: string;
+  genres: string[];
+  maxPrice: number;
 }
 
 export interface INewsPost {
@@ -29,7 +31,7 @@ export interface INewsPost {
   title: string;
   text: string;
   published: string;
-  liked: [String];
+  liked: string[];
 }
 
 export interface INewsPosts {
