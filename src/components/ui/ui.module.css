@@ -29,6 +29,9 @@
   display: flex;
   flex-direction: column;
 }
+.controls__block label {
+  color: white;
+}
 .controls__input {
   margin-top: 5px;
   background-color: #000;
@@ -64,6 +67,15 @@
   background-color: #000;
   border: 1px solid #fff;
   cursor: pointer;
+}
+.controls__block select {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.controls__block select:focus {
+  outline: none;
 }
 
 /* TICKER */

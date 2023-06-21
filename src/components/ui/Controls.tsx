@@ -40,7 +40,9 @@ export const MySelect = (props: IControlProps) => {
   return (
     <div className={styles.controls__block}>
       <label>{props.label}</label>
-      <select {...field} {...props} />
+      <select {...field} {...props}>
+        {props.children}
+      </select>
       {meta.touched && meta.error ? (
         <div className={styles.controls__error}>{meta.error}</div>
       ) : null}
