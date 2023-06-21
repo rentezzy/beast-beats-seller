@@ -1,13 +1,20 @@
-import { Formik } from "formik";
-import { Form } from "react-router-dom";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { MyButton, MyTextInput } from "../ui/Controls";
+import { useGetAppInfoQuery } from "../../store/slices/api/appApi";
+import { useGetArtistsQuery } from "../../store/slices/api/artistsApi";
+import { MyButton, MySelect } from "../ui/Controls";
 
 const FilterForm = () => {
+  const { data: artistsData } = useGetArtistsQuery(null);
+  const { data: appData } = useGetAppInfoQuery(null);
+  let artists: string[] = [];
+  if (artistsData) {
+    artists = artistsData.map((user) => user.username);
+  }
   return (
     <div className={"hi"}>
       <Formik
-        initialValues={{ genre: "", author: "" }}
+        initialValues={{ genre: "all", author: "all" }}
         onSubmit={(values) => {
           console.log(values);
         }}
@@ -16,14 +23,27 @@ const FilterForm = () => {
           author: Yup.string(),
         })}
       >
-        <Form className={""}>
+        <Form>
           <div>
-            <MyTextInput name="genre" type="text" label="genre" />
-            <MyTextInput name="author" type="password" label="author" />
+            <MySelect name="genre" type="" label="genre">
+              <option value="all">All</option>
+              {appData?.genres.map((genre, index) => (
+                <option key={genre} value={genre}>
+                  {genre}
+                </option>
+              ))}
+            </MySelect>
+            <MySelect name="author" type="" label="author">
+              <option value="all">All</option>
+              {artists?.map((artist) => (
+                <option key={artist} value={artist}>
+                  {artist}
+                </option>
+              ))}
+            </MySelect>
           </div>
-          <div className={""}>
-            <MyButton type="submit">SEARCH</MyButton>
-          </div>
+          
+          <MyButton type="submit">SEARCH</MyButton>
         </Form>
       </Formik>
     </div>
