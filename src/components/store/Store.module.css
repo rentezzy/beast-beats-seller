@@ -1,0 +1,21 @@
+.filterForm {
+  margin-top: 10px;
+}
+.filterForm h2 {
+  color: white;
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.filterForm__selects {
+  display: flex;
+}
+.filterForm__selects div {
+  flex: 1 1 50%;
+}
+.filterForm__selects div:first-child {
+  padding-right: 5px;
+}
+.filterForm__selects div:last-child {
+  padding-left: 5px;
+}
