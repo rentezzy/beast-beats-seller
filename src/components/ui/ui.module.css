@@ -78,6 +78,39 @@
   outline: none;
 }
 
+.controls__range {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  position: relative;
+  margin: 10px 0 10px 0px;
+}
+
+.controls__range__from {
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+  position: absolute;
+  top: -6px;
+  cursor: pointer;
+}
+.controls__range__to {
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+  position: absolute;
+  top: -6px;
+  cursor: pointer;
+  right: 0px;
+}
+.conrtols__range__inputs {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  font-size: 18px;
+}
+
 /* TICKER */
 .ticker-wrapper {
   overflow: hidden;
