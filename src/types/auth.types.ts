@@ -39,6 +39,26 @@ export interface INewsPosts {
   totalCount: number;
 }
 
+export interface IMusicInfo {
+  _id: string;
+  authorId: string;
+  title: string;
+  genre: string;
+  price: number;
+  listenings: number;
+  published: string;
+}
+export interface IMusics {
+  musics: Array<IMusicInfo>;
+  totalCount: number;
+}
+export interface IMusicInfoBody {
+  author: string;
+  genre: string;
+  priceFrom: number;
+  priceTo: number;
+  currentPage: number;
+}
 export interface IError {
   status: number;
   data: {

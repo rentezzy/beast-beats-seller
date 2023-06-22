@@ -1,5 +1,6 @@
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import { useActions } from "../../store/hooks";
 import { useGetAppInfoQuery } from "../../store/slices/api/appApi";
 import { useGetArtistsQuery } from "../../store/slices/api/artistsApi";
 import { MyButton, MyRange, MySelect } from "../ui/Controls";
@@ -8,10 +9,8 @@ import styles from "./Store.module.css";
 const FilterForm = () => {
   const { data: artistsData } = useGetArtistsQuery(null);
   const { data: appData } = useGetAppInfoQuery(null);
-  let artists: string[] = [];
-  if (artistsData) {
-    artists = artistsData.map((user) => user.username);
-  }
+  const { newFilters } = useActions();
+  if (!appData) return <></>;
   return (
     <div className={styles.filterForm}>
       <h2>Filters</h2>
@@ -20,10 +19,10 @@ const FilterForm = () => {
           genre: "all",
           author: "all",
           priceFrom: 0,
-          priceTo: appData?.maxPrice,
+          priceTo: appData.maxPrice,
         }}
         onSubmit={(values) => {
-          console.log(values);
+          newFilters(values);
         }}
         validationSchema={Yup.object({
           genre: Yup.string(),
@@ -44,9 +43,9 @@ const FilterForm = () => {
             </MySelect>
             <MySelect name="author" type="" label="author">
               <option value="all">All</option>
-              {artists?.map((artist) => (
-                <option key={artist} value={artist}>
-                  {artist}
+              {artistsData?.map((artist) => (
+                <option key={artist.username} value={artist._id}>
+                  {artist.username}
                 </option>
               ))}
             </MySelect>
