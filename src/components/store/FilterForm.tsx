@@ -1,35 +1,32 @@
 import { Form, Formik } from "formik";
-import * as Yup from "yup";
-import { useActions } from "../../store/hooks";
+
+import { useActions, useAppSelector } from "../../store/hooks";
 import { useGetAppInfoQuery } from "../../store/slices/api/appApi";
 import { useGetArtistsQuery } from "../../store/slices/api/artistsApi";
-import { MyButton, MyRange, MySelect } from "../ui/Controls";
+
 import styles from "./Store.module.css";
+import { MyButton, MyRange, MySelect } from "../ui/Controls";
 
 const FilterForm = () => {
   const { data: artistsData } = useGetArtistsQuery(null);
   const { data: appData } = useGetAppInfoQuery(null);
   const { newFilters } = useActions();
+  const musics = useAppSelector((state) => state.musics);
+
   if (!appData) return <></>;
   return (
     <div className={styles.filterForm}>
       <h2>Filters</h2>
       <Formik
         initialValues={{
-          genre: "all",
-          author: "all",
-          priceFrom: 0,
-          priceTo: appData.maxPrice,
+          genre: musics.filters.genre,
+          author: musics.filters.author,
+          priceFrom: musics.filters.priceFrom,
+          priceTo: musics.filters.priceTo,
         }}
         onSubmit={(values) => {
           newFilters(values);
         }}
-        validationSchema={Yup.object({
-          genre: Yup.string(),
-          author: Yup.string(),
-          priceFrom: Yup.number(),
-          priceTo: Yup.number(),
-        })}
       >
         <Form>
           <div className={styles.filterForm__selects}>

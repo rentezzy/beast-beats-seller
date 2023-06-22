@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IMusicInfo, IMusicInfoBody } from "../../types/auth.types";
 import { musicApi } from "./api/musicApi";
+import { appApi } from "./api/appApi";
 
 interface IState {
   musics: Array<IMusicInfo>;
@@ -20,7 +21,7 @@ const musicsSlice = createSlice({
   name: "musicPosts",
   initialState,
   reducers: {
-    nextPage: (state) => {
+    nextPageMusic: (state) => {
       state.currentPage++;
     },
     newFilters: (
@@ -30,6 +31,7 @@ const musicsSlice = createSlice({
       state.musics = [];
       state.currentPage = 1;
       state.filters = action.payload;
+      state.totalCount = 0;
     },
   },
   extraReducers: (builder) => ({
@@ -38,6 +40,12 @@ const musicsSlice = createSlice({
       (state, action) => {
         state.musics.push(...action.payload.musics);
         state.totalCount = action.payload.totalCount;
+      }
+    ),
+    addMaxPrice: builder.addMatcher(
+      appApi.endpoints.getAppInfo.matchFulfilled,
+      (state, action) => {
+        state.filters.priceTo = action.payload.maxPrice;
       }
     ),
   }),

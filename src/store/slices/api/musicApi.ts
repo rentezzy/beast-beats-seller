@@ -3,16 +3,16 @@ import { api } from "../api";
 
 export const musicApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getMusicList: builder.mutation<IMusics, IMusicInfoBody>({
+    getMusicList: builder.query<IMusics, IMusicInfoBody>({
       query: (payload) => ({
-        url: `music/musics?page=${payload.currentPage}&limit=12`,
-        method: "POST",
-        body: payload,
+        url: `music/musics?page=${payload.currentPage}&limit=12&author=${payload.author}&genre=${payload.genre}&priceFrom=${payload.priceFrom}&priceTo=${payload.priceTo}`,
+        method: "GET",
       }),
+      keepUnusedDataFor: 0,
       transformResponse: (res: { data: IMusics }) => {
         return res.data;
       },
     }),
   }),
 });
-export const { useGetMusicListMutation } = musicApi;
+export const { useGetMusicListQuery } = musicApi;
