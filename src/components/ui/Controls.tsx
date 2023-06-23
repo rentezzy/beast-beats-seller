@@ -66,8 +66,8 @@ export const MyRange = (props: IRangeProps) => {
   const [fieldFrom, , helperFrom] = useField(props.nameFrom);
   const [fieldTo, metaTo, helperTo] = useField(props.nameTo);
   const refRange = useRef<HTMLDivElement>(null);
-  const refFrom = useRef<HTMLDivElement>(null);
-  const refTo = useRef<HTMLDivElement>(null);
+  const refLeft = useRef<HTMLDivElement>(null);
+  const refRight = useRef<HTMLDivElement>(null);
 
   const onMouseDown =
     (
@@ -137,13 +137,13 @@ export const MyRange = (props: IRangeProps) => {
       <div className={styles.controls__range} ref={refRange}>
         <div
           className={styles.controls__range__from}
-          ref={refFrom}
-          onMouseDown={onMouseDown("left", refFrom, refRange, refTo)}
+          ref={refLeft}
+          onMouseDown={onMouseDown("left", refLeft, refRange, refRight)}
         ></div>
         <div
           className={styles.controls__range__to}
-          ref={refTo}
-          onMouseDown={onMouseDown("right", refFrom, refRange, refTo)}
+          ref={refRight}
+          onMouseDown={onMouseDown("right", refLeft, refRange, refRight)}
         ></div>
       </div>
       <div className={styles.conrtols__range__inputs}>
