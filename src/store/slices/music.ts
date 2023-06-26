@@ -8,6 +8,8 @@ interface IState {
   filters: Omit<IMusicInfoBody, "currentPage">;
   totalCount: number;
   currentPage: number;
+  currentTrack: IMusicInfo | undefined;
+  isPlaying: boolean;
 }
 
 const initialState: IState = {
@@ -15,6 +17,8 @@ const initialState: IState = {
   filters: { author: "all", genre: "all", priceFrom: 0, priceTo: 9999999 },
   totalCount: 0,
   currentPage: 1,
+  currentTrack: undefined,
+  isPlaying: false,
 };
 
 const musicsSlice = createSlice({
@@ -32,6 +36,31 @@ const musicsSlice = createSlice({
       state.currentPage = 1;
       state.filters = action.payload;
       state.totalCount = 0;
+      state.currentTrack = undefined;
+      state.isPlaying = false;
+    },
+    newTrack: (state, action: PayloadAction<IMusicInfo>) => {
+      state.currentTrack = action.payload;
+    },
+    nextTrack: (state) => {
+      const index = state.musics.findIndex(
+        (music) => music._id === state.currentTrack?._id
+      );
+      if (index === -1 || index + 1 === state.musics.length) return;
+      state.currentTrack = state.musics[index + 1];
+    },
+    previousTrack: (state) => {
+      const index = state.musics.findIndex(
+        (music) => music._id === state.currentTrack?._id
+      );
+      if (index - 1 <= -1) return;
+      state.currentTrack = state.musics[index - 1];
+    },
+    pauseMusic: (state) => {
+      state.isPlaying = false;
+    },
+    playMusic: (state) => {
+      state.isPlaying = true;
     },
   },
   extraReducers: (builder) => ({
