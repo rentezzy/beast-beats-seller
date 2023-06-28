@@ -1,5 +1,5 @@
 import { Howl } from "howler";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 import { useActions, useAppSelector } from "../../../store/hooks";
 
@@ -18,8 +18,8 @@ const Audio = () => {
   const currentTrack = useAppSelector((state) => state.musics.currentTrack);
   const isPlaying = useAppSelector((state) => state.musics.isPlaying);
   const { previousTrack, nextTrack, playMusic, pauseMusic } = useActions();
+  const [howl, setHowl] = useState<Howl | undefined>(undefined);
 
-  let howl = useRef<Howl | undefined>(undefined);
   useEffect(() => {
     if (!currentTrack) return;
     const audio = new Howl({
@@ -28,28 +28,27 @@ const Audio = () => {
       format: ["mp3"],
     });
     audio.play();
-    howl.current = audio;
+    setHowl(audio);
 
     return () => {
       audio.stop();
-      howl.current = undefined;
+      setHowl(undefined);
     };
   }, [currentTrack]);
 
-  if (!currentTrack) return <></>;
+  if (!currentTrack || !howl) return <></>;
 
-  if (isPlaying && !howl.current?.playing()) {
-    howl.current?.play();
-  } else if (!isPlaying && howl.current?.playing()) {
-    howl.current.pause();
+  if (isPlaying && !howl.playing()) {
+    howl.play();
+  } else if (!isPlaying && howl.playing()) {
+    howl.pause();
   }
 
   const prevTrackHandler = () => {
-    if (!howl.current) return;
-    if (howl.current.seek() < 5) {
+    if (howl.seek() < 5) {
       previousTrack();
     } else {
-      howl.current.seek(0);
+      howl.seek(0);
     }
   };
   const nextTrackHandler = () => {
@@ -62,7 +61,6 @@ const Audio = () => {
       playMusic();
     }
   };
-
   return (
     <div className={styles.audio}>
       <div className="container">
@@ -71,6 +69,7 @@ const Audio = () => {
           <AudioProgress
             authorId={currentTrack.authorId}
             title={currentTrack.title}
+            howl={howl}
           />
           <div className={styles.audio__buttons}>
             <AudioBackButton handler={prevTrackHandler} />

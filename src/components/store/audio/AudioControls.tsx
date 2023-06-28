@@ -1,5 +1,5 @@
-import { Howler } from "howler";
-import { useState, MouseEvent } from "react";
+import { Howl, Howler } from "howler";
+import { useState, useEffect, MouseEvent } from "react";
 
 import { useGetArtistsQuery } from "../../../store/slices/api/artistsApi";
 import { useAppSelector } from "../../../store/hooks";
@@ -28,10 +28,21 @@ export const AudioImage: React.FC<IPropsImage> = ({ image }) => {
 interface IPropsProgress {
   authorId: string;
   title: string;
+  howl: Howl;
 }
 export const AudioProgress: React.FC<IPropsProgress> = (props) => {
   const { data } = useGetArtistsQuery(null);
+  const [current, setCurrent] = useState(0);
   let author: string | undefined = "author";
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent(props.howl.seek());
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [props]);
 
   if (data) {
     author = data.find((arthist) => arthist._id === props.authorId)?.username;
@@ -41,7 +52,19 @@ export const AudioProgress: React.FC<IPropsProgress> = (props) => {
       <div className={styles.audio__info}>
         {author} - {props.title}
       </div>
-      <div className={styles.audio__bar}>bar</div>
+      <div className={styles.audio__bar}>
+        <input
+          type="range"
+          min="0"
+          max={`${props.howl.duration()}`}
+          step="any"
+          onChange={(e) => {
+            setCurrent(+e.target.value);
+            props.howl.seek(+e.target.value);
+          }}
+          value={current}
+        />
+      </div>
     </div>
   );
 };
