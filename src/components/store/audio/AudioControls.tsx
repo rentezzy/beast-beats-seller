@@ -38,7 +38,7 @@ export const AudioProgress: React.FC<IPropsProgress> = (props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent(props.howl.seek());
-    }, 1000);
+    }, 500);
     return () => {
       clearInterval(interval);
     };
@@ -47,6 +47,11 @@ export const AudioProgress: React.FC<IPropsProgress> = (props) => {
   if (data) {
     author = data.find((arthist) => arthist._id === props.authorId)?.username;
   }
+  const getTime = (time: number) => {
+    let minutes = Math.floor(time / 60);
+    let seconds = Math.round(time - minutes * 60);
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
   return (
     <div className={styles.audio__progress}>
       <div className={styles.audio__info}>
@@ -64,6 +69,10 @@ export const AudioProgress: React.FC<IPropsProgress> = (props) => {
           }}
           value={current}
         />
+        <div className={styles.audio__bar__info}>
+          <div>{getTime(props.howl.seek())}</div>
+          <div>{getTime(props.howl.duration())}</div>
+        </div>
       </div>
     </div>
   );
