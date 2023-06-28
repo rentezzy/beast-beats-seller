@@ -1,10 +1,10 @@
 .filterForm {
-  margin-top: 10px;
+  margin: 10px 0 0 0;
 }
 .filterForm h2 {
+  margin: 0 0 10px 0;
+
   color: white;
-  margin: 0;
-  margin-bottom: 10px;
   text-align: center;
 }
 .filterForm__selects {
@@ -14,21 +14,25 @@
   flex: 1 1 50%;
 }
 .filterForm__selects div:first-child {
-  padding-right: 5px;
+  padding: 0 5px 0 0;
 }
 .filterForm__selects div:last-child {
-  padding-left: 5px;
+  padding: 0 0 0 5px;
 }
 .musicPost {
-  color: white;
-  height: 50px;
-  margin-top: 5px;
   display: flex;
   align-items: center;
+
   position: relative;
   z-index: 0;
-  transition: all 0.4s;
+
+  margin: 5px 0 0 0;
+  height: 50px;
+
+  color: white;
   font-family: "Quicksand", sans-serif;
+
+  transition: all 0.4s;
 }
 .musicPost::before {
   position: absolute;
@@ -52,8 +56,8 @@
   height: 40px;
 }
 .musicPost__image img {
+  margin: 0 0 0 20px;
   width: 40px;
-  margin-left: 20px;
 }
 .musicPost__info {
   flex: 0 0 60%;
@@ -62,12 +66,13 @@
   flex: 0 0 20%;
 }
 .musicPost__button {
-  flex: 0 0 5%;
-  position: relative;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  height: 100%;
+  flex: 0 0 5%;
 }
 .musicPost__button::before {
   position: absolute;
@@ -90,5 +95,86 @@
   width: 25%;
   cursor: pointer;
 }
-.musicPost__toCart {
+.audio {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 50px;
+  border-top: 1px solid white;
+
+  background-color: rgba(0, 0, 0, 0.925);
+  color: white;
+}
+.audio__panel {
+  display: flex;
+  align-items: center;
+}
+
+.audio__image {
+  height: 40px;
+  flex: 0 0 10%;
+}
+.audio__image img {
+  margin: 5px 0 0 20px;
+  width: 40px;
+}
+.audio__progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  flex: 1 1 80%;
+}
+.audio__buttons {
+  display: flex;
+  align-items: center;
+
+  flex: 0 0 10%;
+}
+.audio__button {
+  width: 20px;
+  margin: 5px 10px 0 0;
+}
+.audio__button img {
+  width: 100%;
+}
+.audio__volume {
+  position: relative;
+}
+.audio__volume__content {
+  position: absolute;
+  top: -20px;
+  left: 0px;
+  right: 0px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.2s;
+  transform: rotate(-90deg);
+}
+.audio__volume:hover .audio__volume__content {
+  opacity: 1;
+  pointer-events: all;
+}
+.audio__volume__content input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+
+  border: 2px solid rgb(0, 0, 0);
+  width: 100px;
+
+  background: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.audio__volume__content input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 4px;
+  height: 15px;
+
+  background-color: #000000;
 }
