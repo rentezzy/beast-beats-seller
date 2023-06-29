@@ -29,6 +29,7 @@ interface IPropsProgress {
   authorId: string;
   title: string;
   howl: Howl;
+  isPlaying: boolean;
 }
 export const AudioProgress: React.FC<IPropsProgress> = (props) => {
   const { data } = useGetArtistsQuery(null);
@@ -36,9 +37,12 @@ export const AudioProgress: React.FC<IPropsProgress> = (props) => {
   let author: string | undefined = "author";
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent(props.howl.seek());
-    }, 500);
+    let interval: NodeJS.Timer | undefined;
+    if (props.isPlaying) {
+      interval = setInterval(() => {
+        setCurrent(props.howl.seek());
+      }, 500);
+    }
     return () => {
       clearInterval(interval);
     };

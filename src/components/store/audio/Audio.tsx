@@ -70,6 +70,7 @@ const Audio = () => {
             authorId={currentTrack.authorId}
             title={currentTrack.title}
             howl={howl}
+            isPlaying={isPlaying}
           />
           <div className={styles.audio__buttons}>
             <AudioBackButton handler={prevTrackHandler} />
