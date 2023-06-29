@@ -34,7 +34,7 @@ const MusicPost = forwardRef<HTMLDivElement, IProps>(({ music }, ref) => {
     <div ref={ref} className={styles.musicPost}>
       <div className={styles.musicPost__image}>
         <img
-          src={`${process.env.REACT_APP_MAIN_API}images/mus/default.png`}
+          src={`${process.env.REACT_APP_MAIN_API}images/mus/${music.image}`}
           alt=""
         />
       </div>

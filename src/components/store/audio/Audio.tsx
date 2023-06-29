@@ -65,7 +65,7 @@ const Audio = () => {
     <div className={styles.audio}>
       <div className="container">
         <div className={styles.audio__panel}>
-          <AudioImage image="" />
+          <AudioImage image={currentTrack.image} />
           <AudioProgress
             authorId={currentTrack.authorId}
             title={currentTrack.title}

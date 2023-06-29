@@ -47,6 +47,7 @@ export interface IMusicInfo {
   price: number;
   listenings: number;
   published: string;
+  image: string;
 }
 export interface IMusics {
   musics: Array<IMusicInfo>;

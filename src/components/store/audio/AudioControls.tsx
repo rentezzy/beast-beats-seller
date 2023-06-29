@@ -19,7 +19,7 @@ export const AudioImage: React.FC<IPropsImage> = ({ image }) => {
   return (
     <div className={styles.audio__image}>
       <img
-        src={`${process.env.REACT_APP_MAIN_API}images/mus/default.png`}
+        src={`${process.env.REACT_APP_MAIN_API}images/mus/${image}`}
         alt=""
       />
     </div>

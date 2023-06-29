@@ -1,5 +1,5 @@
 import FilterForm from "./FilterForm";
-import MusicFeed from "./Music/MusicFeed";
+import MusicFeed from "./music/MusicFeed";
 import Audio from "./audio/Audio";
 
 const Store = () => {
