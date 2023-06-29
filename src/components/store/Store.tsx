@@ -1,5 +1,6 @@
 import FilterForm from "./FilterForm";
 import MusicFeed from "./Music/MusicFeed";
+import Audio from "./audio/Audio";
 
 const Store = () => {
   return (
@@ -7,6 +8,7 @@ const Store = () => {
       <div className="container">
         <FilterForm />
         <MusicFeed />
+        <Audio />
       </div>
     </div>
   );
