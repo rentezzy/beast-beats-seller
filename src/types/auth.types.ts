@@ -17,6 +17,7 @@ export interface ILoginUser {
   email: string;
   name: string;
   role: string;
+  cart: string[];
 }
 
 export interface IAppInfo {
