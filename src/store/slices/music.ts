@@ -67,7 +67,11 @@ const musicsSlice = createSlice({
     addNewMusics: builder.addMatcher(
       musicApi.endpoints.getMusicList.matchFulfilled,
       (state, action) => {
-        state.musics.push(...action.payload.musics);
+        if (
+          state.musics.length === 0 ||
+          state.totalCount !== state.musics.length
+        )
+          state.musics.push(...action.payload.musics);
         state.totalCount = action.payload.totalCount;
       }
     ),
