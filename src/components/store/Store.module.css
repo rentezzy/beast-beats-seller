@@ -58,9 +58,14 @@
 .musicPost__image img {
   margin: 0 0 0 20px;
   width: 40px;
+  cursor: pointer;
 }
 .musicPost__info {
   flex: 0 0 60%;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 .musicPost__price {
   flex: 0 0 20%;
@@ -209,6 +214,6 @@
 .audio__bar__info {
   display: flex;
   justify-content: space-between;
-  
+
   width: 90%;
 }
