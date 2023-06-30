@@ -1,4 +1,4 @@
-import { IMusicInfoBody, IMusics } from "../../../types/auth.types";
+import { IMusicInfoBody, IMusics, IMusicInfo } from "../../../types/auth.types";
 import { api } from "../api";
 
 export const musicApi = api.injectEndpoints({
@@ -13,6 +13,16 @@ export const musicApi = api.injectEndpoints({
         return res.data;
       },
     }),
+    getMusic: builder.query<IMusicInfo, string>({
+      query: (id) => ({
+        url: `music/musicInfo/${id}`,
+        method: "GET",
+      }),
+      transformResponse: (res: { data: { music: IMusicInfo } }) => {
+        return res.data.music;
+      },
+      providesTags: ["Music"],
+    }),
   }),
 });
-export const { useGetMusicListQuery } = musicApi;
+export const { useGetMusicListQuery, useGetMusicQuery } = musicApi;
