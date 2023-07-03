@@ -47,3 +47,9 @@
 .song__info__subtext div:nth-child(2) {
   text-align: end;
 }
+.song__info__wave {
+  margin-top: 20px;
+  width: 100%;
+}
+#song__info__waveform {
+}

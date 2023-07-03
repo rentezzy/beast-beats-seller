@@ -1,4 +1,5 @@
 import styles from "../Song.module.css";
+import SongWave from "./SongWave";
 import { IMusicInfo } from "../../../types/auth.types";
 
 interface IProps {
@@ -28,6 +29,7 @@ const SongInfo: React.FC<IProps> = ({ music, author }) => {
           <div>Published : {dateString}</div>
           <div>Listenings : {music.listenings}</div>
         </div>
+        <SongWave songId={music._id} />
       </div>
     </div>
   );
