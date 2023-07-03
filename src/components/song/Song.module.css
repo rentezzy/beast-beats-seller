@@ -47,9 +47,39 @@
 .song__info__subtext div:nth-child(2) {
   text-align: end;
 }
-.song__info__wave {
+.song__info__audio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+}
+.song__info__audio__wave {
   margin-top: 20px;
   width: 100%;
 }
-#song__info__waveform {
+.song__info__audio__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.song__info__audio__buttons img {
+  margin: 0 0 1px 0;
+  height: 28px;
+}
+.song__info__audio__buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+
+  padding: 5px;
+  border: 1px solid white;
+
+  width: auto;
+  background-color: transparent;
+  cursor: pointer;
+}
+/* DO NOT REMOVE */
+#song__info__audio__waveform {
 }

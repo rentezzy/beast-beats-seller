@@ -1,7 +1,9 @@
-import { useCallback, useRef } from "react";
 import { WaveSurfer, WaveForm } from "wavesurfer-react";
 
+import { useCallback, useRef } from "react";
+
 import styles from "../Song.module.css";
+import SongControls from "./SongControls";
 
 interface IProps {
   songId: string;
@@ -26,10 +28,13 @@ const SongWave: React.FC<IProps> = ({ songId }) => {
   );
 
   return (
-    <div className={styles.song__info__wave}>
-      <WaveSurfer onMount={handleWSMount}>
-        <WaveForm id={styles.song__info__waveform}></WaveForm>
-      </WaveSurfer>
+    <div className={styles.song__info__audio}>
+      <div className={styles.song__info__audio__wave}>
+        <WaveSurfer onMount={handleWSMount}>
+          <WaveForm id={styles.song__info__audio__waveform}></WaveForm>
+        </WaveSurfer>
+      </div>
+      <SongControls songId={songId} wavesurferRef={wavesurferRef} />
     </div>
   );
 };
