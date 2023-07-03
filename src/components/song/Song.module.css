@@ -1,0 +1,49 @@
+/* SONG INFO */
+.song__info {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 30px 0 0 0;
+  padding: 10px;
+  border: 1px solid white;
+
+  width: 100%;
+  color: white;
+}
+.song__info__image {
+  flex: 0 0 20%;
+}
+.song__info__image img {
+  border: 1px solid white;
+  width: 100%;
+}
+.song__info__text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  flex: 0 0 79%;
+}
+.song__info__text h2 {
+  margin: 0;
+  padding: 0 0 10px;
+}
+.song__info__subtext {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  box-sizing: border-box;
+
+  padding: 10px;
+  border: 1px solid white;
+
+  width: 100%;
+  font-family: "Quicksand", sans-serif;
+}
+.song__info__subtext div {
+  flex: 0 0 50%;
+}
+.song__info__subtext div:nth-child(2) {
+  text-align: end;
+}
