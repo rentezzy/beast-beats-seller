@@ -5,6 +5,7 @@ import { Form, Formik } from "formik";
 import styles from "../Song.module.css";
 import { Checkbox, MyButton, MyTextInput } from "../../ui/Controls";
 import { useCreateNewMusicCommentMutation } from "../../../store/slices/api/musicApi";
+import { useAppSelector } from "../../../store/hooks";
 
 interface IProps {
   musicID: string;
@@ -13,6 +14,8 @@ interface IProps {
 // TODO: Timestamp function( via react context or hooks or forward ref from wavesurfer...)
 
 const SongForm: React.FC<IProps> = ({ getTimestamp, musicID }) => {
+  const isLogined = useAppSelector((state) => state.appState.isLogined);
+  const navigate = useNavigate();
   const [newComment, data] = useCreateNewMusicCommentMutation();
 
   return (
@@ -20,12 +23,16 @@ const SongForm: React.FC<IProps> = ({ getTimestamp, musicID }) => {
       <Formik
         initialValues={{ text: "", timestamp: true }}
         onSubmit={(values, { resetForm }) => {
-          newComment({
-            text: values.text,
-            timestamp: values.timestamp ? getTimestamp() : 0,
-            originTo: musicID,
-          });
-          resetForm({ values: { text: "", timestamp: values.timestamp } });
+          if (isLogined) {
+            newComment({
+              text: values.text,
+              timestamp: values.timestamp ? getTimestamp() : 0,
+              originTo: musicID,
+            });
+            resetForm({ values: { text: "", timestamp: values.timestamp } });
+          } else {
+            navigate("/signup");
+          }
         }}
         validationSchema={Yup.object({
           text: Yup.string()
