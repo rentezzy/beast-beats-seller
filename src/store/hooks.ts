@@ -6,6 +6,7 @@ import { actions as productActions } from "./slices/faq";
 import { actions as appActions } from "./slices/appState";
 import { actions as newsPostsActions } from "./slices/newsPosts";
 import { actions as musicActions } from "./slices/music";
+import { actions as musicCommentActions } from "./slices/musicComment";
 import { useGetMeQuery } from "./slices/api/authApi";
 import { useGetAppInfoQuery } from "./slices/api/appApi";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +17,7 @@ const rootActions = {
   ...appActions,
   ...newsPostsActions,
   ...musicActions,
+  ...musicCommentActions,
 };
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
