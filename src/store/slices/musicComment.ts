@@ -1,8 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { IMusicComment } from "../../types/auth.types";
 import { musicApi } from "./api/musicApi";
-import { useAppSelector } from "../hooks";
-import { useGetMeQuery } from "./api/authApi";
 
 interface IState {
   currentSong: string;

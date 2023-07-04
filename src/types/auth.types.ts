@@ -42,7 +42,7 @@ export interface INewsPosts {
 
 export interface IMusicComment {
   _id: string;
-  authorUsername: string;
+  author: string;
   originTo: string;
   text: string;
   published: string;
