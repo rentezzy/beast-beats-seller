@@ -1,4 +1,12 @@
-import { IMusicInfoBody, IMusics, IMusicInfo } from "../../../types/auth.types";
+import {
+  IMusics,
+  IMusicInfo,
+  IMusicComment,
+  IMusicInfoBody,
+  IMusicCommentBody,
+  IMusicCommentResponse,
+  IMusicCommentGetPayload,
+} from "../../../types/auth.types";
 import { api } from "../api";
 
 export const musicApi = api.injectEndpoints({
@@ -13,6 +21,7 @@ export const musicApi = api.injectEndpoints({
         return res.data;
       },
     }),
+
     getMusic: builder.query<IMusicInfo, string>({
       query: (id) => ({
         url: `music/musicInfo/${id}`,
@@ -23,6 +32,46 @@ export const musicApi = api.injectEndpoints({
       },
       providesTags: ["Music"],
     }),
+
+    getMusicCommentsList: builder.query<
+      IMusicCommentResponse,
+      IMusicCommentGetPayload
+    >({
+      query: (payload) => ({
+        url: `musicComment/musicComments/${payload.currentSong}?page=${payload.currentPage}&limit=10`,
+        method: "GET",
+      }),
+      keepUnusedDataFor: 0,
+      transformResponse: (res: {
+        data: { musicComments: IMusicComment[]; totalCount: number };
+      }) => {
+        return res.data;
+      },
+    }),
+
+    createNewMusicComment: builder.mutation<any, IMusicCommentBody>({
+      query: (payload) => ({
+        url: `musicComment/musicComment/${payload.originTo}`,
+        method: "POST",
+        body: {
+          text: payload.text,
+          timestamp: payload.timestamp,
+        },
+      }),
+    }),
+
+    toggleLikeMusicComment: builder.mutation<null, string>({
+      query: (currentSong) => ({
+        url: `musicComment/like/${currentSong}`,
+        method: "POST",
+      }),
+    }),
   }),
 });
-export const { useGetMusicListQuery, useGetMusicQuery } = musicApi;
+export const {
+  useGetMusicListQuery,
+  useGetMusicQuery,
+  useCreateNewMusicCommentMutation,
+  useGetMusicCommentsListQuery,
+  useToggleLikeMusicCommentMutation,
+} = musicApi;

@@ -40,6 +40,27 @@ export interface INewsPosts {
   totalCount: number;
 }
 
+export interface IMusicComment {
+  _id: string;
+  authorUsername: string;
+  originTo: string;
+  text: string;
+  published: string;
+  liked: string[];
+  timestamp?: number;
+}
+export type IMusicCommentBody = Pick<
+  IMusicComment,
+  "text" | "timestamp" | "originTo"
+>;
+export interface IMusicCommentResponse {
+  musicComments: IMusicComment[];
+  totalCount: number;
+}
+export interface IMusicCommentGetPayload {
+  currentPage: number;
+  currentSong: string;
+}
 export interface IMusicInfo {
   _id: string;
   authorId: string;
