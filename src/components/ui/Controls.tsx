@@ -63,11 +63,17 @@ export const MyButton: React.FC<
 };
 
 export const Checkbox: React.FC<{ label?: string; name: string }> = (props) => {
+  const [field, meta] = useField(props);
   return (
     <div className={styles.controls__checkbox}>
       {props.label}
       <label className={styles.controls__checkbox__container}>
-        <input type="checkbox" name={props.name} id={props.name} />
+        <input
+          type="checkbox"
+          id={props.name}
+          {...field}
+          checked={meta.value}
+        />
         <span className={styles.controls__checkbox__checkmark}></span>
       </label>
     </div>
