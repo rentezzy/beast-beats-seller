@@ -3,6 +3,7 @@ import { useGetMusicQuery } from "../../store/slices/api/musicApi";
 import { useGetArtistsQuery } from "../../store/slices/api/artistsApi";
 
 import SongInfo from "./songInfo/SongInfo";
+import SongComments from "./songComments/SongComments";
 
 const Song = () => {
   const { id } = useParams();
@@ -18,6 +19,7 @@ const Song = () => {
   return (
     <div className="container">
       <SongInfo music={musicData} author={author} />
+      <SongComments />
     </div>
   );
 };
