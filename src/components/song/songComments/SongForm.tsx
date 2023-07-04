@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 
 import styles from "../Song.module.css";
-import { MyButton, MyTextInput } from "../../ui/Controls";
+import { Checkbox, MyButton, MyTextInput } from "../../ui/Controls";
 import { useCreateNewMusicCommentMutation } from "../../../store/slices/api/musicApi";
 
 interface IProps {
   musicID: string;
   getTimestamp: () => number;
 }
-// TODO: Timestamp function( via react context or hooks or forward ref)
+// TODO: Timestamp function( via react context or hooks or forward ref from wavesurfer...)
 
 const SongForm: React.FC<IProps> = ({ getTimestamp, musicID }) => {
   const [newComment, data] = useCreateNewMusicCommentMutation();
@@ -18,7 +18,7 @@ const SongForm: React.FC<IProps> = ({ getTimestamp, musicID }) => {
   return (
     <div className={styles.song__form}>
       <Formik
-        initialValues={{ text: "", timestamp: false }}
+        initialValues={{ text: "", timestamp: true }}
         onSubmit={(values, { resetForm }) => {
           newComment({
             text: values.text,
@@ -30,8 +30,8 @@ const SongForm: React.FC<IProps> = ({ getTimestamp, musicID }) => {
         validationSchema={Yup.object({
           text: Yup.string()
             .min(3, "Min length is 3 characters")
-            .max(300, "Max length is 16 characters")
-            .required(),
+            .max(300, "Max length is 300 characters")
+            .required("Commentary text is required"),
           timestamp: Yup.boolean().required(),
         })}
       >
@@ -41,8 +41,7 @@ const SongForm: React.FC<IProps> = ({ getTimestamp, musicID }) => {
               <MyTextInput name="text" type="textarea" label="comment" />
             </div>
             <div className={styles.song__form__buttons}>
-              time?
-              <MyTextInput name="timestamp" type="checkbox"/>
+              <Checkbox name="timestamp" label="time?" />
               <MyButton type="submit" disabled={data.isLoading}>
                 Send
               </MyButton>
