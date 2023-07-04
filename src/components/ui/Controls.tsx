@@ -62,6 +62,18 @@ export const MyButton: React.FC<
   );
 };
 
+export const Checkbox: React.FC<{ label?: string; name: string }> = (props) => {
+  return (
+    <div className={styles.controls__checkbox}>
+      {props.label}
+      <label className={styles.controls__checkbox__container}>
+        <input type="checkbox" name={props.name} id={props.name} />
+        <span className={styles.controls__checkbox__checkmark}></span>
+      </label>
+    </div>
+  );
+};
+
 export const MyRange = (props: IRangeProps) => {
   const [fieldFrom, , helperFrom] = useField(props.nameFrom);
   const [fieldTo, metaTo, helperTo] = useField(props.nameTo);
