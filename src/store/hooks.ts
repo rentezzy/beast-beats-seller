@@ -64,3 +64,12 @@ export const useGetUsername = (userId: string) => {
   }
   return username;
 };
+
+export const useGetUserAvatar = (userId: string) => {
+  const { data } = useGetUserQuery(userId);
+  const [avatar, setAvatar] = useState("/default");
+  if (data && data.avatar !== avatar) {
+    setAvatar(data.avatar);
+  }
+  return avatar;
+};
