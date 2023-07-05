@@ -29,7 +29,7 @@ const musicCommentsSlice = createSlice({
       state.totalCount = 0;
       state.currentPage = 1;
     },
-    toggleLike: (state, action: PayloadAction<[string, string]>) => {
+    toggleMusicCommentLike: (state, action: PayloadAction<[string, string]>) => {
       const comment = state.musicComments.find((post) => {
         return action.payload[0] === post._id;
       });

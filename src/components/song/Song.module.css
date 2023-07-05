@@ -128,14 +128,14 @@
   padding: 0 0 0 5px;
   border-left: 3px solid white;
   border-bottom: 1px solid white;
-  
+
   flex: 0 1 95%;
 }
 
 .song__comment__title {
   display: flex;
   justify-content: space-between;
-  
+
   width: 100%;
 }
 
@@ -149,15 +149,21 @@
 .song__comment__text {
   padding: 0 0 0 5px;
   flex: 0 0 97%;
-  
+
   line-break: anywhere;
   word-wrap: break-word;
 }
 .song__comment__like {
   display: flex;
   justify-content: center;
-  
+
   flex: 0 0 3%;
   font-size: 22px;
   cursor: pointer;
+}
+.song__comment__like div {
+  cursor: pointer;
+}
+.song__comment__like_liked {
+  color: #b64587;
 }

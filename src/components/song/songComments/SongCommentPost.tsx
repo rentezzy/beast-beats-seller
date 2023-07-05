@@ -3,7 +3,11 @@ import { forwardRef } from "react";
 import styles from "../Song.module.css";
 import { IMusicComment } from "../../../types/auth.types";
 import { useGetTimeAt, useGetTimeFromNow } from "../../../utils/utilhooks";
-import { useGetUserAvatar, useGetUsername } from "../../../store/hooks";
+import {
+  useGetUserAvatar,
+  useGetUsername,
+  useCommentLike,
+} from "../../../store/hooks";
 
 interface IProps {
   comment: IMusicComment;
@@ -14,6 +18,7 @@ const SongCommentPost = forwardRef<HTMLDivElement, IProps>(
     const avatar = useGetUserAvatar(comment.author);
     const username = useGetUsername(comment.author);
     const at = useGetTimeAt(comment.timestamp ? comment.timestamp : 0);
+    const { isLiked, onLikeHandler } = useCommentLike(comment._id);
 
     return (
       <div ref={ref} className={styles.song__comment__post}>
@@ -33,7 +38,12 @@ const SongCommentPost = forwardRef<HTMLDivElement, IProps>(
           <div className={styles.song__comment__section}>
             <div className={styles.song__comment__text}>{comment.text}</div>
             <div className={styles.song__comment__like + " noselectText"}>
-              ♡
+              <div
+                onClick={onLikeHandler()}
+                className={isLiked ? styles.song__comment__like_liked : ""}
+              >
+                ♡
+              </div>
             </div>
           </div>
         </div>

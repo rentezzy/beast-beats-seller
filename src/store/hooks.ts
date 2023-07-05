@@ -13,6 +13,7 @@ import { actions as musicActions } from "./slices/music";
 import { actions as musicCommentActions } from "./slices/musicComment";
 
 import type { RootState, AppDispatch } from "./store";
+import { useToggleLikeMusicCommentMutation } from "./slices/api/musicApi";
 
 const rootActions = {
   ...productActions,
@@ -75,4 +76,26 @@ export const useGetUserAvatar = (userId: string) => {
   return avatar === "/default"
     ? `${process.env.REACT_APP_MAIN_API}images/img/default.png`
     : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/small.png`;
+};
+export const useCommentLike = (commentId: string) => {
+  const { data } = useGetMeQuery(null);
+  const isLogined = useAppSelector((state) => state.appState.isLogined);
+  const comments = useAppSelector((state) => state.musicComments.musicComments);
+  const [isLiked, setIsLiked] = useState(
+    comments
+      .find((comment) => comment._id === commentId)!
+      .liked.includes(data!._id)
+  );
+  const { toggleMusicCommentLike } = useActions();
+  const [toggleLikeQuery] = useToggleLikeMusicCommentMutation();
+  const navigate = useNavigate();
+  const onLikeHandler = () => {
+    const toggleLike = () => {
+      toggleLikeQuery(commentId);
+      toggleMusicCommentLike([commentId, data!._id]);
+      setIsLiked((prev) => !prev);
+    };
+    return isLogined ? () => toggleLike() : () => navigate("/signup");
+  };
+  return { isLiked, onLikeHandler };
 };
