@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import "./index.css";
 import "./assests/fonts/Karnivore/KARNIVOL.woff";
-import { router } from "./router";
+import {router} from "./router"
 import { store } from "./store/store";
 
 const container = document.getElementById("root")!;

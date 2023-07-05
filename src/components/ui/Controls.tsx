@@ -1,5 +1,5 @@
 import { useField } from "formik";
-import styles from "./Ui.module.css";
+import styles from "./ui.module.css";
 import { ReactNode, useRef, MouseEvent } from "react";
 import { IControlProps, IRangeProps } from "../../types/ui.types";
 
