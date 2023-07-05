@@ -15,3 +15,8 @@ export const useGetTimeFromNow = (time: string) => {
   }, [time]);
   return timeAgo;
 };
+
+export const useGetTimeAt = (time: number) => {
+  if (time === 0) return "";
+  return ", at " + dayjs(new Date(0, 0, 0, 0, 0, time)).format("mm:ss");
+};
