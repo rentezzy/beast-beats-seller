@@ -71,6 +71,8 @@ export const useGetUserAvatar = (userId: string) => {
   if (data && data.avatar !== avatar) {
     setAvatar(data.avatar);
   }
-  return avatar;
-};
 
+  return avatar === "/default"
+    ? `${process.env.REACT_APP_MAIN_API}images/img/default.png`
+    : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/small.png`;
+};
