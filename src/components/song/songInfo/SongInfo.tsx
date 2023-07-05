@@ -1,13 +1,14 @@
 import styles from "../Song.module.css";
 import SongWave from "./SongWave";
 import { IMusicInfo } from "../../../types/auth.types";
+import { useGetUsername } from "../../../store/hooks";
 
 interface IProps {
   music: IMusicInfo;
-  author: string | undefined;
 }
 
-const SongInfo: React.FC<IProps> = ({ music, author }) => {
+const SongInfo: React.FC<IProps> = ({ music }) => {
+  const author = useGetUsername(music.authorId);
   const date = new Date(music.published);
   const dateString = `${date.getFullYear()}/${
     date.getMonth() + 1
