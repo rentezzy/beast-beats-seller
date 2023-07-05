@@ -1,16 +1,18 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import type { RootState, AppDispatch } from "./store";
-import { useMemo, useState } from "react";
 import { bindActionCreators } from "@reduxjs/toolkit";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { useMemo, useState } from "react";
+
+import { useGetMeQuery } from "./slices/api/authApi";
+import { useGetAppInfoQuery } from "./slices/api/appApi";
+import { useNavigate } from "react-router-dom";
+import { useGetUserQuery, useToggleCartMutation } from "./slices/api/userApi";
 import { actions as productActions } from "./slices/faq";
 import { actions as appActions } from "./slices/appState";
 import { actions as newsPostsActions } from "./slices/newsPosts";
 import { actions as musicActions } from "./slices/music";
 import { actions as musicCommentActions } from "./slices/musicComment";
-import { useGetMeQuery } from "./slices/api/authApi";
-import { useGetAppInfoQuery } from "./slices/api/appApi";
-import { useNavigate } from "react-router-dom";
-import { useToggleCartMutation } from "./slices/api/userApi";
+
+import type { RootState, AppDispatch } from "./store";
 
 const rootActions = {
   ...productActions,
@@ -52,4 +54,13 @@ export const useInCart = (songId: string) => {
     return isLogined ? () => toggleHandler() : () => navigate("/signup");
   };
   return { inCart, cartHandler };
+};
+
+export const useGetUsername = (userId: string) => {
+  const { data } = useGetUserQuery(userId);
+  const [username, setUsername] = useState("user");
+  if (data && data.username !== username) {
+    setUsername(data.username);
+  }
+  return username;
 };
