@@ -1,8 +1,7 @@
 import { Howl, Howler } from "howler";
 import { useState, useEffect, MouseEvent } from "react";
 
-import { useGetArtistsQuery } from "../../../store/slices/api/artistsApi";
-import { useAppSelector } from "../../../store/hooks";
+import { useAppSelector, useGetUsername } from "../../../store/hooks";
 
 import styles from "../Store.module.css";
 import back from "../../../assests/ui/player/back.png";
@@ -11,6 +10,7 @@ import pause from "../../../assests/ui/player/pause.png";
 import play from "../../../assests/ui/player/play.png";
 import speaker from "../../../assests/ui/player/speaker.png";
 import noSpeaker from "../../../assests/ui/player/noSpeaker.png";
+import { useGetMusicTime } from "../../../utils/utilhooks";
 
 interface IPropsImage {
   image: string;
@@ -25,6 +25,7 @@ export const AudioImage: React.FC<IPropsImage> = ({ image }) => {
     </div>
   );
 };
+
 interface IPropsProgress {
   authorId: string;
   title: string;
@@ -32,9 +33,9 @@ interface IPropsProgress {
   isPlaying: boolean;
 }
 export const AudioProgress: React.FC<IPropsProgress> = (props) => {
-  const { data } = useGetArtistsQuery(null);
   const [current, setCurrent] = useState(0);
-  let author: string | undefined = "author";
+  const author = useGetUsername(props.authorId);
+  const getTime = useGetMusicTime();
 
   useEffect(() => {
     let interval: NodeJS.Timer | undefined;
@@ -48,14 +49,6 @@ export const AudioProgress: React.FC<IPropsProgress> = (props) => {
     };
   }, [props]);
 
-  if (data) {
-    author = data.find((arthist) => arthist._id === props.authorId)?.username;
-  }
-  const getTime = (time: number) => {
-    let minutes = Math.floor(time / 60);
-    let seconds = Math.round(time - minutes * 60);
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  };
   return (
     <div className={styles.audio__progress}>
       <div className={styles.audio__info}>

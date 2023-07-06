@@ -19,6 +19,9 @@ export const useGetTimeAt = (time: number) => {
   if (time === 0) return "";
   return ", at " + dayjs(new Date(0, 0, 0, 0, 0, time)).format("mm:ss");
 };
+export const useGetMusicTime = () => {
+  return (time: number) => dayjs(new Date(0, 0, 0, 0, 0, time)).format("mm:ss");
+};
 export const useGetTimePublished = (time: string) => {
   return dayjs(new Date(time)).format("YYYY, DD MMM. - HH:mm");
 };
