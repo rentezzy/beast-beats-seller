@@ -97,5 +97,7 @@ export const useCommentLike = (commentId: string) => {
     };
     return isLogined ? () => toggleLike() : () => navigate("/signup");
   };
-  return { isLiked, onLikeHandler };
+  const likes = comments.find((comment) => comment._id === commentId)!.liked
+    .length;
+  return { isLiked, onLikeHandler, likes };
 };

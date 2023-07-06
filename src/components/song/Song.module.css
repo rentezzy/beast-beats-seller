@@ -161,13 +161,15 @@
 .song__comment__like {
   display: flex;
   justify-content: center;
+  align-items: end;
 
   flex: 0 0 3%;
-  font-size: 22px;
+  font-size: 16px;
   cursor: pointer;
 }
 .song__comment__like div {
   cursor: pointer;
+  font-size: 22px;
 }
 .song__comment__like_liked {
   color: #b64587;
