@@ -1,7 +1,4 @@
 import { forwardRef } from "react";
-
-import styles from "../Song.module.css";
-import { IMusicComment } from "../../../types/auth.types";
 import { useGetTimeAt, useGetTimeFromNow } from "../../../utils/utilhooks";
 import {
   useGetUserAvatar,
@@ -9,11 +6,16 @@ import {
   useCommentLike,
 } from "../../../store/hooks";
 
+import styles from "../Song.module.css";
+import { IMusicComment } from "../../../types/auth.types";
+import { SeekProps } from "../../../types/home.types";
+
 interface IProps {
   comment: IMusicComment;
+  seek: SeekProps;
 }
 const SongCommentPost = forwardRef<HTMLDivElement, IProps>(
-  ({ comment }, ref) => {
+  ({ comment, seek }, ref) => {
     const time = useGetTimeFromNow(comment.published);
     const avatar = useGetUserAvatar(comment.author);
     const username = useGetUsername(comment.author);
@@ -31,7 +33,12 @@ const SongCommentPost = forwardRef<HTMLDivElement, IProps>(
               <div className={styles.song__comment__subtitle__author}>
                 {username}
               </div>
-              <div className={styles.song__comment__subtitle__at}>{at}</div>
+              <div
+                className={styles.song__comment__subtitle__at + " noselectText"}
+                onClick={() => seek.current.set(comment.timestamp!)}
+              >
+                {at}
+              </div>
             </div>
             <div className={styles.song__comment__title__time}>{time}</div>
           </div>

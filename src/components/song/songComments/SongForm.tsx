@@ -1,19 +1,20 @@
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 
-import styles from "../Song.module.css";
-import { Checkbox, MyButton, MyTextInput } from "../../ui/Controls";
+import { useNavigate } from "react-router-dom";
 import { useCreateNewMusicCommentMutation } from "../../../store/slices/api/musicApi";
 import { useAppSelector } from "../../../store/hooks";
 
+import styles from "../Song.module.css";
+import { Checkbox, MyButton, MyTextInput } from "../../ui/Controls";
+import { SeekProps } from "../../../types/home.types";
+
 interface IProps {
   musicID: string;
-  getTimestamp: () => number;
+  seek: SeekProps;
 }
-// TODO: Timestamp function( via react context or hooks or forward ref from wavesurfer...)
 
-const SongForm: React.FC<IProps> = ({ getTimestamp, musicID }) => {
+const SongForm: React.FC<IProps> = ({ seek, musicID }) => {
   const isLogined = useAppSelector((state) => state.appState.isLogined);
   const navigate = useNavigate();
   const [newComment, data] = useCreateNewMusicCommentMutation();
@@ -26,7 +27,7 @@ const SongForm: React.FC<IProps> = ({ getTimestamp, musicID }) => {
           if (isLogined) {
             newComment({
               text: values.text,
-              timestamp: values.timestamp ? getTimestamp() : 0,
+              timestamp: values.timestamp ? Math.round(seek.current.get()) : 0,
               originTo: musicID,
             });
             resetForm({ values: { text: "", timestamp: values.timestamp } });

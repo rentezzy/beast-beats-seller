@@ -142,7 +142,12 @@
 .song__comment__subtitle {
   display: flex;
 }
-
+.song__comment__subtitle__at {
+  cursor: pointer;
+}
+.song__comment__subtitle__at:hover {
+  border-right: 2px solid white;
+}
 .song__comment__section {
   display: flex;
 }

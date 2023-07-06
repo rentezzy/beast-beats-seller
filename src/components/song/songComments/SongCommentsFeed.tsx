@@ -1,14 +1,17 @@
 import { createRef, useRef, useCallback, useEffect } from "react";
 import { useActions, useAppSelector } from "../../../store/hooks";
 import { useGetMusicCommentsListQuery } from "../../../store/slices/api/musicApi";
+
 import LoadingElement from "../../ui/LoadingElement";
 import SongCommentPost from "./SongCommentPost";
+import { SeekProps } from "../../../types/home.types";
 
 interface IProps {
   musicID: string;
+  seek: SeekProps;
 }
 
-const SongCommentsFeed: React.FC<IProps> = ({ musicID }) => {
+const SongCommentsFeed: React.FC<IProps> = ({ musicID, seek }) => {
   const comments = useAppSelector((state) => state.musicComments);
   const { isFetching } = useGetMusicCommentsListQuery({
     currentPage: comments.currentPage,
@@ -54,10 +57,13 @@ const SongCommentsFeed: React.FC<IProps> = ({ musicID }) => {
               comment={comment}
               ref={lastItem}
               key={comment._id}
+              seek={seek}
             />
           );
         }
-        return <SongCommentPost comment={comment} key={comment._id} />;
+        return (
+          <SongCommentPost comment={comment} key={comment._id} seek={seek} />
+        );
       })}
       {isFetching ? <LoadingElement /> : ""}
     </div>

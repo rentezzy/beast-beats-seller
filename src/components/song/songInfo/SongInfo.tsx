@@ -1,13 +1,16 @@
+import { useGetUsername } from "../../../store/hooks";
+
 import styles from "../Song.module.css";
 import SongWave from "./SongWave";
 import { IMusicInfo } from "../../../types/auth.types";
-import { useGetUsername } from "../../../store/hooks";
+import { SeekProps } from "../../../types/home.types";
 
 interface IProps {
   music: IMusicInfo;
+  seek: SeekProps;
 }
 
-const SongInfo: React.FC<IProps> = ({ music }) => {
+const SongInfo: React.FC<IProps> = ({ music, seek }) => {
   const author = useGetUsername(music.authorId);
   const date = new Date(music.published);
   const dateString = `${date.getFullYear()}/${
@@ -30,7 +33,7 @@ const SongInfo: React.FC<IProps> = ({ music }) => {
           <div>Published : {dateString}</div>
           <div>Listenings : {music.listenings}</div>
         </div>
-        <SongWave songId={music._id} />
+        <SongWave songId={music._id} seek={seek} />
       </div>
     </div>
   );

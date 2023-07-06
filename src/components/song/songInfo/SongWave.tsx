@@ -4,11 +4,13 @@ import { useCallback, useRef } from "react";
 
 import styles from "../Song.module.css";
 import SongControls from "./SongControls";
+import { SeekProps } from "../../../types/home.types";
 
 interface IProps {
   songId: string;
+  seek: SeekProps;
 }
-const SongWave: React.FC<IProps> = ({ songId }) => {
+const SongWave: React.FC<IProps> = ({ songId, seek }) => {
   const wavesurferRef = useRef<any>();
 
   const handleWSMount = useCallback(
@@ -23,8 +25,12 @@ const SongWave: React.FC<IProps> = ({ songId }) => {
       wavesurferRef.current.params.progressColor = "rgb(185, 180, 180)";
       wavesurferRef.current.params.hideScrollbar = true;
       wavesurferRef.current.params.fillParent = true;
+      seek.current = {
+        get: waveSurfer.getCurrentTime.bind(waveSurfer),
+        set: waveSurfer.setCurrentTime.bind(waveSurfer),
+      };
     },
-    [songId]
+    [songId, seek]
   );
 
   return (
