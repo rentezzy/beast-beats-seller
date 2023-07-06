@@ -51,9 +51,13 @@ const MusicPost = forwardRef<HTMLDivElement, IProps>(
           <img
             src={`${process.env.REACT_APP_MAIN_API}images/mus/${music.image}`}
             alt=""
+            onClick={() => navigate(`/song/${music._id}`)}
           />
         </div>
-        <div className={styles.musicPost__info}>
+        <div
+          className={styles.musicPost__info}
+          onClick={() => navigate(`/song/${music._id}`)}
+        >
           {author} - {music.title}
         </div>
         <div className={styles.musicPost__price}>

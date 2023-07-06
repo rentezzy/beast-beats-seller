@@ -1,5 +1,5 @@
 import { useField } from "formik";
-import styles from "./Ui.module.css";
+import styles from "./ui.module.css";
 import { ReactNode, useRef, MouseEvent } from "react";
 import { IControlProps, IRangeProps } from "../../types/ui.types";
 
@@ -58,6 +58,24 @@ export const MyButton: React.FC<
       <button {...props} className={`${styles.controls__button} noselectText`}>
         {props.children}
       </button>
+    </div>
+  );
+};
+
+export const Checkbox: React.FC<{ label?: string; name: string }> = (props) => {
+  const [field, meta] = useField(props);
+  return (
+    <div className={styles.controls__checkbox}>
+      {props.label}
+      <label className={styles.controls__checkbox__container}>
+        <input
+          type="checkbox"
+          id={props.name}
+          {...field}
+          checked={meta.value}
+        />
+        <span className={styles.controls__checkbox__checkmark}></span>
+      </label>
     </div>
   );
 };
