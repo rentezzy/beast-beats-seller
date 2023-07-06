@@ -1,4 +1,5 @@
 import { useGetUsername } from "../../../store/hooks";
+import { useGetTimePublished } from "../../../utils/utilhooks";
 
 import styles from "../Song.module.css";
 import SongWave from "./SongWave";
@@ -12,10 +13,7 @@ interface IProps {
 
 const SongInfo: React.FC<IProps> = ({ music, seek }) => {
   const author = useGetUsername(music.authorId);
-  const date = new Date(music.published);
-  const dateString = `${date.getFullYear()}/${
-    date.getMonth() + 1
-  }/${date.getDay()} - ${date.getHours()}:${date.getMinutes()}`;
+  const date = useGetTimePublished(music.published);
   return (
     <div className={styles.song__info}>
       <div className={styles.song__info__image}>
@@ -30,7 +28,7 @@ const SongInfo: React.FC<IProps> = ({ music, seek }) => {
         </h2>
         <div className={styles.song__info__subtext}>
           <div>Genre: {music.genre}</div>
-          <div>Published : {dateString}</div>
+          <div>{date}</div>
           <div>Listenings : {music.listenings}</div>
         </div>
         <SongWave songId={music._id} seek={seek} />

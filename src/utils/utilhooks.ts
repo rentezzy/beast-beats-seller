@@ -3,7 +3,6 @@ import * as relativeTime from "dayjs/plugin/relativeTime";
 import { useState, useEffect } from "react";
 dayjs.extend(relativeTime.default);
 
-
 export const useGetTimeFromNow = (time: string) => {
   const [timeAgo, setTimeAgo] = useState(dayjs(time).fromNow());
   useEffect(() => {
@@ -19,4 +18,7 @@ export const useGetTimeFromNow = (time: string) => {
 export const useGetTimeAt = (time: number) => {
   if (time === 0) return "";
   return ", at " + dayjs(new Date(0, 0, 0, 0, 0, time)).format("mm:ss");
+};
+export const useGetTimePublished = (time: string) => {
+  return dayjs(new Date(time)).format("YYYY, DD MMM. - HH:mm");
 };
