@@ -17,10 +17,13 @@ export interface ILoginUser {
   email: string;
   name: string;
   role: string;
+  cart: string[];
 }
 
 export interface IAppInfo {
   ticker: string;
+  genres: string[];
+  maxPrice: number;
 }
 
 export interface INewsPost {
@@ -29,7 +32,7 @@ export interface INewsPost {
   title: string;
   text: string;
   published: string;
-  liked: [String];
+  liked: string[];
 }
 
 export interface INewsPosts {
@@ -37,6 +40,48 @@ export interface INewsPosts {
   totalCount: number;
 }
 
+export interface IMusicComment {
+  _id: string;
+  author: string;
+  originTo: string;
+  text: string;
+  published: string;
+  liked: string[];
+  timestamp?: number;
+}
+export type IMusicCommentBody = Pick<
+  IMusicComment,
+  "text" | "timestamp" | "originTo"
+>;
+export interface IMusicCommentResponse {
+  musicComments: IMusicComment[];
+  totalCount: number;
+}
+export interface IMusicCommentGetPayload {
+  currentPage: number;
+  currentSong: string;
+}
+export interface IMusicInfo {
+  _id: string;
+  authorId: string;
+  title: string;
+  genre: string;
+  price: number;
+  listenings: number;
+  published: string;
+  image: string;
+}
+export interface IMusics {
+  musics: Array<IMusicInfo>;
+  totalCount: number;
+}
+export interface IMusicInfoBody {
+  author: string;
+  genre: string;
+  priceFrom: number;
+  priceTo: number;
+  currentPage: number;
+}
 export interface IError {
   status: number;
   data: {

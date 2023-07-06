@@ -1,0 +1,176 @@
+/* SONG INFO */
+.song__info {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin: 30px 0 0 0;
+  padding: 10px;
+  border: 1px solid white;
+
+  width: 100%;
+  color: white;
+}
+.song__info__image {
+  flex: 0 0 20%;
+}
+.song__info__image img {
+  border: 1px solid white;
+  width: 100%;
+}
+.song__info__text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  flex: 0 0 79%;
+}
+.song__info__text h2 {
+  margin: 0;
+  padding: 0 0 10px;
+}
+.song__info__subtext {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  box-sizing: border-box;
+
+  padding: 10px;
+  border: 1px solid white;
+
+  width: 100%;
+  font-family: "Quicksand", sans-serif;
+}
+.song__info__subtext div {
+  flex: 0 0 50%;
+}
+.song__info__subtext div:nth-child(2) {
+  text-align: end;
+}
+.song__info__audio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+}
+.song__info__audio__wave {
+  margin-top: 20px;
+  width: 100%;
+}
+.song__info__audio__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.song__info__audio__buttons img {
+  margin: 0 0 1px 0;
+  height: 28px;
+}
+.song__info__audio__buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+
+  padding: 5px;
+  border: 1px solid white;
+
+  width: auto;
+  background-color: transparent;
+  cursor: pointer;
+}
+/* DO NOT REMOVE */
+#song__info__audio__waveform {
+}
+/* SONG FORM */
+.song__form {
+  margin: 10px 0 0 0;
+  padding: 10px;
+  border: 1px solid white;
+}
+.song__form_comment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.song__form__input {
+  width: 100%;
+}
+.song__form__buttons {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  color: white;
+}
+/* SONG COMMENTS */
+.song__comment__post {
+  display: flex;
+  box-sizing: border-box;
+
+  margin: 10px 0 0 0;
+  width: 100%;
+
+  font-family: "Quicksand", sans-serif;
+  color: white;
+}
+.song__comment__image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  flex: 0 0 5%;
+}
+.song__comment__image img {
+  width: 75%;
+}
+.song__comment__info {
+  padding: 0 0 0 5px;
+  border-left: 3px solid white;
+  border-bottom: 1px solid white;
+
+  flex: 0 1 95%;
+}
+
+.song__comment__title {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.song__comment__subtitle {
+  display: flex;
+}
+.song__comment__subtitle__at {
+  cursor: pointer;
+}
+.song__comment__subtitle__at:hover {
+  border-right: 2px solid white;
+}
+.song__comment__section {
+  display: flex;
+}
+.song__comment__text {
+  padding: 0 0 0 5px;
+  flex: 0 0 97%;
+
+  line-break: anywhere;
+  word-wrap: break-word;
+}
+.song__comment__like {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+  flex: 0 0 3%;
+  font-size: 16px;
+  cursor: pointer;
+}
+.song__comment__like div {
+  cursor: pointer;
+  font-size: 22px;
+}
+.song__comment__like_liked {
+  color: #b64587;
+}

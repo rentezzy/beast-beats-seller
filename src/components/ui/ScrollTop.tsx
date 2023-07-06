@@ -1,4 +1,4 @@
-import styles from "./Ui.module.css";
+import styles from "./ui.module.css";
 import { useEffect, useState } from "react";
 
 const ScrollTop = () => {

@@ -1,8 +1,9 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import App from "./App";
 import Home from "./components/home/Home";
 import Store from "./components/store/Store";
 import Signup from "./components/signup/Signup";
+import Song from "./components/song/Song";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,14 @@ export const router = createBrowserRouter([
       {
         path: "store",
         element: <Store />,
+      },
+      {
+        path: "song",
+        element: <Navigate to="/store" />,
+      },
+      {
+        path: "song/:id",
+        element: <Song />,
       },
     ],
   },

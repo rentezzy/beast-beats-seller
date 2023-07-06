@@ -29,6 +29,9 @@
   display: flex;
   flex-direction: column;
 }
+.controls__block label {
+  color: white;
+}
 .controls__input {
   margin-top: 5px;
   background-color: #000;
@@ -64,6 +67,118 @@
   background-color: #000;
   border: 1px solid #fff;
   cursor: pointer;
+}
+.controls__block select {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.controls__block select:focus {
+  outline: none;
+}
+
+.controls__checkbox {
+  display: flex;
+  margin: 1px 25px 0 0;
+}
+
+.controls__checkbox__container {
+  display: block;
+  position: relative;
+
+  font-size: 22px;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+.controls__checkbox__container input {
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  opacity: 0;
+  cursor: pointer;
+}
+.controls__checkbox__checkmark {
+  position: absolute;
+  top: 0;
+  left: 2px;
+
+  border: 1px solid white;
+  width: 18px;
+  height: 18px;
+
+  background-color: #ffffff;
+}
+.controls__checkbox__container:hover input ~ .controls__checkbox__checkmark {
+  background-color: #ececec;
+}
+.controls__checkbox__container input:checked ~ .controls__checkbox__checkmark {
+  background-color: #000000;
+}
+.controls__checkbox__checkmark:after {
+  display: none;
+  position: absolute;
+  content: "";
+}
+
+.controls__checkbox__container
+  input:checked
+  ~ .controls__checkbox__checkmark:after {
+  display: block;
+}
+
+.controls__checkbox__container .controls__checkbox__checkmark:after {
+  left: 5px;
+  top: 1px;
+  
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  
+  width: 5px;
+  height: 10px;
+  
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.controls__range {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  position: relative;
+  margin: 10px 0 10px 0px;
+}
+
+.controls__range__from {
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+  position: absolute;
+  top: -6px;
+  cursor: pointer;
+}
+.controls__range__to {
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+  position: absolute;
+  top: -6px;
+  cursor: pointer;
+  right: 0px;
+}
+.conrtols__range__inputs {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  font-size: 18px;
 }
 
 /* TICKER */

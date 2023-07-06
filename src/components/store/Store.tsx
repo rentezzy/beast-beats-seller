@@ -1,7 +1,17 @@
-import React from "react";
+import FilterForm from "./FilterForm";
+import MusicFeed from "./music/MusicFeed";
+import Audio from "./audio/Audio";
 
 const Store = () => {
-  return <div>Store</div>;
+  return (
+    <div>
+      <div className="container">
+        <FilterForm />
+        <MusicFeed />
+        <Audio />
+      </div>
+    </div>
+  );
 };
 
 export default Store;
