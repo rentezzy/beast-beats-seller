@@ -21,11 +21,11 @@ const SongControls: React.FC<IProps> = ({ songId, wavesurferRef }) => {
   return (
     <div className={styles.song__info__audio__buttons}>
       <button onClick={playPauseHandler}>
-        <img src={isPlaying ? pause : play} alt="" />
+        <img src={isPlaying ? pause : play} alt="" className="noselectText" />
       </button>
       {!inCart ? (
         <button onClick={cartHandler()}>
-          <img src={cart} alt="" />
+          <img src={cart} alt="" className="noselectText" />
         </button>
       ) : (
         <></>
