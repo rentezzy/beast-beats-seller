@@ -10,8 +10,8 @@ const Artists = () => {
 
   return (
     <div className="container">
-      {data.map((artist) => {
-        return <ArtistPost key={artist._id} artist={artist} />;
+      {data.map((artist, index) => {
+        return <ArtistPost key={artist._id} artist={artist} pos={index % 2} />;
       })}
     </div>
   );
