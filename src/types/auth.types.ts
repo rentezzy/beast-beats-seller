@@ -20,6 +20,16 @@ export interface ILoginUser {
   cart: string[];
 }
 
+export interface IArtist {
+  _id: string;
+  user: string;
+  about: string;
+  avatar: {
+    big: string;
+    poster: string;
+  };
+}
+
 export interface IAppInfo {
   ticker: string;
   genres: string[];
