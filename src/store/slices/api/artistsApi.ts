@@ -26,5 +26,5 @@ export const artistsApi = api.injectEndpoints({
 export const {
   useGetArtistsQuery,
   useGetArtistFullQuery,
-  useLazyGetArtistFullQuery,
+  useGetArtistsFullQuery,
 } = artistsApi;

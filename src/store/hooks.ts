@@ -101,3 +101,13 @@ export const useCommentLike = (commentId: string) => {
     .length;
   return { isLiked, onLikeHandler, likes };
 };
+
+export const useRedirectToStore = (artistId: string) => {
+  const filters = useAppSelector((state) => state.musics.filters);
+  const navigate = useNavigate();
+  const { newFilters } = useActions();
+  return () => {
+    newFilters({ ...filters, author: artistId });
+    navigate("/store");
+  };
+};
