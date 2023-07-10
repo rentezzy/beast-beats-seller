@@ -1,6 +1,6 @@
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 import { useGetMeQuery } from "./slices/api/authApi";
 import { useGetAppInfoQuery } from "./slices/api/appApi";
@@ -14,6 +14,7 @@ import { actions as musicCommentActions } from "./slices/musicComment";
 
 import type { RootState, AppDispatch } from "./store";
 import { useToggleLikeMusicCommentMutation } from "./slices/api/musicApi";
+import { useLazyGetArtistPostsQuery } from "./slices/api/artistsApi";
 
 const rootActions = {
   ...productActions,
@@ -110,4 +111,22 @@ export const useRedirectToStore = (artistId: string) => {
     newFilters({ ...filters, author: artistId });
     navigate("/store");
   };
+};
+
+export const useArtistsPostPagination = (artistId: string) => {
+  const [page, setPage] = useState(1);
+  const [getPosts, data] = useLazyGetArtistPostsQuery();
+
+  let posts;
+  const isAll =
+    data.data && data.data.artistPosts.length === data.data.totalCount;
+  const isFetching = data.isFetching;
+  useEffect(() => {
+    if (isAll) return;
+    getPosts({ authorId: artistId, currentPage: page }, true);
+  }, [page, getPosts, artistId, isAll]);
+
+  if (data.data?.artistPosts) posts = data.data.artistPosts;
+  const nextPage = () => setPage((page) => page + 1);
+  return { posts, isAll, isFetching, nextPage };
 };
