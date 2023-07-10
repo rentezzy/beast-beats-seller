@@ -5,6 +5,7 @@ import Store from "./components/store/Store";
 import Signup from "./components/signup/Signup";
 import Song from "./components/song/Song";
 import Artists from "./components/artists/Artists";
+import Artist from "./components/artist/Artist";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,14 @@ export const router = createBrowserRouter([
       {
         path: "artists",
         element: <Artists />,
+      },
+      {
+        path: "artist",
+        element: <Navigate to="/artists" />,
+      },
+      {
+        path: "artist/:id",
+        element: <Artist />,
       },
     ],
   },
