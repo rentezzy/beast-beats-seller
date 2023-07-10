@@ -59,7 +59,7 @@ export interface IArtistPostGetResponse {
   totalCount: number;
 }
 export interface IArtistPostReplyGetResponse {
-  artistPosts: IArtistPostReply[];
+  artistPostsReplyes: IArtistPostReply[];
   totalCount: number;
 }
 
