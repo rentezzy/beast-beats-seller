@@ -30,6 +30,45 @@ export interface IArtist {
   };
 }
 
+export interface IArtistPost {
+  _id: string;
+  author: string;
+  originTo: string;
+  text: string;
+  published: string;
+  liked: string[];
+  replyes: number;
+}
+export interface IArtistPostReply extends IArtistPost {
+  replyTo: string;
+}
+export interface IArtistPostGetPayload {
+  authorId: string;
+  currentPage: number;
+}
+export interface IArtistPostReplyGetPayload {
+  postId: string;
+  currentPage: number;
+}
+export interface IArtistPostReplyToReplyGetPayload {
+  replyId: string;
+  currentPage: number;
+}
+export interface IArtistPostGetResponse {
+  artistPosts: IArtistPost[];
+  totalCount: number;
+}
+export interface IArtistPostReplyGetResponse {
+  artistPosts: IArtistPostReply[];
+  totalCount: number;
+}
+
+export interface IArtistPostReplyPostPayload {
+  postId: string;
+  text: string;
+  replyTo?: string;
+}
+
 export interface IAppInfo {
   ticker: string;
   genres: string[];
