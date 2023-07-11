@@ -1,6 +1,7 @@
 import { useArtistPostToggleLike } from "../../../../store/hooks";
 import { useReplyes } from "../../../../utils/utilhooks";
 
+import styles from "../../Artist.module.css";
 import ArtistReplyesFeed from "../artistFeeds/ArtistReplyesFeed";
 import ArtistCard from "./ArtistCard";
 import { ArtistReplyControls } from "../ArtistPostControls";
@@ -21,6 +22,7 @@ const ArtistPost: React.FC<IProps> = ({ post }) => {
         post={post}
         replyHandler={replyHandler}
         replyesHandler={replyesHandler}
+        className={styles.artist__post_skew}
       />
       {replyOpened && <ArtistReplyControls postId={post.originTo} />}
       {replyesOpened && (

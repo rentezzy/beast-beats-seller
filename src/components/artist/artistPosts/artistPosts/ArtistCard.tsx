@@ -9,6 +9,7 @@ interface IProps {
   post: IArtistPost;
   isLiked: boolean;
   likes: number;
+  className?: string;
   replyesHandler: () => void;
   replyHandler: () => void;
   onLikeHandler: () => () => void;
@@ -18,6 +19,7 @@ const ArtistCard: React.FC<IProps> = ({
   post,
   isLiked,
   likes,
+  className,
   onLikeHandler,
   replyHandler,
   replyesHandler,
@@ -30,7 +32,7 @@ const ArtistCard: React.FC<IProps> = ({
   } noselectText`;
 
   return (
-    <div className={styles.artist__post}>
+    <div className={`${styles.artist__post} ${className}`}>
       <div className={`${styles.artist__post__image} noselectText`}>
         <img src={image} alt="" />
       </div>
