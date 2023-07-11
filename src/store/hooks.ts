@@ -15,6 +15,7 @@ import { actions as musicCommentActions } from "./slices/musicComment";
 import type { RootState, AppDispatch } from "./store";
 import { useToggleLikeMusicCommentMutation } from "./slices/api/musicApi";
 import {
+  useGetArtistFullQuery,
   useLazyGetArtistPostsQuery,
   useLazyGetArtistPostsReplyQuery,
   useLazyGetArtistPostsReplyToReplyQuery,
@@ -85,6 +86,27 @@ export const useGetUserAvatar = (userId: string) => {
   return avatar === "/default"
     ? `${process.env.REACT_APP_MAIN_API}images/img/default.png`
     : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/small.png`;
+};
+
+export const useGetArtistInfo = (artistId: string) => {
+  const { data } = useGetArtistFullQuery(artistId);
+  const [about, setAbout] = useState("About me.");
+
+  const [bigImg, setBigImg] = useState("/defaultBig.jpg");
+  const [posterImg, setPosterImg] = useState("/defaultPoster.jpg");
+  if (data && data.about !== about) {
+    setAbout(data.about);
+  }
+  if (data && data.avatar.big !== bigImg) {
+    setBigImg(data.avatar.big);
+  }
+  if (data && data.avatar.poster !== posterImg) {
+    setPosterImg(data.avatar.poster);
+  }
+
+  const big = `${process.env.REACT_APP_MAIN_API}images/artists/big/${bigImg}`;
+  const poster = `${process.env.REACT_APP_MAIN_API}images/artists/poster/${posterImg}`;
+  return { about, big, poster };
 };
 export const useCommentLike = (commentId: string) => {
   const { data } = useGetMeQuery(null);

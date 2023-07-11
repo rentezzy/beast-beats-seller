@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
-import ArtistPostsFeed from "./artistPosts/artistFeeds/ArtistPostsFeed";
 import { useGetMeQuery } from "../../store/slices/api/authApi";
+
+import ArtistInfo from "./ArtistInfo";
+import ArtistPostsFeed from "./artistPosts/artistFeeds/ArtistPostsFeed";
 import { ArtistPostControls } from "./artistPosts/ArtistPostControls";
 
 const Artist = () => {
@@ -9,6 +11,7 @@ const Artist = () => {
   const isMyPage = data?._id === id;
   return (
     <div className="container">
+      <ArtistInfo id={id!} />
       {isMyPage && <ArtistPostControls />}
       <ArtistPostsFeed id={id!} />
     </div>
