@@ -25,3 +25,16 @@ export const useGetMusicTime = () => {
 export const useGetTimePublished = (time: string) => {
   return dayjs(new Date(time)).format("YYYY, DD MMM. - HH:mm");
 };
+
+export const useReplyes = () => {
+  const [replyesOpened, setReplyesOpened] = useState(false);
+  const [replyOpened, setReplyOpened] = useState(false);
+
+  const replyesHandler = () => {
+    setReplyesOpened((prev) => !prev);
+  };
+  const replyHandler = () => {
+    setReplyOpened((prev) => !prev);
+  };
+  return { replyOpened, replyesOpened, replyHandler, replyesHandler };
+};

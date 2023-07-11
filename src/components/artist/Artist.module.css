@@ -1,0 +1,166 @@
+/* ARTIST INFO */
+.artist {
+  min-height: 40vh;
+  color: white;
+}
+.artist__poster {
+  width: 100%;
+}
+.artist__poster img {
+  width: 100%;
+  height: 300px;
+
+  object-fit: cover;
+}
+.artist__name {
+  position: relative;
+}
+.artist__name h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 300px;
+}
+
+.artist__info {
+  display: flex;
+
+  margin: 20px 0 20px 0;
+  width: 100%;
+}
+
+.artist__image {
+  flex: 0 0 20%;
+}
+.artist__image img {
+  width: 100%;
+}
+.artist__about {
+  box-sizing: border-box;
+  padding: 15px;
+
+  flex: 0 0 80%;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* ARTIST POSTS */
+.artist__feed__button {
+  margin: 5px auto;
+
+  width: 20%;
+  height: 25px;
+}
+.artist__feed__button img {
+  height: 20px;
+}
+.artist__feed__replyes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+.artist__post {
+  display: flex;
+  box-sizing: border-box;
+  margin: 5px 0px;
+  padding: 5px;
+  border: 1px solid white;
+  width: 100%;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+}
+.artist__post_skew {
+  position: relative;
+  z-index: 0;
+  transition: all 0.2s;
+  border: none;
+}
+.artist__post_skew:hover {
+  transform: scale(1.002);
+}
+.artist__post_skew::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: -13px;
+  bottom: 0;
+  right: -13px;
+
+  border: 2px solid white;
+
+  content: "";
+  transform: skew(-15deg);
+}
+.artist__post_99 {
+  width: 99%;
+  min-width: 800px;
+}
+.artist__post_95 {
+  width: 95%;
+}
+
+.artist__post__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 5%;
+}
+.artist__post__image img {
+  width: 80%;
+}
+.artist__post__info {
+  display: flex;
+  flex: 0 0 95%;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 5px;
+}
+.artist__post__title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex: 0 0 5%;
+}
+.artist__post__text {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 1 80%;
+}
+.artist__post__text div:first-child {
+  flex: 0 0 95%;
+}
+.artist__post__text div:last-child {
+  cursor: pointer;
+}
+.artist__post__buttons {
+  display: flex;
+  justify-self: end;
+  align-self: flex-end;
+  flex: 0 0 5%;
+  width: 20%;
+}
+.artist__post_liked {
+  color: pink;
+}
+.artist__form_comment {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  align-items: flex-start;
+}
+.artist__form__form__input {
+  flex: 0 0 95%;
+}
+.artist__form__form__buttons {
+  padding: 5px 0 0 0;
+  flex: 0 0 5%;
+}
+.artist__form__form__buttons div {
+  height: 25px;
+}

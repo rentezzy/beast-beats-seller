@@ -17,6 +17,13 @@ export const api = createApi({
     },
     credentials: "include",
   }) as BaseQueryFn<string | FetchArgs, unknown, IError, {}>,
-  tagTypes: ["User","App","Music"],
+  tagTypes: [
+    "User",
+    "App",
+    "Music",
+    "ArtistPost",
+    "ArtistPostReply",
+    "ArtistPostReplyToReply",
+  ],
   endpoints: () => ({}),
 });

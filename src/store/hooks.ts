@@ -1,6 +1,6 @@
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 import { useGetMeQuery } from "./slices/api/authApi";
 import { useGetAppInfoQuery } from "./slices/api/appApi";
@@ -14,6 +14,16 @@ import { actions as musicCommentActions } from "./slices/musicComment";
 
 import type { RootState, AppDispatch } from "./store";
 import { useToggleLikeMusicCommentMutation } from "./slices/api/musicApi";
+import {
+  useGetArtistFullQuery,
+  useLazyGetArtistPostsQuery,
+  useLazyGetArtistPostsReplyQuery,
+  useLazyGetArtistPostsReplyToReplyQuery,
+  useToggleArtistPostLikeMutation,
+  useToggleArtistPostReplyLikeMutation,
+  useToggleArtistPostReplyToReplyLikeMutation,
+} from "./slices/api/artistsApi";
+import { IArtistPost } from "../types/auth.types";
 
 const rootActions = {
   ...productActions,
@@ -77,6 +87,27 @@ export const useGetUserAvatar = (userId: string) => {
     ? `${process.env.REACT_APP_MAIN_API}images/img/default.png`
     : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/small.png`;
 };
+
+export const useGetArtistInfo = (artistId: string) => {
+  const { data } = useGetArtistFullQuery(artistId);
+  const [about, setAbout] = useState("About me.");
+
+  const [bigImg, setBigImg] = useState("/defaultBig.jpg");
+  const [posterImg, setPosterImg] = useState("/defaultPoster.jpg");
+  if (data && data.about !== about) {
+    setAbout(data.about);
+  }
+  if (data && data.avatar.big !== bigImg) {
+    setBigImg(data.avatar.big);
+  }
+  if (data && data.avatar.poster !== posterImg) {
+    setPosterImg(data.avatar.poster);
+  }
+
+  const big = `${process.env.REACT_APP_MAIN_API}images/artists/big/${bigImg}`;
+  const poster = `${process.env.REACT_APP_MAIN_API}images/artists/poster/${posterImg}`;
+  return { about, big, poster };
+};
 export const useCommentLike = (commentId: string) => {
   const { data } = useGetMeQuery(null);
   const isLogined = useAppSelector((state) => state.appState.isLogined);
@@ -110,4 +141,123 @@ export const useRedirectToStore = (artistId: string) => {
     newFilters({ ...filters, author: artistId });
     navigate("/store");
   };
+};
+
+export const useArtistPostToggleLike = (post: IArtistPost) => {
+  const { data } = useGetMeQuery(null);
+  const isLogined = useAppSelector((state) => state.appState.isLogined);
+  const [isLiked, setIsLiked] = useState(post.liked.includes(data!._id));
+  const [toggleLikeQuery] = useToggleArtistPostLikeMutation();
+  const navigate = useNavigate();
+  const onLikeHandler = () => {
+    const toggleLike = () => {
+      toggleLikeQuery({
+        postId: post._id,
+        userId: data!._id,
+      });
+      setIsLiked((prev) => !prev);
+    };
+    return isLogined ? () => toggleLike() : () => navigate("/signup");
+  };
+  const likes = post.liked.length;
+  return { isLiked, likes, onLikeHandler };
+};
+
+export const useArtistPostReplyToggleLike = (post: IArtistPost) => {
+  const { data } = useGetMeQuery(null);
+  const isLogined = useAppSelector((state) => state.appState.isLogined);
+  const [isLiked, setIsLiked] = useState(post.liked.includes(data!._id));
+  const [toggleLikeQuery] = useToggleArtistPostReplyLikeMutation();
+  const navigate = useNavigate();
+  const onLikeHandler = () => {
+    const toggleLike = () => {
+      toggleLikeQuery({
+        postId: post._id,
+        userId: data!._id,
+      });
+      setIsLiked((prev) => !prev);
+    };
+    return isLogined ? () => toggleLike() : () => navigate("/signup");
+  };
+  const likes = post.liked.length;
+  return { isLiked, likes, onLikeHandler };
+};
+export const useArtistPostReplyToReplyToggleLike = (post: IArtistPost) => {
+  const { data } = useGetMeQuery(null);
+  const isLogined = useAppSelector((state) => state.appState.isLogined);
+  const [isLiked, setIsLiked] = useState(post.liked.includes(data!._id));
+  const [toggleLikeQuery] = useToggleArtistPostReplyToReplyLikeMutation();
+  const navigate = useNavigate();
+  const onLikeHandler = () => {
+    const toggleLike = () => {
+      toggleLikeQuery({
+        postId: post._id,
+        userId: data!._id,
+      });
+      setIsLiked((prev) => !prev);
+    };
+    return isLogined ? () => toggleLike() : () => navigate("/signup");
+  };
+  const likes = post.liked.length;
+  return { isLiked, likes, onLikeHandler };
+};
+
+export const useArtistsPostPagination = (artistId: string) => {
+  const [page, setPage] = useState(1);
+  const [getPosts, data] = useLazyGetArtistPostsQuery();
+
+  let posts;
+  const isAll =
+    data.data && data.data.artistPosts.length === data.data.totalCount;
+  const isFetching = data.isFetching;
+  useEffect(() => {
+    if (isAll) return;
+    getPosts({ authorId: artistId, currentPage: page }, true);
+  }, [page, getPosts, artistId, isAll]);
+
+  if (data.data?.artistPosts) posts = data.data.artistPosts;
+  const nextPage = () => setPage((page) => page + 1);
+  return { posts, isAll, isFetching, nextPage };
+};
+
+export const useArtistsPostReplyesPagination = (
+  postId: string,
+  replyes: number
+) => {
+  const [page, setPage] = useState(1);
+  const [getPosts, data] = useLazyGetArtistPostsReplyQuery();
+
+  let posts;
+  const isAll =
+    data.data && data.data.artistPostsReplyes.length === data.data.totalCount;
+  const isFetching = data.isFetching;
+  useEffect(() => {
+    if (isAll && !replyes) return;
+    getPosts({ postId, currentPage: page }, true);
+  }, [page, getPosts, postId, isAll, replyes]);
+
+  if (data.data?.artistPostsReplyes) posts = data.data.artistPostsReplyes;
+  const nextPage = () => setPage((page) => page + 1);
+  return { posts, isAll, isFetching, nextPage };
+};
+
+export const useArtistsPostReplyToReplyPagination = (
+  postId: string,
+  replyes: number
+) => {
+  const [page, setPage] = useState(1);
+  const [getPosts, data] = useLazyGetArtistPostsReplyToReplyQuery();
+
+  let posts;
+  const isAll =
+    data.data && data.data.artistPostsReplyes.length === data.data.totalCount;
+  const isFetching = data.isFetching;
+  useEffect(() => {
+    if (isAll && !replyes) return;
+    getPosts({ replyId: postId, currentPage: page }, true);
+  }, [page, getPosts, postId, isAll, replyes]);
+
+  if (data.data?.artistPostsReplyes) posts = data.data.artistPostsReplyes;
+  const nextPage = () => setPage((page) => page + 1);
+  return { posts, isAll, isFetching, nextPage };
 };
