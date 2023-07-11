@@ -79,7 +79,7 @@
   display: flex;
   width: 100%;
   height: 50px;
-  align-items: start;
+  align-items: flex-start;
 }
 .artist__form__form__input {
   flex: 0 0 95%;

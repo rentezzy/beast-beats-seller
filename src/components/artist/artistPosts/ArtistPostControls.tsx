@@ -8,6 +8,7 @@ import {
 
 import styles from "../Artist.module.css";
 import { MyButton, MyTextInput } from "../../ui/Controls";
+import { useAppSelector } from "../../../store/hooks";
 
 export const ArtistPostControls = () => {
   const [newPost, data] = useCreateArtistPostsMutation();
@@ -15,7 +16,7 @@ export const ArtistPostControls = () => {
   return (
     <div className={styles.artist__createPost}>
       <ArtistForm
-        buttonText="Create new Post"
+        buttonText="Post"
         isLoading={data.isLoading}
         onSubmit={newPost}
       />
@@ -31,9 +32,13 @@ export const ArtistReplyControls: React.FC<IReplyProps> = ({
   postId,
   replyTo,
 }) => {
+  const isLogined = useAppSelector((state) => state.appState.isLogined);
+  const navigate = useNavigate();
   const [newPost, data] = useCreateArtistPostsReplyMutation();
   const newPostHandler = (postId: string, replyTo?: string) => {
-    return (text: string) => newPost({ postId, replyTo, text });
+    return isLogined
+      ? (text: string) => newPost({ postId, replyTo, text })
+      : () => navigate("/signup");
   };
   return (
     <div>
@@ -66,14 +71,14 @@ const ArtistForm: React.FC<IFormProps> = ({
       validationSchema={Yup.object({
         text: Yup.string()
           .min(3, "Min length is 3 characters")
-          .max(800, "Max length is 300 characters")
+          .max(800, "Max length is 800 characters")
           .required("Commentary text is required"),
       })}
     >
       <Form>
         <div className={styles.artist__form_comment}>
           <div className={styles.artist__form__form__input}>
-            <MyTextInput name="text" type="textarea" />
+            <MyTextInput name="text" type="textarea" placeholder="type here" />
           </div>
           <div className={styles.artist__form__form__buttons}>
             <MyButton type="submit" disabled={isLoading}>
