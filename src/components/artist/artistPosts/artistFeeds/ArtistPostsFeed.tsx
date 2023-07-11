@@ -1,9 +1,9 @@
-import { useArtistsPostPagination } from "../../../store/hooks";
+import { useArtistsPostPagination } from "../../../../store/hooks";
 
-import styles from "../Artist.module.css";
-import ArtistPost from "./ArtistPost";
-import LoadingElement from "../../ui/LoadingElement";
-import { MyButton } from "../../ui/Controls";
+import styles from "../../Artist.module.css";
+import ArtistPost from "../artistPosts/ArtistPost";
+import LoadingElement from "../../../ui/LoadingElement";
+import { MyButton } from "../../../ui/Controls";
 
 interface IProps {
   id: string;

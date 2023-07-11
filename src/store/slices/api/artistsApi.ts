@@ -70,7 +70,7 @@ export const artistsApi = api.injectEndpoints({
       },
       merge: (currentCache, newItems, { arg }) => {
         if (
-          arg.currentPage * 10 === currentCache.artistPostsReplyes.length ||
+          arg.currentPage * 8 === currentCache.artistPostsReplyes.length ||
           currentCache.artistPostsReplyes.length === newItems.totalCount
         )
           return;
@@ -95,7 +95,7 @@ export const artistsApi = api.injectEndpoints({
       },
       merge: (currentCache, newItems, { arg }) => {
         if (
-          arg.currentPage * 10 === currentCache.artistPostsReplyes.length ||
+          arg.currentPage * 8 === currentCache.artistPostsReplyes.length ||
           currentCache.artistPostsReplyes.length === newItems.totalCount
         )
           return;
@@ -141,7 +141,7 @@ export const artistsApi = api.injectEndpoints({
           endpointName,
           originalArgs,
         } of artistsApi.util.selectInvalidatedBy(getState(), [
-          { type: "ArtistPost", id: postId },
+          { type: "ArtistPost" },
         ])) {
           if (endpointName !== "getArtistPosts") continue;
           const patchResult = dispatch(
@@ -183,7 +183,7 @@ export const artistsApi = api.injectEndpoints({
           endpointName,
           originalArgs,
         } of artistsApi.util.selectInvalidatedBy(getState(), [
-          { type: "ArtistPostReply", id: postId },
+          { type: "ArtistPostReply" },
         ])) {
           if (endpointName !== "getArtistPostsReply") continue;
           const patchResult = dispatch(
@@ -225,9 +225,9 @@ export const artistsApi = api.injectEndpoints({
           endpointName,
           originalArgs,
         } of artistsApi.util.selectInvalidatedBy(getState(), [
-          { type: "ArtistPostReplyToReply", id: postId },
+          { type: "ArtistPostReplyToReply" },
         ])) {
-          if (endpointName !== "getArtistPostsReply") continue;
+          if (endpointName !== "getArtistPostsReplyToReply") continue;
           const patchResult = dispatch(
             artistsApi.util.updateQueryData(
               "getArtistPostsReplyToReply",
