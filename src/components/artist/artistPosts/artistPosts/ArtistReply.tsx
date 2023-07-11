@@ -4,7 +4,7 @@ import { useReplyes } from "../../../../utils/utilhooks";
 import styles from "../../Artist.module.css";
 import ArtistCard from "./ArtistCard";
 import ArtistReplyToReplyFeed from "./../artistFeeds/ArtistReplyesToReplyesFeed";
-import { ArtistPostControls } from "./../ArtistPostControls";
+import { ArtistReplyControls } from "./../ArtistPostControls";
 import { IArtistPostReply } from "../../../../types/auth.types";
 
 interface IProps {
@@ -24,10 +24,12 @@ const ArtistReply: React.FC<IProps> = ({ post }) => {
         replyHandler={replyHandler}
         replyesHandler={replyesHandler}
       />
+      {replyOpened && (
+        <ArtistReplyControls postId={post.originTo} replyTo={post._id} />
+      )}
       {replyesOpened && (
         <ArtistReplyToReplyFeed postId={post._id} replyes={post.replyes} />
       )}
-      {replyOpened && <ArtistPostControls />}
     </div>
   );
 };
