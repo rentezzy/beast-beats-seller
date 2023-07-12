@@ -20,6 +20,11 @@ export interface ILoginUser {
   cart: string[];
 }
 
+export interface IGetSession {
+  signature: string;
+  data: string;
+}
+
 export interface IArtist {
   _id: string;
   user: string;
