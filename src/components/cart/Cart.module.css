@@ -1,6 +1,10 @@
 .cart {
   display: flex;
 }
+.cart__title {
+  color: white;
+  text-align: center;
+}
 .cart__list {
   flex: 0 0 80%;
 }
