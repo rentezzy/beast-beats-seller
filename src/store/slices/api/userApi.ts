@@ -11,7 +11,7 @@ export const userApi = api.injectEndpoints({
       query: (id) => `user/user/${id}`,
       transformResponse: (res: { data: { user: ILoginUser } }) => res.data.user,
     }),
-    getSession: builder.query<IGetSession, string[]>({
+    getSession: builder.mutation<IGetSession, string[]>({
       query: (cart) => ({
         url: "booking/create-session",
         method: "POST",
@@ -20,4 +20,5 @@ export const userApi = api.injectEndpoints({
     }),
   }),
 });
-export const { useToggleCartMutation, useGetUserQuery } = userApi;
+export const { useToggleCartMutation, useGetUserQuery, useGetSessionMutation } =
+  userApi;
