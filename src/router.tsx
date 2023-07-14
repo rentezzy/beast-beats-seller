@@ -7,6 +7,9 @@ import Song from "./components/song/Song";
 import Artists from "./components/artists/Artists";
 import Artist from "./components/artist/Artist";
 import Cart from "./components/cart/Cart";
+import Profile from "./components/profile/Profile";
+import Settings from "./components/profile/settings/Settings";
+import Security from "./components/profile/security/Security";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +47,20 @@ export const router = createBrowserRouter([
       {
         path: "my-cart",
         element: <Cart />,
+      },
+      {
+        path: "my-profile",
+        element: <Profile />,
+        children: [
+          {
+            path: "settings",
+            element: <Settings />,
+          },
+          {
+            path: "security",
+            element: <Security />,
+          },
+        ],
       },
     ],
   },

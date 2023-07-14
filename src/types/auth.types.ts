@@ -19,6 +19,11 @@ export interface ILoginUser {
   role: string;
   cart: string[];
 }
+export interface IUpdateUser {
+  name?: string;
+  email?: string;
+  photo?: any;
+}
 
 export interface IGetSession {
   signature: string;

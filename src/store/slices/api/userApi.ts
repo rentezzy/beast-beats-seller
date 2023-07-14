@@ -1,4 +1,8 @@
-import { IGetSession, ILoginUser } from "../../../types/auth.types";
+import {
+  IGetSession,
+  ILoginUser,
+  IUpdateUser,
+} from "../../../types/auth.types";
 import { api } from "../api";
 
 export const userApi = api.injectEndpoints({
@@ -18,7 +22,38 @@ export const userApi = api.injectEndpoints({
         body: { cart },
       }),
     }),
+    updateUserInfo: builder.mutation<null, IUpdateUser>({
+      query: (info) => {
+        const form = new FormData();
+        if (info.name) {
+          form.append("name", info.name);
+        }
+        if (info.email) {
+          form.append("email", info.email);
+        }
+        if (info.photo) {
+          form.append("photo", info.photo);
+        }
+
+        return {
+          url: "booking/create-session",
+          method: "POST",
+          body: { form },
+          headers: {
+            "Content-Type": "multipart/form-data;",
+          },
+          formData: true,
+        };
+      },
+      transformErrorResponse: (res, meta, arg): string => res.data.message,
+      invalidatesTags: ["User"],
+    }),
   }),
 });
-export const { useToggleCartMutation, useGetUserQuery, useGetSessionMutation } =
-  userApi;
+
+export const {
+  useToggleCartMutation,
+  useGetUserQuery,
+  useGetSessionMutation,
+  useUpdateUserInfoMutation,
+} = userApi;
