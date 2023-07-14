@@ -18,6 +18,15 @@
   margin: 5px 0;
   width: auto;
 }
+.profile__content {
+  box-sizing: border-box;
+  margin: 10px 10px 0 0;
+  padding: 10px;
+  border: 1px solid white;
+  
+  min-height: 90vh;
+  flex: 0 0 90%;
+}
 
 .linkNav {
   color: white;

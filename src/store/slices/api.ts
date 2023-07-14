@@ -16,6 +16,10 @@ export const api = createApi({
       charset: "UTF-8",
     },
     credentials: "include",
+    prepareHeaders: (headers, { endpoint }) => {
+      if (endpoint !== "updateUserInfo") return headers;
+      headers.delete("Content-Type");
+    },
   }) as BaseQueryFn<string | FetchArgs, unknown, IError, {}>,
   tagTypes: [
     "User",

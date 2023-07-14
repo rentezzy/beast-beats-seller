@@ -16,7 +16,9 @@ const Profile = () => {
           SECURITY
         </NavLink>
       </nav>
-      <Outlet />
+      <div className={styles.profile__content}>
+        <Outlet />
+      </div>
     </div>
   );
 };

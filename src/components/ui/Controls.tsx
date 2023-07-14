@@ -181,3 +181,19 @@ export const MyRange = (props: IRangeProps) => {
     </div>
   );
 };
+
+export const FileInput: React.FC<{ name: string }> = ({ name }) => {
+  const [field, meta, helpers] = useField(name);
+  return (
+    <input
+      type="file"
+      accept="image/*"
+      name={field.name}
+      id={name}
+      onChange={(event) => {
+        if (!event.currentTarget.files) return;
+        helpers.setValue([event.currentTarget.files[0]], true);
+      }}
+    />
+  );
+};
