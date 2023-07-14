@@ -1,0 +1,28 @@
+.profile {
+  display: flex;
+}
+.profile__navigation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  margin: 10px 10px 0 0;
+  padding: 10px;
+  border: 1px solid white;
+
+  min-height: 90vh;
+  flex: 0 0 10%;
+}
+.profile__navigation a {
+  margin: 5px 0;
+  width: auto;
+}
+
+.linkNav {
+  color: white;
+  text-decoration: none;
+}
+.linkNavActive {
+  text-decoration: underline;
+}
