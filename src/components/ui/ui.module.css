@@ -136,13 +136,13 @@
 .controls__checkbox__container .controls__checkbox__checkmark:after {
   left: 5px;
   top: 1px;
-  
+
   border: solid white;
   border-width: 0 3px 3px 0;
-  
+
   width: 5px;
   height: 10px;
-  
+
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -179,6 +179,31 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: white;
   font-size: 18px;
+}
+
+.conrtols__file {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.conrtols__file label {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid white;
+}
+.conrtols__file input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+.conrtols__file div {
+  margin-left: 10px;
 }
 
 /* TICKER */

@@ -1,6 +1,6 @@
 import { useField } from "formik";
 import styles from "./ui.module.css";
-import { ReactNode, useRef, MouseEvent } from "react";
+import { ReactNode, useRef, MouseEvent, useState } from "react";
 import { IControlProps, IRangeProps } from "../../types/ui.types";
 
 export const MyTextInput = (props: IControlProps) => {
@@ -184,16 +184,22 @@ export const MyRange = (props: IRangeProps) => {
 
 export const FileInput: React.FC<{ name: string }> = ({ name }) => {
   const [field, meta, helpers] = useField(name);
+  const [file, setFile] = useState<File | null>(null);
   return (
-    <input
-      type="file"
-      accept="image/*"
-      name={field.name}
-      id={name}
-      onChange={(event) => {
-        if (!event.currentTarget.files) return;
-        helpers.setValue([event.currentTarget.files[0]], true);
-      }}
-    />
+    <div className={styles.conrtols__file}>
+      <label htmlFor={name}>Choose a file</label>
+      <input
+        type="file"
+        accept="image/*"
+        name={field.name}
+        id={name}
+        onChange={(event) => {
+          if (!event.currentTarget.files) return;
+          helpers.setValue([event.currentTarget.files[0]], true);
+          setFile(event.currentTarget.files[0]);
+        }}
+      />
+      <div>{file?.name}</div>
+    </div>
   );
 };
