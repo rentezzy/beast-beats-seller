@@ -23,7 +23,7 @@ import {
   useToggleArtistPostReplyLikeMutation,
   useToggleArtistPostReplyToReplyLikeMutation,
 } from "./slices/api/artistsApi";
-import { IArtistPost } from "../types/auth.types";
+import { IArtistPost } from "../types/api.types";
 
 const rootActions = {
   ...productActions,

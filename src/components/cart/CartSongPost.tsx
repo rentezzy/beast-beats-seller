@@ -3,7 +3,7 @@ import { useGetUsername, useInCart } from "../../store/hooks";
 
 import styles from "./Cart.module.css";
 
-import { IMusicInfo } from "../../types/auth.types";
+import { IMusicInfo } from "../../types/api.types";
 import remove from "../../assests/remove.png";
 
 interface IProps {

@@ -3,7 +3,7 @@ import { useGetTimePublished } from "../../../utils/utilhooks";
 
 import styles from "../Song.module.css";
 import SongWave from "./SongWave";
-import { IMusicInfo } from "../../../types/auth.types";
+import { IMusicInfo } from "../../../types/api.types";
 import { SeekProps } from "../../../types/home.types";
 
 interface IProps {

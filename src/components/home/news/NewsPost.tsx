@@ -5,7 +5,7 @@ import { useActions } from "../../../store/hooks";
 import { useToggleLikeNewsPostMutation } from "../../../store/slices/api/newsApi";
 
 import styles from "../Home.module.css";
-import { INewsPost } from "../../../types/auth.types";
+import { INewsPost } from "../../../types/api.types";
 
 const NewsPost = forwardRef<HTMLDivElement, { post: INewsPost }>(
   (props, ref) => {

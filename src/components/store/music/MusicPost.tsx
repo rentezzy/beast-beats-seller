@@ -9,7 +9,7 @@ import {
 } from "../../../store/hooks";
 
 import styles from "../Store.module.css";
-import { IMusicInfo } from "../../../types/auth.types";
+import { IMusicInfo } from "../../../types/api.types";
 
 import cart from "../../../assests/cart.jpg";
 import checkmark from "../../../assests/checkmark.png";

@@ -4,7 +4,7 @@ import {
   ILoginUser,
   IPasswordBody,
   ISignupBody,
-} from "../../../types/auth.types";
+} from "../../../types/api.types";
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({

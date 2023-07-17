@@ -4,7 +4,7 @@ import { useGetNewsPostsQuery } from "../../../store/slices/api/newsApi";
 import styles from "../Home.module.css";
 import NewsWaterfall from "./NewsWaterfall";
 import LoadingElement from "../../ui/LoadingElement";
-import { INewsPost } from "../../../types/auth.types";
+import { INewsPost } from "../../../types/api.types";
 
 const NewsFeed = () => {
   const newsPosts = useAppSelector((state) => state.newsPosts);

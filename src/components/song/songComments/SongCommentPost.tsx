@@ -7,7 +7,7 @@ import {
 } from "../../../store/hooks";
 
 import styles from "../Song.module.css";
-import { IMusicComment } from "../../../types/auth.types";
+import { IMusicComment } from "../../../types/api.types";
 import { SeekProps } from "../../../types/home.types";
 
 interface IProps {

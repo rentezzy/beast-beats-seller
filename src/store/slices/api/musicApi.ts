@@ -6,7 +6,7 @@ import {
   IMusicCommentBody,
   IMusicCommentResponse,
   IMusicCommentGetPayload,
-} from "../../../types/auth.types";
+} from "../../../types/api.types";
 import { api } from "../api";
 
 export const musicApi = api.injectEndpoints({

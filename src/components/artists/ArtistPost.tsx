@@ -1,7 +1,7 @@
 import { useGetUsername, useRedirectToStore } from "../../store/hooks";
 
 import styles from "./Artists.module.css";
-import { IArtist } from "../../types/auth.types";
+import { IArtist } from "../../types/api.types";
 import { MyButton } from "../ui/Controls";
 import { useNavigate } from "react-router-dom";
 

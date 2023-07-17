@@ -12,11 +12,15 @@ import CartInfo from "./CartInfo";
 
 import LoadingElement from "../ui/LoadingElement";
 import FormObserver from "../../utils/FormObserver";
+import { IGetSession } from "../../types/api.types";
 
 const CartForm = () => {
   const { data } = useGetMeQuery(null);
   const [getSession, session] = useGetSessionMutation();
-  const [payment, setPayment] = useState({ data: "", signature: "" });
+  const [payment, setPayment] = useState<IGetSession>({
+    data: "",
+    signature: "",
+  });
   const [values, setValues] = useState<Record<string, boolean>>({});
 
   let initialValues: Record<string, boolean> = {};

@@ -3,7 +3,7 @@ import { useGetTimeFromNow } from "../../../../utils/utilhooks";
 
 import styles from "../../Artist.module.css";
 import { MyButton } from "../../../ui/Controls";
-import { IArtistPost } from "../../../../types/auth.types";
+import { IArtistPost } from "../../../../types/api.types";
 
 interface IProps {
   post: IArtistPost;

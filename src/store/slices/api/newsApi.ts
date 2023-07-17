@@ -1,4 +1,4 @@
-import { INewsPosts } from "../../../types/auth.types";
+import { INewsPosts } from "../../../types/api.types";
 import { api } from "../api";
 
 export const newsApi = api.injectEndpoints({

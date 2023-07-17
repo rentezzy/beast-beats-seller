@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { INewsPost } from "../../types/auth.types";
+import { INewsPost } from "../../types/api.types";
 import { newsApi } from "./api/newsApi";
 
 interface IState {

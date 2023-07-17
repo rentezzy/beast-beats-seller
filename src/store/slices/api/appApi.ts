@@ -1,4 +1,4 @@
-import { IAppInfo } from "../../../types/auth.types";
+import { IAppInfo } from "../../../types/api.types";
 import { api } from "../api";
 
 export const appApi = api.injectEndpoints({

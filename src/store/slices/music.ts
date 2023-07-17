@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IMusicInfo, IMusicInfoBody } from "../../types/auth.types";
+import { IMusicInfo, IMusicInfoBody } from "../../types/api.types";
 import { musicApi } from "./api/musicApi";
 import { appApi } from "./api/appApi";
 

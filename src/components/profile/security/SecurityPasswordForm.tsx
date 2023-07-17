@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { useChangePasswordMutation } from "../../../store/slices/api/authApi";
 import styles from "../Profile.module.css";
 import { MyButton, MyTextInput } from "../../ui/Controls";
-import { IPasswordBody } from "../../../types/auth.types";
+import { IPasswordBody } from "../../../types/api.types";
 
 const SecurityPasswordForm = () => {
   const [changePassword, { error, isSuccess, reset }] =
