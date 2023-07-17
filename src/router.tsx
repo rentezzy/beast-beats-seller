@@ -14,6 +14,15 @@ import ForArtist from "./components/profile/forArtist/ForArtist";
 
 export const router = createBrowserRouter([
   {
+    path: "*",
+    element: <Navigate to={"/home"} />,
+  },
+  {
+    path: "/",
+    index: true,
+    element: <Navigate to={"/home"} />,
+  },
+  {
     path: "/",
     element: <App />,
     children: [
