@@ -1,3 +1,5 @@
+export type Roles = "user" | "artist" | "publisher" | "moderator" | "admin";
+
 export interface ILoginBody {
   username: string;
   password: string;
@@ -16,18 +18,23 @@ export interface ILoginUser {
   avatar: string;
   email: string;
   name: string;
-  role: string;
+  role: Roles;
   cart: string[];
 }
 export interface IUpdateUser {
   name?: string;
   email?: string;
-  photo?: any;
+  photo?: Array<File>;
 }
 
 export interface IGetSession {
   signature: string;
   data: string;
+}
+export interface IPasswordBody {
+  password: string;
+  passwordConfirm: string;
+  passwordCurrent: string;
 }
 
 export interface IArtist {

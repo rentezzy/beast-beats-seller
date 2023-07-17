@@ -27,13 +27,13 @@ const HeaderUser = () => {
           <img src={cartImage} alt="" />
         </div>
       </Link>
-      <Link to="my-profile" className={styles.userCard + " " + styles.linkNav}>
+      <Link to="my-profile/settings" className={styles.userCard + " " + styles.linkNav}>
         <div className={styles.userImage}>
           <img
             src={
               data?.avatar === "/default"
                 ? `${process.env.REACT_APP_MAIN_API}images/img/default.png`
-                : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/small.png`
+                : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/${data?.avatar}-small.png`
             }
             alt="logo"
           />

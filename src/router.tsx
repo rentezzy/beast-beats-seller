@@ -10,6 +10,7 @@ import Cart from "./components/cart/Cart";
 import Profile from "./components/profile/Profile";
 import Settings from "./components/profile/settings/Settings";
 import Security from "./components/profile/security/Security";
+import ForArtist from "./components/profile/forArtist/ForArtist";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
           {
             path: "security",
             element: <Security />,
+          },
+          {
+            path: "artist",
+            element: <ForArtist />,
           },
         ],
       },

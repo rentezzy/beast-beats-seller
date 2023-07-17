@@ -31,18 +31,14 @@ export const userApi = api.injectEndpoints({
         if (info.email) {
           form.append("email", info.email);
         }
-        if (info.photo) {
-          form.append("photo", info.photo);
+        if (info.photo && info.photo[0]) {
+          form.append("photo", info.photo[0]);
         }
 
         return {
-          url: "booking/create-session",
-          method: "POST",
-          body: { form },
-          headers: {
-            "Content-Type": "multipart/form-data;",
-          },
-          formData: true,
+          url: "user/me",
+          method: "PATCH",
+          body: form,
         };
       },
       transformErrorResponse: (res, meta, arg): string => res.data.message,

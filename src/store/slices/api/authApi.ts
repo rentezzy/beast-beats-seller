@@ -1,5 +1,10 @@
 import { api } from "../api";
-import { ILoginBody, ILoginUser, ISignupBody } from "../../../types/auth.types";
+import {
+  ILoginBody,
+  ILoginUser,
+  IPasswordBody,
+  ISignupBody,
+} from "../../../types/auth.types";
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -41,6 +46,15 @@ export const authApi = api.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    changePassword: builder.mutation<null, IPasswordBody>({
+      query: (body) => ({
+        url: "user/password",
+        method: "PATCH",
+        body,
+      }),
+      invalidatesTags: ["User"],
+      transformErrorResponse: (res, meta, arg): string => res.data.message,
+    }),
   }),
 });
 
@@ -49,4 +63,5 @@ export const {
   usePostLoginMutation,
   usePostSignupMutation,
   useLogOutMutation,
+  useChangePasswordMutation,
 } = authApi;
