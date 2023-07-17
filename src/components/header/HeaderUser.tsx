@@ -33,7 +33,7 @@ const HeaderUser = () => {
             src={
               data?.avatar === "/default"
                 ? `${process.env.REACT_APP_MAIN_API}images/img/default.png`
-                : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/small.png`
+                : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/${data?.avatar}-small.png`
             }
             alt="logo"
           />

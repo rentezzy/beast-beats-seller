@@ -67,6 +67,18 @@ export const useInCart = (songId: string) => {
   return { inCart, cartHandler };
 };
 
+export const useGetMyAvatar = () => {
+  const { data } = useGetMeQuery(null);
+  let small = `${process.env.REACT_APP_MAIN_API}images/img/default.png`;
+  let big = `${process.env.REACT_APP_MAIN_API}images/img/default.png`;
+
+  if (data && data.avatar !== "/default") {
+    small = `${process.env.REACT_APP_MAIN_API}images/img/${data._id}/${data.avatar}-small.png`;
+    big = `${process.env.REACT_APP_MAIN_API}images/img/${data._id}/${data.avatar}-big.png`;
+  }
+  return { small, big };
+};
+
 export const useGetUsername = (userId: string) => {
   const { data } = useGetUserQuery(userId);
   const [username, setUsername] = useState("user");
@@ -85,7 +97,7 @@ export const useGetUserAvatar = (userId: string) => {
 
   return avatar === "/default"
     ? `${process.env.REACT_APP_MAIN_API}images/img/default.png`
-    : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/small.png`;
+    : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/${avatar}-small.png`;
 };
 
 export const useGetArtistInfo = (artistId: string) => {
