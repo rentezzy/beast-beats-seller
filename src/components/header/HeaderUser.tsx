@@ -27,7 +27,7 @@ const HeaderUser = () => {
           <img src={cartImage} alt="" />
         </div>
       </Link>
-      <Link to="my-profile" className={styles.userCard + " " + styles.linkNav}>
+      <Link to="my-profile/settings" className={styles.userCard + " " + styles.linkNav}>
         <div className={styles.userImage}>
           <img
             src={

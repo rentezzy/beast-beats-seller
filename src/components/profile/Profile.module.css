@@ -54,6 +54,10 @@
 .profile__settings__btns input {
   margin-top: 10px;
 }
+.error {
+  color: white;
+  text-align: center;
+}
 .linkNav {
   color: white;
   text-decoration: none;

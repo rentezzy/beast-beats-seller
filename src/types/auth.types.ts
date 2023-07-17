@@ -29,6 +29,11 @@ export interface IGetSession {
   signature: string;
   data: string;
 }
+export interface IPasswordBody {
+  password: string;
+  passwordConfirm: string;
+  passwordCurrent: string;
+}
 
 export interface IArtist {
   _id: string;
