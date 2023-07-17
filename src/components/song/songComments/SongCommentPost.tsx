@@ -3,7 +3,7 @@ import { useGetTimeAt, useGetTimeFromNow } from "../../../utils/utilhooks";
 import {
   useGetUserAvatar,
   useGetUsername,
-  useCommentLike,
+  useCommentToggleLike,
 } from "../../../store/hooks";
 
 import styles from "../Song.module.css";
@@ -20,7 +20,7 @@ const SongCommentPost = forwardRef<HTMLDivElement, IProps>(
     const avatar = useGetUserAvatar(comment.author);
     const username = useGetUsername(comment.author);
     const at = useGetTimeAt(comment.timestamp ? comment.timestamp : 0);
-    const { isLiked, onLikeHandler, likes } = useCommentLike(comment._id);
+    const { isLiked, onLikeHandler, likes } = useCommentToggleLike(comment);
 
     return (
       <div ref={ref} className={styles.song__comment__post}>

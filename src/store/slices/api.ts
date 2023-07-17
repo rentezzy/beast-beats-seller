@@ -28,6 +28,7 @@ export const api = createApi({
     "ArtistPost",
     "ArtistPostReply",
     "ArtistPostReplyToReply",
+    "MusicComment",
   ],
   endpoints: () => ({}),
 });

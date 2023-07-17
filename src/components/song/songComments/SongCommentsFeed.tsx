@@ -1,5 +1,4 @@
-import { createRef, useRef, useCallback, useEffect } from "react";
-import { useActions, useAppSelector } from "../../../store/hooks";
+import { createRef, useRef, useCallback, useEffect, useState } from "react";
 import { useGetMusicCommentsListQuery } from "../../../store/slices/api/musicApi";
 
 import LoadingElement from "../../ui/LoadingElement";
@@ -12,16 +11,14 @@ interface IProps {
 }
 
 const SongCommentsFeed: React.FC<IProps> = ({ musicID, seek }) => {
-  const comments = useAppSelector((state) => state.musicComments);
-  const { isFetching } = useGetMusicCommentsListQuery({
-    currentPage: comments.currentPage,
+  const [page, setPage] = useState(1);
+  const { data, isFetching } = useGetMusicCommentsListQuery({
+    currentPage: page,
     currentSong: musicID,
   });
 
   const lastItem = createRef<HTMLDivElement>();
   const observer = useRef<IntersectionObserver>();
-
-  const { nextPageMusicComments } = useActions();
 
   const inSightHandler = useCallback<
     (entries: IntersectionObserverEntry[]) => void
@@ -29,13 +26,14 @@ const SongCommentsFeed: React.FC<IProps> = ({ musicID, seek }) => {
     (entries) => {
       if (
         !isFetching &&
+        data &&
         entries[0].isIntersecting &&
-        comments.musicComments.length < comments.totalCount
+        data.musicComments.length < data.totalCount
       ) {
-        nextPageMusicComments();
+        setPage((prev) => prev + 1);
       }
     },
-    [isFetching, comments, nextPageMusicComments]
+    [isFetching, data]
   );
 
   useEffect(() => {
@@ -47,11 +45,11 @@ const SongCommentsFeed: React.FC<IProps> = ({ musicID, seek }) => {
       observer.current.observe(lastItem.current);
     }
   }, [lastItem, inSightHandler]);
-
+  if (!data) return null;
   return (
     <div>
-      {comments.musicComments.map((comment, index) => {
-        if (index + 1 === comments.musicComments.length) {
+      {data.musicComments.map((comment, index) => {
+        if (index + 1 === data.musicComments.length) {
           return (
             <SongCommentPost
               comment={comment}

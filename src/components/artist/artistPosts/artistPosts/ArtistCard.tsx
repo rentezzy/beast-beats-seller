@@ -30,7 +30,6 @@ const ArtistCard: React.FC<IProps> = ({
   const likedClassName = `${
     isLiked ? styles.artist__post_liked : ""
   } noselectText`;
-
   return (
     <div className={`${styles.artist__post} ${className}`}>
       <div className={`${styles.artist__post__image} noselectText`}>
