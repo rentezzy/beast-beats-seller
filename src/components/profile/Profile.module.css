@@ -20,12 +20,12 @@
 }
 .profile__content {
   box-sizing: border-box;
-  margin: 10px 10px 0 0;
+  margin: 10px 0 0 0;
   padding: 10px;
   border: 1px solid white;
 
   min-height: 90vh;
-  flex: 0 0 90%;
+  flex: 0 1 90%;
 }
 
 .profile__settings {
