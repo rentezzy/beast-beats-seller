@@ -3,14 +3,14 @@ import styles from "./Header.module.css";
 
 const HeaderNavigation = () => {
   const styleName = ({ isActive }: { isActive: boolean }) => {
-    return isActive
-      ? `${styles.linkNavActive} ${styles.linkNav}`
-      : styles.linkNav;
+    return `${styles.header__link} noselectText ${
+      isActive ? styles.header__link_active : ""
+    }`;
   };
-  
+
   return (
     <nav>
-      <ul className={styles.navList}>
+      <ul className={styles.header__nav}>
         <li>
           <NavLink to="home" className={styleName}>
             HOME

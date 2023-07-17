@@ -1,48 +1,47 @@
 import { Link } from "react-router-dom";
-import cartImage from "../../assests/cart.jpg";
-import { useAppSelector } from "../../store/hooks";
+import { useLogOutMutation } from "../../store/slices/api/authApi";
 import {
-  useGetMeQuery,
-  useLogOutMutation,
-} from "../../store/slices/api/authApi";
+  useAppSelector,
+  useGetMyAvatar,
+  useGetMyName,
+} from "../../store/hooks";
+
 import styles from "./Header.module.css";
+import cartImage from "../../assests/cart.jpg";
 
 const HeaderUser = () => {
   const isLogined = useAppSelector((state) => state.appState.isLogined);
   const [logOut] = useLogOutMutation();
-  const { data } = useGetMeQuery(null);
+  const { small } = useGetMyAvatar();
+  const name = useGetMyName();
   if (!isLogined) {
     return (
       <div>
-        <Link to="signup" className={styles.linkNav}>
+        <Link to="signup" className={styles.header__link}>
           BUY - SELL
         </Link>
       </div>
     );
   }
   return (
-    <div className={styles.userCard}>
+    <div className={styles.header__user}>
       <Link to="my-cart">
-        <div className={styles.userCart}>
+        <div className={styles.header__user__cart}>
           <img src={cartImage} alt="" />
         </div>
       </Link>
-      <Link to="my-profile/settings" className={styles.userCard + " " + styles.linkNav}>
-        <div className={styles.userImage}>
-          <img
-            src={
-              data?.avatar === "/default"
-                ? `${process.env.REACT_APP_MAIN_API}images/img/default.png`
-                : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/${data?.avatar}-small.png`
-            }
-            alt="logo"
-          />
+      <Link
+        to="my-profile/settings"
+        className={`${styles.header__user} ${styles.header__link}`}
+      >
+        <div className={styles.header__user__image}>
+          <img src={small} alt="me" />
         </div>
-        <div className={styles.userInfo}>{data?.name}</div>
+        <div className={styles.header__user__info}>{name}</div>
       </Link>
-      <div className={styles.dropdown}>
-        <div className={styles.arrow}>▼</div>
-        <div className={styles.dropdownContent}>
+      <div className={styles.header__dropdown}>
+        <div className={styles.header__arrow}>▼</div>
+        <div className={styles.header__dropdownContent}>
           <button onClick={logOut}>log out</button>
         </div>
       </div>

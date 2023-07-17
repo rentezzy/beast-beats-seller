@@ -79,6 +79,16 @@ export const useGetMyAvatar = () => {
   return { small, big };
 };
 
+export const useGetMyName = () => {
+  const { data } = useGetMeQuery(null);
+  let name = "user";
+
+  if (data && data.name !== name) {
+    name = data.name;
+  }
+  return name;
+};
+
 export const useGetUsername = (userId: string) => {
   const { data } = useGetUserQuery(userId);
   const [username, setUsername] = useState("user");

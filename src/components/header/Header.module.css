@@ -1,109 +1,117 @@
 .header {
+  border-bottom: 1px solid white;
+
   width: 100%;
   color: #fff;
   font-size: 18px;
-  border-bottom:1px solid white ;
 }
-.headerContent {
+.header__content {
   display: flex;
   justify-content: space-between;
-  box-sizing: border-box;
   align-items: center;
+  box-sizing: border-box;
+
   width: 100%;
   height: 70px;
 }
-.navList {
+.header__nav {
   display: flex;
   align-items: center;
   list-style: none;
+
   margin: 0;
   padding: 0;
 }
-.linkNav {
-  color: #fff;
+.header__link {
   margin: 10px;
+  color: #fff;
   text-decoration: none;
 }
-.linkNavActive {
-  text-decoration: underline;
+.header__link_active {
   border-bottom: 1px solid white;
+  text-decoration: underline;
 }
-.userCard {
+.header__user {
   display: flex;
   align-items: center;
 }
-.userCart img {
+.header__user img {
   max-height: 30px;
   max-width: 30px;
 }
-.userImage {
-  height: 30px;
-  width: 30px;
+.header__user__image {
   border: 1px solid rgba(255, 255, 255, 0.205);
   border-radius: 5px;
   margin-right: 15px;
+
+  width: 30px;
+  height: 30px;
 }
-.userImage img {
+.header__user__image img {
   max-height: 30px;
   max-width: 30px;
+
   object-fit: cover;
 }
-.userInfo {
+.header__user__info {
   transition: all 0.45s;
 }
-.userInfo:hover {
-  text-decoration: underline;
+.header__user__info:hover {
   border-bottom: 1px solid white;
+  text-decoration: underline;
 }
-.dropdown {
+.header__dropdown {
   position: relative;
 }
-.dropdownContent {
+.header__dropdownContent {
   position: absolute;
-  opacity: 0;
   top: -12px;
   right: 100%;
-  transition: all 0.45s;
-  z-index: -1;
-  pointer-events: none;
+
+  padding: 1px;
   border-bottom: 1px solid;
   border-right: 1px solid;
-  padding: 1px;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.45s;
+  z-index: -1;
 }
-.dropdownContent button {
-  font-family: "Karnivore Lite";
-  width: 200px;
-  height: 35px;
-  color: #fff;
-  background-color: #000;
-  cursor: pointer;
+.header__dropdownContent button {
   border: none;
   border-bottom: 1px solid;
   border-right: 1px solid;
+  width: 200px;
+  height: 35px;
+
+  background-color: #000;
+  cursor: pointer;
+  font-family: "Karnivore Lite";
+  color: #fff;
 }
-.dropdownContent button:active {
-  /* background-color: #1a1a1a; */
+.header__dropdownContent button:active {
   border-top: 1px solid;
   border-left: 1px solid;
   border-bottom: none;
   border-right: none;
 }
-.dropdownContent:active {
+.header__dropdownContent:active {
   border-top: 1px solid;
   border-left: 1px solid;
   border-bottom: none;
   border-right: none;
 }
-.dropdown:hover .dropdownContent {
+
+.header__dropdown:hover .header__dropdownContent {
+  pointer-events: all;
   opacity: 1;
   z-index: 1;
-  pointer-events: all;
 }
-.arrow {
+.header__arrow {
   transition: all 0.45s;
   font-size: 10px;
   cursor: default;
 }
-.dropdown:hover .arrow {
+.header__dropdown:hover .header__arrow {
   transform: rotate(90deg);
 }
