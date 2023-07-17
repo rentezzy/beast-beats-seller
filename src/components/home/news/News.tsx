@@ -8,7 +8,7 @@ interface IProps {
 const News: React.FC<IProps> = (props) => {
   return (
     <div ref={props.blockRef}>
-      <div className={styles.buner + " " + styles.news__buner}>
+      <div className={`${styles.buner} ${styles.news__buner}`}>
         <h1>NEWS</h1>
       </div>
       <NewsFeed />

@@ -5,8 +5,7 @@ import ArtistPost from "./ArtistPost";
 const Artists = () => {
   const { data, isLoading } = useGetArtistsFullQuery(null);
 
-  if (isLoading) return <LoadingElement />;
-  if (!data) return <h1>No artists here.</h1>;
+  if (isLoading || !data) return <LoadingElement />;
 
   return (
     <div className="container">

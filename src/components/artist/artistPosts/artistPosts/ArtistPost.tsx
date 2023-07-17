@@ -24,7 +24,7 @@ const ArtistPost: React.FC<IProps> = ({ post }) => {
         replyesHandler={replyesHandler}
         className={styles.artist__post_skew}
       />
-      {replyOpened && <ArtistReplyControls postId={post.originTo} />}
+      {replyOpened && <ArtistReplyControls postId={post._id} />}
       {replyesOpened && (
         <ArtistReplyesFeed postId={post._id} replyes={post.replyes} />
       )}
