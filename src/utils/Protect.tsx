@@ -1,13 +1,23 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
 import { useGetMeQuery } from "../store/slices/api/authApi";
+import { Roles } from "../types/auth.types";
 
-const Protect = () => {
+export const Protect = () => {
   const isLogined = useAppSelector((state) => state.appState.isLogined);
   const { isUninitialized } = useGetMeQuery(null);
-  const navigate = useNavigate();
-  if (!isLogined && !isUninitialized) navigate("/signup");
-  return <></>;
+  if (!isLogined && !isUninitialized) return <Navigate to={"/signup"} />;
+  return null;
 };
 
-export default Protect;
+interface IRestrictTo {
+  roles: Roles[];
+}
+
+export const RestrictTo: React.FC<IRestrictTo> = ({ roles }) => {
+  const isLogined = useAppSelector((state) => state.appState.isLogined);
+  const { data, isUninitialized } = useGetMeQuery(null);
+  if ((!isLogined && !isUninitialized) || !roles.includes(data!.role))
+    return <Navigate to={"/signup"} />;
+  return null;
+};
