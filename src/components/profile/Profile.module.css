@@ -23,11 +23,37 @@
   margin: 10px 10px 0 0;
   padding: 10px;
   border: 1px solid white;
-  
+
   min-height: 90vh;
   flex: 0 0 90%;
 }
 
+.profile__settings {
+  display: flex;
+}
+
+.profile__settings__image {
+  box-sizing: border-box;
+  padding: 5px;
+  flex: 0 0 20%;
+}
+.profile__settings__image img {
+  width: 100%;
+}
+.profile__settings__form {
+  box-sizing: border-box;
+  padding: 5px;
+  flex: 0 0 80%;
+}
+.profile__settings__btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.profile__settings__btns input {
+  margin-top: 10px;
+}
 .linkNav {
   color: white;
   text-decoration: none;

@@ -183,7 +183,7 @@ export const MyRange = (props: IRangeProps) => {
 };
 
 export const FileInput: React.FC<{ name: string }> = ({ name }) => {
-  const [field, meta, helpers] = useField(name);
+  const [field, , helpers] = useField(name);
   const [file, setFile] = useState<File | null>(null);
   return (
     <div className={styles.conrtols__file}>

@@ -22,7 +22,7 @@ export interface ILoginUser {
 export interface IUpdateUser {
   name?: string;
   email?: string;
-  photo?: Array<string>;
+  photo?: Array<File>;
 }
 
 export interface IGetSession {
