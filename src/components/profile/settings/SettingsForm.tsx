@@ -44,7 +44,9 @@ const SettingsForm = () => {
             <MyTextInput name="email" type="text" label="email" />
             <MyTextInput name="name" type="text" label="name" />
           </div>
-          <FileInput name="photo" />
+          <div className={styles.profile__settings__file}>
+            <FileInput name="photo" />
+          </div>
           <div>
             <MyButton type="submit">Save Settings</MyButton>
           </div>

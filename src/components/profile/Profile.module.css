@@ -65,3 +65,18 @@
 .linkNavActive {
   text-decoration: underline;
 }
+@media (max-width: 630px) {
+  .profile__settings {
+    flex-direction: column;
+  }
+  .profile__settings__file {
+    width: 100%;
+  }
+  .profile__settings__file div {
+    display: flex;
+    flex-direction: column;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}

@@ -2,7 +2,7 @@ import { createRef, useCallback, useEffect, useRef } from "react";
 
 import { useActions, useAppSelector } from "../../../store/hooks";
 import { useGetMusicListQuery } from "../../../store/slices/api/musicApi";
-
+import styles from "../Store.module.css";
 import MusicPost from "./MusicPost";
 import LoadingElement from "../../ui/LoadingElement";
 
@@ -44,7 +44,7 @@ const MusicFeed = () => {
   }, [lastItem, inSightHandler]);
 
   return (
-    <div>
+    <div className={styles.musicPost__list}>
       {musics.musics.map((music, index) => {
         if (index + 1 === musics.musics.length) {
           return <MusicPost music={music} ref={lastItem} key={music._id} />;

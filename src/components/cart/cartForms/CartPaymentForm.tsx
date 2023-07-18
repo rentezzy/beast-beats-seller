@@ -1,6 +1,7 @@
 import { useRef, useEffect, useCallback } from "react";
 
 import styles from "../Cart.module.css";
+import arrows from "../../../assests/arrows.svg";
 
 interface IProps {
   data: string;
@@ -34,7 +35,7 @@ const CartPaymentForm: React.FC<IProps> = ({ data, signature, isFetching }) => {
         <input type="hidden" name="signature" value={signature} />
       </form>
       <button className={styles.cart__paymentBtn} form="cart_form">
-        <img src="https://static.liqpay.ua/buttons/logo-white.svg" alt="" />
+        <img src={arrows} alt="" />
         <span>Purchase</span>
       </button>
     </div>

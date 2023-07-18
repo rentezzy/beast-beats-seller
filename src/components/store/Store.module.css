@@ -1,5 +1,6 @@
 .filterForm {
   margin: 10px 0 0 0;
+  padding: 0px 10px;
 }
 .filterForm h2 {
   margin: 0 0 10px 0;
@@ -18,6 +19,12 @@
 }
 .filterForm__selects div:last-child {
   padding: 0 0 0 5px;
+}
+
+/* MUSIC POSTS */
+
+.musicPost__list {
+  padding: 0 10px;
 }
 .musicPost {
   display: flex;
@@ -61,14 +68,15 @@
   cursor: pointer;
 }
 .musicPost__info {
-  flex: 0 0 60%;
+  flex: 0 1 60%;
   cursor: pointer;
   height: 100%;
   display: flex;
   align-items: center;
+  padding-left: 5px;
 }
 .musicPost__price {
-  flex: 0 0 20%;
+  flex: 0 1 20%;
 }
 .musicPost__button {
   display: flex;
@@ -101,6 +109,22 @@
   width: 25%;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .musicPost__image {
+    display: none;
+  }
+  .musicPost__button {
+    flex: 0 0 10%;
+  }
+}
+@media (max-width: 450px) {
+  .musicPost__button {
+    flex: 0 0 20%;
+  }
+}
+/* AUDIO PLAYER */
+
 .audio {
   position: fixed;
   bottom: 0;

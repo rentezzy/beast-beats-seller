@@ -80,6 +80,12 @@
   background-color: transparent;
   cursor: pointer;
 }
+@media (max-width: 767px) {
+  .song__info {
+    flex-direction: column;
+  }
+}
+
 /* DO NOT REMOVE */
 #song__info__audio__waveform {
 }
@@ -100,7 +106,6 @@
 .song__form__buttons {
   display: flex;
   align-items: center;
-  width: 20%;
   color: white;
 }
 /* SONG COMMENTS */
@@ -150,10 +155,11 @@
 }
 .song__comment__section {
   display: flex;
+  justify-content: space-between;
 }
 .song__comment__text {
+  box-sizing: border-box;
   padding: 0 0 0 5px;
-  flex: 0 0 97%;
 
   line-break: anywhere;
   word-wrap: break-word;
@@ -163,7 +169,6 @@
   justify-content: center;
   align-items: flex-end;
 
-  flex: 0 0 3%;
   font-size: 16px;
   cursor: pointer;
 }
