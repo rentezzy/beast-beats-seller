@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLogOutMutation } from "../../store/slices/api/authApi";
-import {
-  useAppSelector,
-  useGetMyAvatar,
-  useGetMyName,
-} from "../../store/hooks";
+import { useAppSelector, useGetMe } from "../../store/hooks";
 
 import styles from "./Header.module.css";
 import cartImage from "../../assests/cart.jpg";
@@ -12,15 +8,12 @@ import cartImage from "../../assests/cart.jpg";
 const HeaderUser = () => {
   const isLogined = useAppSelector((state) => state.appState.isLogined);
   const [logOut] = useLogOutMutation();
-  const { small } = useGetMyAvatar();
-  const name = useGetMyName();
+  const { small, name } = useGetMe();
   if (!isLogined) {
     return (
-      <div>
-        <Link to="signup" className={styles.header__link}>
-          BUY - SELL
-        </Link>
-      </div>
+      <Link to="signup" className={styles.header__link}>
+        BUY - SELL
+      </Link>
     );
   }
   return (

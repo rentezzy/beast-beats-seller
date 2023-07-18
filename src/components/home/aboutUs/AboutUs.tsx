@@ -9,7 +9,7 @@ import infoSynth from "../../../assests/homePageSynth.jpg";
 
 const AboutUs: React.FC<IProps> = (props) => {
   const navigate = useNavigate();
-  const clickHandler = () => {
+  const navigateHandler = () => {
     navigate("/signup");
   };
 
@@ -38,7 +38,7 @@ const AboutUs: React.FC<IProps> = (props) => {
         <div className={styles.aboutUs__buttonBlock}>
           <button
             className={`${styles.aboutUs__button} noselectText`}
-            onClick={clickHandler}
+            onClick={navigateHandler}
           >
             <h2>You are Welcome!</h2>
           </button>

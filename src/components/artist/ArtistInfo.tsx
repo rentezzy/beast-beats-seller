@@ -1,4 +1,4 @@
-import { useGetArtistInfo, useGetUsername } from "../../store/hooks";
+import { useGetArtist, useGetUser } from "../../store/hooks";
 import styles from "./Artist.module.css";
 
 interface IProps {
@@ -6,8 +6,8 @@ interface IProps {
 }
 
 const ArtistInfo: React.FC<IProps> = ({ id }) => {
-  const { about, big, poster } = useGetArtistInfo(id);
-  const username = useGetUsername(id);
+  const { about, big, poster } = useGetArtist(id);
+  const { username } = useGetUser(id);
 
   return (
     <div className={styles.artist}>

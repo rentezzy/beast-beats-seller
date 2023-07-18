@@ -23,8 +23,9 @@ import {
   useToggleArtistPostReplyLikeMutation,
   useToggleArtistPostReplyToReplyLikeMutation,
 } from "./slices/api/artistsApi";
-import { IArtistPost, IMusicComment } from "../types/api.types";
+import { IArtistPost, IMusicComment, INewsPost } from "../types/api.types";
 import { defaultArtist, defaultUser } from "../utils/functions";
+import { useToggleLikeNewsPostMutation } from "./slices/api/newsApi";
 
 const rootActions = {
   ...productActions,
@@ -121,7 +122,27 @@ export const useArtistPostReplyToReplyToggleLike = (post: IArtistPost) => {
   const [toggleLikeQuery] = useToggleArtistPostReplyToReplyLikeMutation();
   return useToggleLike({ _id: post._id, liked: post.liked }, toggleLikeQuery);
 };
-
+export const useNewsToggleLike = (post: INewsPost) => {
+  const { data } = useGetMeQuery(null);
+  const isLogined = useAppSelector((state) => state.appState.isLogined);
+  const [isLiked, setIsLiked] = useState(false);
+  const [toggleLikeQuery] = useToggleLikeNewsPostMutation();
+  const navigate = useNavigate();
+  const { toggleLike } = useActions();
+  if (isLogined && data && isLiked !== post.liked.includes(data._id)) {
+    setIsLiked(post.liked.includes(data._id));
+  }
+  const onLikeHandler = () => {
+    const toggleLikeHandler = () => {
+      toggleLikeQuery(post._id);
+      toggleLike([post._id, data!._id]);
+      setIsLiked((prev) => !prev);
+    };
+    return isLogined ? () => toggleLikeHandler() : () => navigate("/signup");
+  };
+  const likes = post.liked.length;
+  return { isLiked, likes, onLikeHandler };
+};
 const useToggleLike = (
   post: Pick<IArtistPost, "_id" | "liked">,
   toggleLikeQuery: (payload: { postId: string; userId: string }) => void
@@ -204,68 +225,4 @@ export const useArtistsPostReplyToReplyPagination = (
   if (data.data?.artistPostsReplyes) posts = data.data.artistPostsReplyes;
   const nextPage = () => setPage((page) => page + 1);
   return { posts, isAll, isFetching, nextPage };
-};
-
-//TO REMOVE
-export const useGetMyAvatar = () => {
-  const { data } = useGetMeQuery(null);
-  let small = `${process.env.REACT_APP_MAIN_API}images/img/default.png`;
-  let big = `${process.env.REACT_APP_MAIN_API}images/img/default.png`;
-
-  if (data && data.avatar !== "/default") {
-    small = `${process.env.REACT_APP_MAIN_API}images/img/${data._id}/${data.avatar}-small.png`;
-    big = `${process.env.REACT_APP_MAIN_API}images/img/${data._id}/${data.avatar}-big.png`;
-  }
-  return { small, big };
-};
-
-export const useGetMyName = () => {
-  const { data } = useGetMeQuery(null);
-  let name = "user";
-
-  if (data && data.name !== name) {
-    name = data.name;
-  }
-  return name;
-};
-
-export const useGetUsername = (userId: string) => {
-  const { data } = useGetUserQuery(userId);
-  const [username, setUsername] = useState("user");
-  if (data && data.username !== username) {
-    setUsername(data.username);
-  }
-  return username;
-};
-
-export const useGetUserAvatar = (userId: string) => {
-  const { data } = useGetUserQuery(userId);
-  const [avatar, setAvatar] = useState("/default");
-  if (data && data.avatar !== avatar) {
-    setAvatar(data.avatar);
-  }
-
-  return avatar === "/default"
-    ? `${process.env.REACT_APP_MAIN_API}images/img/default.png`
-    : `${process.env.REACT_APP_MAIN_API}images/img/${data?._id}/${avatar}-small.png`;
-};
-export const useGetArtistInfo = (artistId: string) => {
-  const { data } = useGetArtistFullQuery(artistId);
-  const [about, setAbout] = useState("About me.");
-
-  const [bigImg, setBigImg] = useState("/defaultBig.jpg");
-  const [posterImg, setPosterImg] = useState("/defaultPoster.jpg");
-  if (data && data.about !== about) {
-    setAbout(data.about);
-  }
-  if (data && data.avatar.big !== bigImg) {
-    setBigImg(data.avatar.big);
-  }
-  if (data && data.avatar.poster !== posterImg) {
-    setPosterImg(data.avatar.poster);
-  }
-
-  const big = `${process.env.REACT_APP_MAIN_API}images/artists/big/${bigImg}`;
-  const poster = `${process.env.REACT_APP_MAIN_API}images/artists/poster/${posterImg}`;
-  return { about, big, poster };
 };

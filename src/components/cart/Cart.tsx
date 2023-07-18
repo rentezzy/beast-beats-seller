@@ -1,6 +1,6 @@
 import { Protect } from "../../utils/Protect";
 import styles from "./Cart.module.css";
-import CartForm from "./CartForm";
+import CartForm from "./cartForms/CartForm";
 
 const Cart = () => {
   return (

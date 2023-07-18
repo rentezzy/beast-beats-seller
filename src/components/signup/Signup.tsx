@@ -4,11 +4,12 @@ import { Link, Navigate } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
 
 import styles from "./Signup.module.css";
-import home from "./../../assests/home.png";
 
 import { MyButton } from "../ui/Controls";
 import LoginForm from "./forms/LoginForm";
 import SignInForm from "./forms/SignupForm";
+
+import home from "./../../assests/home.png";
 
 const Signup = () => {
   const [choosenForm, chooseForm] = useState<"signup" | "login">("login");

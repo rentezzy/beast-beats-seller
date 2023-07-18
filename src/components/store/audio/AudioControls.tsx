@@ -1,7 +1,7 @@
 import { Howl, Howler } from "howler";
 import { useState, useEffect, MouseEvent } from "react";
 
-import { useAppSelector, useGetUsername } from "../../../store/hooks";
+import { useAppSelector, useGetUser } from "../../../store/hooks";
 
 import styles from "../Store.module.css";
 import back from "../../../assests/ui/player/back.png";
@@ -12,20 +12,6 @@ import speaker from "../../../assests/ui/player/speaker.png";
 import noSpeaker from "../../../assests/ui/player/noSpeaker.png";
 import { useGetMusicTime } from "../../../utils/utilhooks";
 
-interface IPropsImage {
-  image: string;
-}
-export const AudioImage: React.FC<IPropsImage> = ({ image }) => {
-  return (
-    <div className={styles.audio__image}>
-      <img
-        src={`${process.env.REACT_APP_MAIN_API}images/mus/${image}`}
-        alt=""
-      />
-    </div>
-  );
-};
-
 interface IPropsProgress {
   authorId: string;
   title: string;
@@ -34,7 +20,7 @@ interface IPropsProgress {
 }
 export const AudioProgress: React.FC<IPropsProgress> = (props) => {
   const [current, setCurrent] = useState(0);
-  const author = useGetUsername(props.authorId);
+  const { username } = useGetUser(props.authorId);
   const getTime = useGetMusicTime();
 
   useEffect(() => {
@@ -52,7 +38,7 @@ export const AudioProgress: React.FC<IPropsProgress> = (props) => {
   return (
     <div className={styles.audio__progress}>
       <div className={styles.audio__info}>
-        {author} - {props.title}
+        {username} - {props.title}
       </div>
       <div className={styles.audio__bar}>
         <input
@@ -71,6 +57,20 @@ export const AudioProgress: React.FC<IPropsProgress> = (props) => {
           <div>{getTime(props.howl.duration())}</div>
         </div>
       </div>
+    </div>
+  );
+};
+
+interface IPropsImage {
+  image: string;
+}
+export const AudioImage: React.FC<IPropsImage> = ({ image }) => {
+  return (
+    <div className={styles.audio__image}>
+      <img
+        src={`${process.env.REACT_APP_MAIN_API}images/mus/${image}`}
+        alt=""
+      />
     </div>
   );
 };

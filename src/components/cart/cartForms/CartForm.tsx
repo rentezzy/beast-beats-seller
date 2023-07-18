@@ -1,18 +1,18 @@
 import { Formik, Form } from "formik";
 import { useState } from "react";
 
-import { useGetMeQuery } from "../../store/slices/api/authApi";
-import { useGetSessionMutation } from "../../store/slices/api/userApi";
+import { useGetMeQuery } from "../../../store/slices/api/authApi";
+import { useGetSessionMutation } from "../../../store/slices/api/userApi";
 
-import styles from "./Cart.module.css";
+import styles from "../Cart.module.css";
 
-import CartSong from "./CartSong";
+import CartSong from "../cartSongs/CartSong";
 import CartPaymentForm from "./CartPaymentForm";
-import CartInfo from "./CartInfo";
+import CartInfo from "../CartInfo";
 
-import LoadingElement from "../ui/LoadingElement";
-import FormObserver from "../../utils/FormObserver";
-import { IGetSession } from "../../types/api.types";
+import LoadingElement from "../../ui/LoadingElement";
+import FormObserver from "../../../utils/FormObserver";
+import { IGetSession } from "../../../types/api.types";
 
 const CartForm = () => {
   const { data } = useGetMeQuery(null);

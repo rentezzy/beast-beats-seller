@@ -1,10 +1,10 @@
-import { useGetMyAvatar } from "../../../store/hooks";
+import { useGetMe } from "../../../store/hooks";
 
 import styles from "../Profile.module.css";
 import SettingsForm from "./SettingsForm";
 
 const Settings = () => {
-  const { small } = useGetMyAvatar();
+  const { small } = useGetMe();
   return (
     <div>
       <div className={styles.profile__settings}>

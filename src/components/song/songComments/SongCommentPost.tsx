@@ -1,10 +1,6 @@
 import { forwardRef } from "react";
 import { useGetTimeAt, useGetTimeFromNow } from "../../../utils/utilhooks";
-import {
-  useGetUserAvatar,
-  useGetUsername,
-  useCommentToggleLike,
-} from "../../../store/hooks";
+import { useGetUser, useCommentToggleLike } from "../../../store/hooks";
 
 import styles from "../Song.module.css";
 import { IMusicComment } from "../../../types/api.types";
@@ -17,15 +13,14 @@ interface IProps {
 const SongCommentPost = forwardRef<HTMLDivElement, IProps>(
   ({ comment, seek }, ref) => {
     const time = useGetTimeFromNow(comment.published);
-    const avatar = useGetUserAvatar(comment.author);
-    const username = useGetUsername(comment.author);
     const at = useGetTimeAt(comment.timestamp ? comment.timestamp : 0);
+    const { username, small } = useGetUser(comment.author);
     const { isLiked, onLikeHandler, likes } = useCommentToggleLike(comment);
 
     return (
       <div ref={ref} className={styles.song__comment__post}>
         <div className={styles.song__comment__image}>
-          <img src={avatar} className="noselectText" alt="" draggable="false" />
+          <img src={small} className="noselectText" alt="" draggable="false" />
         </div>
         <div className={styles.song__comment__info}>
           <div className={styles.song__comment__title}>

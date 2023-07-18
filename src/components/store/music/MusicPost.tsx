@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   useActions,
   useAppSelector,
-  useGetUsername,
+  useGetUser,
   useInCart,
 } from "../../../store/hooks";
 
@@ -26,7 +26,7 @@ const MusicPost = forwardRef<HTMLDivElement, IProps>(({ music }, ref) => {
   const currentTrack = useAppSelector((state) => state.musics.currentTrack);
 
   const { inCart, cartHandler } = useInCart(music._id);
-  const author = useGetUsername(music.authorId);
+  const { username } = useGetUser(music.authorId);
   const navigate = useNavigate();
 
   const playTrackHandler = () => {
@@ -49,7 +49,7 @@ const MusicPost = forwardRef<HTMLDivElement, IProps>(({ music }, ref) => {
         />
       </div>
       <div className={styles.musicPost__info} onClick={navigateHandler}>
-        {author} - {music.title}
+        {username} - {music.title}
       </div>
       <div className={styles.musicPost__price}>
         {music.price === 0 ? "Free" : `${music.price}$`}

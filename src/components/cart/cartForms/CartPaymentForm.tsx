@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback } from "react";
 
-import styles from "./Cart.module.css";
+import styles from "../Cart.module.css";
 
 interface IProps {
   data: string;
