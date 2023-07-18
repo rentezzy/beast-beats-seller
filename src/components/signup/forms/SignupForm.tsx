@@ -1,9 +1,17 @@
-import { Form, Formik } from "formik";
-import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { MyButton, MyTextInput } from "../../ui/Controls";
+import { Form, Formik } from "formik";
+
+import { useNavigate } from "react-router-dom";
 import { usePostSignupMutation } from "../../../store/slices/api/authApi";
+
 import styles from "./../Signup.module.css";
+import { MyButton, MyTextInput } from "../../ui/Controls";
+import {
+  emailYup,
+  nameYup,
+  passwordYup,
+  usernameYup,
+} from "../../../utils/validators";
 
 const SignInForm = () => {
   const [signup, { error, isLoading, isSuccess }] = usePostSignupMutation();
@@ -25,35 +33,13 @@ const SignInForm = () => {
           signup(values);
         }}
         validationSchema={Yup.object({
-          name: Yup.string()
-            .min(3, "Min length is 3 characters")
-            .max(16, "Max length is 16 characters")
-            .matches(
-              /^[aA-zZ\s]+$/,
-              "Only alphabets are allowed for this field"
-            )
-            .required(),
-          username: Yup.string()
-            .min(3, "Min length is 3 characters")
-            .max(16, "Max length is 16 characters")
-            .matches(
-              /^[a-zA-Z0-9_.-]*$/,
-              "Only alphabets and numbers are allowed for this field"
-            )
-            .required(),
-          email: Yup.string()
-            .email("Wrong email")
-            .min(3, "Min length is 3 characters")
-            .max(32, "Max length is 32 characters")
-            .required(),
-          password: Yup.string()
-            .min(8, "Min length is 8 characters")
-            .max(32, "Max length is 32 characters")
-            .required(),
-          passwordConfirm: Yup.string()
-            .min(8, "Min length is 8 characters")
-            .max(32, "Max length is 32 characters")
-            .required("password confirm is a required field"),
+          name: nameYup.required(),
+          username: usernameYup.required(),
+          email: emailYup.required(),
+          password: passwordYup.required(),
+          passwordConfirm: passwordYup.required(
+            "password confirm is a required field"
+          ),
         })}
       >
         <Form className={styles.form__controls_signup}>

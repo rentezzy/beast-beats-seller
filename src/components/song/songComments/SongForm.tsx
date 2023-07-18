@@ -8,6 +8,7 @@ import { useAppSelector } from "../../../store/hooks";
 import styles from "../Song.module.css";
 import { Checkbox, MyButton, MyTextInput } from "../../ui/Controls";
 import { SeekProps } from "../../../types/home.types";
+import { textYup } from "../../../utils/validators";
 
 interface IProps {
   musicID: string;
@@ -36,10 +37,7 @@ const SongForm: React.FC<IProps> = ({ seek, musicID }) => {
           }
         }}
         validationSchema={Yup.object({
-          text: Yup.string()
-            .min(3, "Min length is 3 characters")
-            .max(300, "Max length is 300 characters")
-            .required("Commentary text is required"),
+          text: textYup(3, 300).required("Commentary text is required"),
           timestamp: Yup.boolean().required(),
         })}
       >

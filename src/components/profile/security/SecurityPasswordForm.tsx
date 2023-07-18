@@ -4,6 +4,7 @@ import { useChangePasswordMutation } from "../../../store/slices/api/authApi";
 import styles from "../Profile.module.css";
 import { MyButton, MyTextInput } from "../../ui/Controls";
 import { IPasswordBody } from "../../../types/api.types";
+import { passwordYup } from "../../../utils/validators";
 
 const SecurityPasswordForm = () => {
   const [changePassword, { error, isSuccess, reset }] =
@@ -38,18 +39,9 @@ const SecurityPasswordForm = () => {
           }
         }}
         validationSchema={Yup.object({
-          password: Yup.string()
-            .min(8, "Min length is 8 characters")
-            .max(32, "Max length is 32 characters")
-            .required(),
-          passwordConfirm: Yup.string()
-            .min(8, "Min length is 8 characters")
-            .max(32, "Max length is 32 characters")
-            .required(),
-          passwordCurrent: Yup.string()
-            .min(8, "Min length is 8 characters")
-            .max(32, "Max length is 32 characters")
-            .required(),
+          password: passwordYup.required(),
+          passwordConfirm: passwordYup.required(),
+          passwordCurrent: passwordYup.required(),
         })}
       >
         <Form>

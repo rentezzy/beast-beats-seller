@@ -15,12 +15,12 @@ import ForArtist from "./components/profile/forArtist/ForArtist";
 export const router = createBrowserRouter([
   {
     path: "*",
-    element: <Navigate to={"/home"} />,
+    element: <Navigate to={"/home"} replace={true}/>,
   },
   {
     path: "/",
     index: true,
-    element: <Navigate to={"/home"} />,
+    element: <Navigate to={"/home"} replace={true}/>,
   },
   {
     path: "/",
