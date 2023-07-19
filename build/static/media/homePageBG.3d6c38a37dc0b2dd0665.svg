@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 900" width="1300" height="900">
+	<title>Новый проект</title>
+	<style>
+		.s0 { fill: none;stroke: #ffffff } 
+		.s1 { fill: #878787 } 
+	</style>
+	<path id="форма 5 copy" class="s0" d="m0 2.9v-1h139.3v1zm0.2-0.2h1v138.9h-1zm11.8 9.1v-1h139.4v1zm0.2-0.2h1v138.9h-1zm1286.8-10.9h1v138.9h-1zm0.2 0.2v1h-139.4v-1zm-14.2 9.7h1v138.9h-1zm0.2 0.2v1h-139.3v-1zm14.4 887.2v1h-139.4v-1zm-0.1 0.2h-1v-138.8h1zm-11.8-9.2v1h-139.4v-1zm-0.2 0.2h-1v-138.8h1zm-1285.8 9.8h-1v-138.8h1zm-0.2-0.2v-1h139.4v1zm12.1-9.8h-1v-138.8h1zm-0.1-0.2v-1h139.3v1z"/>
+	<path id="форма 4 copy" class="s1" d="m566.1 452v-1h166.9v1zm82.9-83.7h1v166.3h-1z"/>
+</svg>
