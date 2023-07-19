@@ -5,6 +5,7 @@ import AboutUs from "./aboutUs/AboutUs";
 import Faq from "./faq/Faq";
 import News from "./news/News";
 import ScrollTop from "../ui/ScrollTop";
+import Footer from "./footer/Footer";
 
 const Home = () => {
   const aboutUs = useRef<HTMLDivElement>(null);
@@ -17,6 +18,7 @@ const Home = () => {
       <AboutUs blockRef={aboutUs} />
       <Faq blockRef={faq} />
       <News blockRef={newsFeed} />
+      <Footer />
       <ScrollTop />
     </div>
   );
