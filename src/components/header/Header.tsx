@@ -1,12 +1,12 @@
-import HeaderNavigation from "./HeaderNavigation";
-import HeaderUser from "./HeaderUser";
 import styles from "./Header.module.css";
+import HeaderUser from "./HeaderUser";
+import HeaderNavigation from "./HeaderNavigation";
 
 const Header = () => {
   return (
     <header className={styles.header}>
       <div className="container">
-        <div className={styles.headerContent}>
+        <div className={styles.header__content}>
           <HeaderNavigation />
           <HeaderUser />
         </div>

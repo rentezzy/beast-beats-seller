@@ -20,7 +20,7 @@
 }
 .cart__song__checkbox {
   position: relative;
-  padding: 12px 10px 0 12px;
+  padding: 12px 10px 0 22px;
   z-index: 0;
 }
 .cart__song__checkbox::before {
@@ -31,6 +31,7 @@
   bottom: 0;
   right: 0;
 
+  margin-left: 10px;
   border-left: 2px solid white;
   border-bottom: 2px solid white;
 
@@ -82,7 +83,8 @@
   display: flex;
   align-items: center;
 
-  flex: 0 0 65%;
+  margin-left: 5px;
+  flex: 0 1 65%;
   height: 100%;
 
   cursor: pointer;
@@ -151,4 +153,24 @@
   color: #fff;
   text-align: end;
   font-family: "Quicksand", sans-serif;
+}
+@media (max-width: 767px) {
+  .cart {
+    flex-direction: column;
+  }
+}
+@media (max-width: 630px) {
+  .cartSong__button {
+    flex: 0 0 10%;
+  }
+}
+@media (max-width: 450px) {
+  .cartSong__button {
+    flex: 0 0 15%;
+  }
+}
+@media (max-width: 380px) {
+  .cartSong__image {
+    display: none;
+  }
 }

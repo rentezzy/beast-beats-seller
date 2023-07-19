@@ -9,7 +9,7 @@ const Faq: React.FC<IProps> = (props) => {
 
   return (
     <div className={styles.faq} ref={props.blockRef}>
-      <div className={styles.faq__buner + " " + styles.buner}>
+      <div className={`${styles.faq__buner} ${styles.buner}`}>
         <h1>FAQ</h1>
       </div>
       <div className="container">

@@ -4,7 +4,7 @@ import { useActions } from "../../../store/hooks";
 
 import styles from "../Home.module.css";
 import NewsPost from "./NewsPost"
-import { INewsPost } from "../../../types/auth.types";
+import { INewsPost } from "../../../types/api.types";
 
 interface IProps {
   posts: Array<INewsPost>;

@@ -27,7 +27,11 @@ const CartInfo: React.FC<IProps> = ({ values }) => {
       <hr />
       <div className={styles.cart__totalList}>
         {selected.map((songId) => (
-          <CartInfoElement songId={songId} summary={summaryHandler} />
+          <CartInfoElement
+            songId={songId}
+            summary={summaryHandler}
+            key={songId}
+          />
         ))}
       </div>
       <hr />

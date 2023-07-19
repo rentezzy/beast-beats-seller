@@ -9,6 +9,7 @@ import {
 import styles from "../Artist.module.css";
 import { MyButton, MyTextInput } from "../../ui/Controls";
 import { useAppSelector } from "../../../store/hooks";
+import { textYup } from "../../../utils/validators";
 
 export const ArtistPostControls = () => {
   const [newPost, data] = useCreateArtistPostsMutation();
@@ -69,10 +70,7 @@ const ArtistForm: React.FC<IFormProps> = ({
         resetForm({ values: { text: "" } });
       }}
       validationSchema={Yup.object({
-        text: Yup.string()
-          .min(3, "Min length is 3 characters")
-          .max(800, "Max length is 800 characters")
-          .required("Commentary text is required"),
+        text: textYup(3, 800).required("Commentary text is required"),
       })}
     >
       <Form>

@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
 import { useGetMeQuery } from "../store/slices/api/authApi";
-import { Roles } from "../types/auth.types";
+import { Roles } from "../types/api.types";
 
 export const Protect = () => {
   const isLogined = useAppSelector((state) => state.appState.isLogined);

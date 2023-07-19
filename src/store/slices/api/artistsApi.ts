@@ -8,7 +8,7 @@ import {
   IArtistPostReplyGetPayload,
   IArtistPostReplyGetResponse,
   IArtistPostReplyPostPayload,
-} from "../../../types/auth.types";
+} from "../../../types/api.types";
 
 export const artistsApi = api.injectEndpoints({
   endpoints: (builder) => ({

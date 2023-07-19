@@ -7,6 +7,7 @@ import { useUpdateUserInfoMutation } from "../../../store/slices/api/userApi";
 import styles from "../Profile.module.css";
 import LoadingElement from "../../ui/LoadingElement";
 import { FileInput, MyButton, MyTextInput } from "../../ui/Controls";
+import { emailYup, nameYup } from "../../../utils/validators";
 
 interface IValues {
   name: string;
@@ -33,17 +34,8 @@ const SettingsForm = () => {
         initialValues={{ name: data.name, email: data.email, photo: [] }}
         onSubmit={onSubmit}
         validationSchema={Yup.object({
-          name: Yup.string()
-            .min(3, "Min length is 3 characters")
-            .max(16, "Max length is 16 characters")
-            .matches(
-              /^[aA-zZ\s]+$/,
-              "Only alphabets are allowed for this field"
-            ),
-          email: Yup.string()
-            .email("Wrong email")
-            .min(3, "Min length is 3 characters")
-            .max(32, "Max length is 32 characters"),
+          name: nameYup,
+          email: emailYup,
           photo: Yup.array().max(1, "only 1 file is avaliable"),
         })}
       >
@@ -52,7 +44,9 @@ const SettingsForm = () => {
             <MyTextInput name="email" type="text" label="email" />
             <MyTextInput name="name" type="text" label="name" />
           </div>
-          <FileInput name="photo" />
+          <div className={styles.profile__settings__file}>
+            <FileInput name="photo" />
+          </div>
           <div>
             <MyButton type="submit">Save Settings</MyButton>
           </div>

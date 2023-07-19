@@ -1,24 +1,21 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { useAppSelector } from "../../store/hooks";
 
 import styles from "./Signup.module.css";
-import home from "./../../assests/home.png";
 
 import { MyButton } from "../ui/Controls";
 import LoginForm from "./forms/LoginForm";
 import SignInForm from "./forms/SignupForm";
 
+import home from "./../../assests/home.png";
+
 const Signup = () => {
-  
   const [choosenForm, chooseForm] = useState<"signup" | "login">("login");
-  const navigate = useNavigate();
   const isLogined = useAppSelector((state) => state.appState.isLogined);
 
-  if (isLogined) {
-    navigate("/home");
-  }
+  if (isLogined) return <Navigate to="/home" />;
 
   return (
     <div className={styles.signup}>

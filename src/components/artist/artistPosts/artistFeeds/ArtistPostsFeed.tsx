@@ -12,7 +12,7 @@ interface IProps {
 const ArtistPostsFeed: React.FC<IProps> = ({ id }) => {
   const { posts, isAll, isFetching, nextPage } = useArtistsPostPagination(id);
   return (
-    <div>
+    <div className={styles.artist__feed}>
       {posts && posts.map((post) => <ArtistPost post={post} key={post._id} />)}
       {isAll || (
         <div className={styles.artist__feed__button}>

@@ -2,7 +2,7 @@ import {
   IGetSession,
   ILoginUser,
   IUpdateUser,
-} from "../../../types/auth.types";
+} from "../../../types/api.types";
 import { api } from "../api";
 
 export const userApi = api.injectEndpoints({

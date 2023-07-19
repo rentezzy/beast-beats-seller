@@ -28,10 +28,34 @@ body {
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1300px;
   margin: 0px auto;
+  padding: 0px 10px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
+@media (max-width: 1320px) {
+  .container {
+    max-width: 970px;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    max-width: 750px;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    max-width: none;
+  }
+}
 .main {
   background-image: url("./assests/background.png");
   min-height: 100vh;

@@ -1,9 +1,9 @@
-import { useGetUsername } from "../../../store/hooks";
+import { useGetUser } from "../../../store/hooks";
 import { useGetTimePublished } from "../../../utils/utilhooks";
 
 import styles from "../Song.module.css";
 import SongWave from "./SongWave";
-import { IMusicInfo } from "../../../types/auth.types";
+import { IMusicInfo } from "../../../types/api.types";
 import { SeekProps } from "../../../types/home.types";
 
 interface IProps {
@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const SongInfo: React.FC<IProps> = ({ music, seek }) => {
-  const author = useGetUsername(music.authorId);
+  const { username } = useGetUser(music.authorId);
   const date = useGetTimePublished(music.published);
   return (
     <div className={styles.song__info}>
@@ -24,7 +24,7 @@ const SongInfo: React.FC<IProps> = ({ music, seek }) => {
       </div>
       <div className={styles.song__info__text}>
         <h2>
-          {author} - {music.title}
+          {username} - {music.title}
         </h2>
         <div className={styles.song__info__subtext}>
           <div>Genre: {music.genre}</div>

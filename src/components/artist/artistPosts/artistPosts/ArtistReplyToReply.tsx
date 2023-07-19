@@ -5,7 +5,7 @@ import styles from "../../Artist.module.css";
 import ArtistCard from "./ArtistCard";
 import ArtistReplyToReplyFeed from "./../artistFeeds/ArtistReplyesToReplyesFeed";
 import { ArtistReplyControls } from "./../ArtistPostControls";
-import { IArtistPostReply } from "../../../../types/auth.types";
+import { IArtistPostReply } from "../../../../types/api.types";
 
 interface IProps {
   post: IArtistPostReply;

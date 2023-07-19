@@ -1,9 +1,9 @@
-import { useGetUsername, useRedirectToStore } from "../../store/hooks";
+import { useNavigate } from "react-router-dom";
+import { useGetUser, useRedirectToStore } from "../../store/hooks";
 
 import styles from "./Artists.module.css";
-import { IArtist } from "../../types/auth.types";
+import { IArtist } from "../../types/api.types";
 import { MyButton } from "../ui/Controls";
-import { useNavigate } from "react-router-dom";
 
 interface IProps {
   artist: IArtist;
@@ -12,7 +12,7 @@ interface IProps {
 
 const ArtistPost: React.FC<IProps> = ({ artist, pos }) => {
   const musicHandler = useRedirectToStore(artist.user);
-  const username = useGetUsername(artist.user);
+  const {username} = useGetUser(artist.user);
   const navigate = useNavigate();
 
   const profileHandler = () => navigate(`/artist/${artist.user}`);

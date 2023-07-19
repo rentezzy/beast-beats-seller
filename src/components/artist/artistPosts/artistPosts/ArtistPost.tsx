@@ -5,7 +5,7 @@ import styles from "../../Artist.module.css";
 import ArtistReplyesFeed from "../artistFeeds/ArtistReplyesFeed";
 import ArtistCard from "./ArtistCard";
 import { ArtistReplyControls } from "../ArtistPostControls";
-import { IArtistPost } from "../../../../types/auth.types";
+import { IArtistPost } from "../../../../types/api.types";
 
 interface IProps {
   post: IArtistPost;
@@ -24,7 +24,7 @@ const ArtistPost: React.FC<IProps> = ({ post }) => {
         replyesHandler={replyesHandler}
         className={styles.artist__post_skew}
       />
-      {replyOpened && <ArtistReplyControls postId={post.originTo} />}
+      {replyOpened && <ArtistReplyControls postId={post._id} />}
       {replyesOpened && (
         <ArtistReplyesFeed postId={post._id} replyes={post.replyes} />
       )}

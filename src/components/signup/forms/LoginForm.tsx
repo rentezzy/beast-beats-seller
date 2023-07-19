@@ -1,9 +1,11 @@
 import { Form, Formik } from "formik";
-import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { MyButton, MyTextInput } from "../../ui/Controls";
+import { useNavigate } from "react-router-dom";
 import { usePostLoginMutation } from "../../../store/slices/api/authApi";
+
 import styles from "./../Signup.module.css";
+import { MyButton, MyTextInput } from "../../ui/Controls";
+import { passwordYup, usernameYup } from "../../../utils/validators";
 
 const LoginForm = () => {
   const [login, { error, isLoading, isSuccess }] = usePostLoginMutation();
@@ -19,14 +21,8 @@ const LoginForm = () => {
           login({ password: values.password, username: values.username });
         }}
         validationSchema={Yup.object({
-          username: Yup.string()
-            .min(3, "Min length is 3 characters")
-            .max(16, "Max length is 16 characters")
-            .required(),
-          password: Yup.string()
-            .min(8, "Min length is 8 characters")
-            .max(32, "Max length is 32 characters")
-            .required(),
+          username: usernameYup.required(),
+          password: passwordYup.required(),
         })}
       >
         <Form className={styles.form__controls_login}>

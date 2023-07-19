@@ -1,17 +1,18 @@
-/* LOADPAGE */
+/* LOADINGPAGE */
 
-.page {
-  height: 100vh;
-  background: #000;
+.loadingPage {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+
+  background: #000;
   opacity: 1;
   transition: all 0.75s;
 }
-.delete {
-  opacity: 0;
+.loadingPage_delete {
   margin-top: -100vh;
+  opacity: 0;
 }
 
 /* LOADELEMENT */
@@ -33,22 +34,25 @@
   color: white;
 }
 .controls__input {
+  box-sizing: border-box;
+
   margin-top: 5px;
-  background-color: #000;
   border: 1px solid #fff;
-  color: #fff;
+
+  width: 100%;
   height: 25px;
+
+  background-color: #000;
+  color: #fff;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 18px;
-  box-sizing: border-box;
 }
 .controls__input_error {
   box-shadow: inset 3px 3px 35px -6px rgba(209, 31, 31, 0.438);
 }
 .controls__input:focus {
-  outline: none;
-  /* border: 1px solid #fff; */
   border-bottom: 4px double #fff;
+  outline: none;
 }
 .controls__error {
   align-self: center;
@@ -59,18 +63,20 @@
   height: 100%;
 }
 .controls__button {
+  margin: 0px;
+  border: 1px solid #fff;
+
   width: 100%;
   height: 100%;
+
+  background-color: #000;
   color: #fff;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  margin: 0px;
-  background-color: #000;
-  border: 1px solid #fff;
   cursor: pointer;
 }
 .controls__block select {
-  background-color: black;
   border: 1px solid white;
+  background-color: black;
   color: white;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
@@ -149,35 +155,41 @@
 }
 
 .controls__range {
+  position: relative;
+  margin: 10px 0 10px 0px;
+
   width: 100%;
   height: 2px;
   background-color: #fff;
-  position: relative;
-  margin: 10px 0 10px 0px;
 }
 
 .controls__range__from {
-  width: 10px;
-  height: 10px;
-  border: 2px solid white;
   position: absolute;
   top: -6px;
+
+  border: 2px solid white;
+
+  width: 10px;
+  height: 10px;
   cursor: pointer;
 }
 .controls__range__to {
-  width: 10px;
-  height: 10px;
-  border: 2px solid white;
   position: absolute;
   top: -6px;
-  cursor: pointer;
   right: 0px;
+
+  border: 2px solid white;
+
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
 }
 .conrtols__range__inputs {
   display: flex;
   justify-content: space-between;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
   color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 18px;
 }
 
@@ -192,12 +204,14 @@
   display: inline-block;
   padding: 10px;
   border: 1px solid white;
+  width: 100%;
+  box-sizing: border-box;
 }
 .conrtols__file input {
   position: absolute;
   width: 0.1px;
   height: 0.1px;
-  
+
   opacity: 0;
   overflow: hidden;
   z-index: -1;
@@ -205,23 +219,28 @@
 .conrtols__file div {
   margin-left: 10px;
 }
-
+@media (hover: none) {
+  .controls__range {
+    display: none;
+  }
+}
 /* TICKER */
 .ticker-wrapper {
-  overflow: hidden;
-  height: 30px;
   position: relative;
   border-bottom: 1px solid white;
+  height: 30px;
+  overflow: hidden;
 }
 .ticker-wrapper div {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  overflow: hidden;
   width: 100%;
   height: 30px;
+
   transform: translate(100%, 0);
+  overflow: hidden;
 }
 .ticker-wrapper div p {
   background: radial-gradient(
@@ -265,16 +284,29 @@
     transform: translate(-100%, 0);
   }
 }
-
+@media (max-width: 1520px) {
+  .ticker-wrapper .ticker-wrapper__first-half p:nth-child(odd),
+  .ticker-wrapper .ticker-wrapper__second-half p:nth-child(even) {
+    display: none;
+  }
+}
+@media (max-width: 1300px) {
+  .ticker-wrapper {
+    display: none;
+  }
+}
 /* ScrollTopBtn */
 .scrollTop {
-  border: 1px solid white;
-  color: white;
   position: fixed;
   bottom: 20px;
   right: 20px;
-  font-size: 30px;
+
+  border: 1px solid white;
   padding: 0px 10px;
+  border-radius: 5px;
+
+  color: white;
+  font-size: 30px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -282,7 +314,6 @@
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  border-radius: 5px;
 }
 .scrollTop_noDisplay {
   display: none;

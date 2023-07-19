@@ -6,7 +6,7 @@ import {
   IMusicCommentBody,
   IMusicCommentResponse,
   IMusicCommentGetPayload,
-} from "../../../types/auth.types";
+} from "../../../types/api.types";
 import { api } from "../api";
 
 export const musicApi = api.injectEndpoints({
@@ -47,6 +47,21 @@ export const musicApi = api.injectEndpoints({
       }) => {
         return res.data;
       },
+      serializeQueryArgs: ({ queryArgs }) => {
+        return queryArgs.currentSong;
+      },
+      merge: (currentCache, newItems, { arg }) => {
+        if (
+          arg.currentPage * 10 === currentCache.musicComments.length ||
+          currentCache.musicComments.length === newItems.totalCount
+        )
+          return;
+        currentCache.musicComments.push(...newItems.musicComments);
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg?.currentPage !== previousArg?.currentPage;
+      },
+      providesTags: ["MusicComment"],
     }),
 
     createNewMusicComment: builder.mutation<any, IMusicCommentBody>({
@@ -60,11 +75,46 @@ export const musicApi = api.injectEndpoints({
       }),
     }),
 
-    toggleLikeMusicComment: builder.mutation<null, string>({
-      query: (currentSong) => ({
-        url: `musicComment/like/${currentSong}`,
+    toggleLikeMusicComment: builder.mutation<
+      null,
+      { postId: string; userId: string }
+    >({
+      query: (payload) => ({
+        url: `musicComment/like/${payload.postId}`,
         method: "POST",
       }),
+      onQueryStarted(
+        { postId, userId },
+        { dispatch, queryFulfilled, getState }
+      ) {
+        for (const {
+          endpointName,
+          originalArgs,
+        } of musicApi.util.selectInvalidatedBy(getState(), [
+          { type: "MusicComment" },
+        ])) {
+          if (endpointName !== "getMusicCommentsList") continue;
+          const patchResult = dispatch(
+            musicApi.util.updateQueryData(
+              "getMusicCommentsList",
+              originalArgs,
+              (draft) => {
+                const post = draft.musicComments.find(
+                  (post) => post._id === postId
+                );
+                if (!post) return;
+                const liked = post.liked.includes(userId);
+                if (liked) {
+                  post.liked.splice(post.liked.indexOf(userId), 1);
+                } else {
+                  post.liked.push(userId);
+                }
+              }
+            )
+          );
+          queryFulfilled.catch(patchResult.undo);
+        }
+      },
     }),
   }),
 });

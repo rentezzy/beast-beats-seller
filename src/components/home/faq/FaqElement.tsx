@@ -4,7 +4,7 @@ import styles from "../Home.module.css";
 import { IFaqProps } from "../../../types/home.types";
 
 const FaqElement: React.FC<IFaqProps> = (props) => {
-  const [isShowed, toggleShow] = useState<boolean>(false);
+  const [isShowed, toggleShow] = useState(false);
 
   return (
     <div className={styles.faqElement}>

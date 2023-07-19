@@ -4,7 +4,7 @@ import {
   createApi,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
-import { IError } from "../../types/auth.types";
+import { IError } from "../../types/api.types";
 
 export const api = createApi({
   reducerPath: "auth",
@@ -28,6 +28,7 @@ export const api = createApi({
     "ArtistPost",
     "ArtistPostReply",
     "ArtistPostReplyToReply",
+    "MusicComment",
   ],
   endpoints: () => ({}),
 });

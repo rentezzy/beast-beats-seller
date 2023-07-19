@@ -1,7 +1,7 @@
-import { useGetMusicQuery } from "../../store/slices/api/musicApi";
-import styles from "./Cart.module.css";
+import { useGetMusicQuery } from "../../../store/slices/api/musicApi";
+import styles from "../Cart.module.css";
 import CartSongPost from "./CartSongPost";
-import { Checkbox } from "../ui/Controls";
+import { Checkbox } from "../../ui/Controls";
 
 interface IProps {
   songId: string;

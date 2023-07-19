@@ -1,10 +1,11 @@
 .signup {
-  background-color: #000;
-  min-height: 100vh;
-  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+
+  background-color: #000;
+  color: #fff;
 }
 .form {
   width: 300px;
@@ -24,12 +25,14 @@
 .form__controls_signup {
   display: grid;
   grid-template-rows: auto 1fr auto;
+
   height: 100%;
   width: 100%;
 }
 .form__controls_login {
   display: grid;
   grid-template-rows: 1fr auto 1fr auto;
+
   height: 100%;
   width: 100%;
 }
@@ -44,10 +47,10 @@
   width: 150px;
 }
 .home {
-  width: 30px;
   position: absolute;
   left: 10px;
   top: 10px;
+  width: 30px;
 }
 .home_img {
   width: 30px;

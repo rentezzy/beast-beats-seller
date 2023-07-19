@@ -1,12 +1,18 @@
-import loader from "../../assests/loader.svg";
 import styles from "./ui.module.css";
+import loader from "../../assests/loader.svg";
 
-const LoadingPage = (props: { isInitialized: boolean }) => {
+interface IProps {
+  isInitialized: boolean;
+}
+
+const LoadingPage: React.FC<IProps> = ({ isInitialized }) => {
+  const className = `${styles.loadingPage} ${
+    isInitialized && styles.loadingPage_delete
+  }`;
+
   return (
-    <div
-      className={`${styles.page} ${props.isInitialized ? styles.delete : ""}`}
-    >
-      <img className={styles.image} src={loader} alt="loader" />
+    <div className={className}>
+      <img src={loader} alt="loader" />
     </div>
   );
 };

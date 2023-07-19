@@ -45,11 +45,14 @@
   box-sizing: border-box;
   padding: 15px;
 
-  flex: 0 0 80%;
+  flex: 1 0 80%;
   font-family: "Quicksand", sans-serif;
 }
 
 /* ARTIST POSTS */
+.artist__feed {
+  padding: 0px 20px;
+}
 .artist__feed__button {
   margin: 5px auto;
 
@@ -99,7 +102,6 @@
 }
 .artist__post_99 {
   width: 99%;
-  min-width: 800px;
 }
 .artist__post_95 {
   width: 95%;
@@ -116,7 +118,7 @@
 }
 .artist__post__info {
   display: flex;
-  flex: 0 0 95%;
+  flex: 1 0 95%;
   flex-direction: column;
   box-sizing: border-box;
   padding: 5px;
@@ -133,7 +135,7 @@
   flex: 0 1 80%;
 }
 .artist__post__text div:first-child {
-  flex: 0 0 95%;
+  flex: 0 1 85%;
 }
 .artist__post__text div:last-child {
   cursor: pointer;
@@ -143,7 +145,6 @@
   justify-self: end;
   align-self: flex-end;
   flex: 0 0 5%;
-  width: 20%;
 }
 .artist__post_liked {
   color: pink;
@@ -155,12 +156,23 @@
   align-items: flex-start;
 }
 .artist__form__form__input {
-  flex: 0 0 95%;
+  flex: 0 1 90%;
+}
+.artist__form__form__input div > input {
+  width: 100%;
 }
 .artist__form__form__buttons {
   padding: 5px 0 0 0;
-  flex: 0 0 5%;
+  flex: 1 0 10%;
 }
 .artist__form__form__buttons div {
   height: 25px;
+}
+@media (max-width: 630px) {
+  .artist__image {
+    display: none;
+  }
+  .artist__post__image {
+    display: none;
+  }
 }

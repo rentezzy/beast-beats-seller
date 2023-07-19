@@ -1,5 +1,5 @@
-import styles from "./ui.module.css";
 import { useEffect, useState } from "react";
+import styles from "./ui.module.css";
 
 const ScrollTop = () => {
   const [isDisplayed, setDisplay] = useState<boolean>(false);
@@ -13,8 +13,6 @@ const ScrollTop = () => {
       document.removeEventListener("scroll", onScrollHandler);
     };
   }, []);
-
-  //   if (window.scrollY === 0) return <div></div>;
 
   return (
     <div
