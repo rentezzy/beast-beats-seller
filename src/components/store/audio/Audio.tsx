@@ -29,9 +29,10 @@ const Audio = () => {
     });
     audio.play();
     setHowl(audio);
+    console.log(currentTrack);
 
     return () => {
-      audio.stop();
+      audio.unload();
       setHowl(undefined);
     };
   }, [currentTrack]);

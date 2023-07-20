@@ -13,6 +13,7 @@ export const authApi = api.injectEndpoints({
       transformResponse: (res: { data: { user: ILoginUser } }) => {
         return res.data.user;
       },
+      transformErrorResponse: (res, meta, arg): string => res.data.message,
       providesTags: ["User"],
     }),
     postLogin: builder.mutation<ILoginUser, ILoginBody>({

@@ -7,7 +7,7 @@ import {
 import { IError } from "../../types/api.types";
 
 export const api = createApi({
-  reducerPath: "auth",
+  reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_MAIN_API,
     headers: {
