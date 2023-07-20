@@ -29,7 +29,6 @@ const Audio = () => {
     });
     audio.play();
     setHowl(audio);
-    console.log(currentTrack);
 
     return () => {
       audio.unload();
