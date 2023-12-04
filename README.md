@@ -2,10 +2,9 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rentezzy/beast-beats-seller)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/rentezzy/beast-beats-seller)
 [![Hits-of-Code](https://hitsofcode.com/github/rentezzy/beast-beats-seller)](https://hitsofcode.com/github/rentezzy/beast-beats-seller/view)
-![Static Badge](https://img.shields.io/badge/status-active-lime)
 ![Static Badge](https://img.shields.io/badge/react-18.2.0-blue)
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/rentezzy/beast-beats-seller)
-![Static Badge](https://img.shields.io/badge/site-working-lime?link=https%3A%2F%2Fbeast-beats-seller.store%2Fhome)
+![Static Badge](https://img.shields.io/badge/site-disabled-red?link=https%3A%2F%2Fbeast-beats-seller.store%2Fhome)
 
 
 
